@@ -1,0 +1,75 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: royalblue;}
+h1 {font-family: 'Roboto', sans-serif;}
+
+.main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  border: slategray solid;
+ 
+}
+.loginbox_big{
+  border: slategray solid;
+  width: 1200px;
+  height: 600px;
+  margin-bottom: 60px;
+  background-color: azure;
+  position: relative;
+}
+
+.title {text-align: center; position: absolute; left:45vh ;}
+.img_duck {width: 140px; float: left; margin-left: -20px;}
+.main_title {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  float: right;
+  font-size: 25px;
+ 
+  margin-top: 65px;
+  
+}
+.login {
+  clear: both;
+  width: 350px;
+  height: 400px;
+  
+  
+}
+
+.IDPW {margin-right: 230px; padding-top: 20px; padding-bottom: 10px; font-family: 'Roboto', sans-serif}
+.IDPW1 {margin-right: 320px; padding-top: 20px; padding-bottom: 10px; font-family: 'Roboto', sans-serif}
+.box1{width: 340px; height: 35px; margin-bottom: 10px;}
+.box2{width: 340px; height: 35px; margin-bottom: 50px;}
+.log_button {
+  width: 167px; 
+  height: 40px; 
+  background-color: rgb(44, 157, 233); 
+  border-radius: 10%; border: azure solid;
+  transition: box-shadow 0.25s ease-in-out
+}
+.log_button:hover{
+  box-shadow: 
+  inset -6.1em 0 0 0 #257fac,
+  inset 6.1em 0 0 0 #257fac;
+}
+.reg_button {
+  width: 169px; 
+  height: 40px; 
+  border-radius: 10%; border: azure solid; 
+  transition: box-shadow 0.25s ease-in-out;}
+.reg_button:hover{
+  box-shadow: 
+  inset -6.2em 0 0 0 #758288,
+  inset 6.2em 0 0 0 #758288;
+}
+.find_pwd{margin-top: 30px;}
+
+@media(max-width:1220px){
+  .img_duck{float: none; width: 140px;}
+  .main_title{float: none; margin-top: -30px;}
+  .login{width:100%;}
+  .title{position: static;}
+}
