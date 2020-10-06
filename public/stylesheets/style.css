@@ -40,10 +40,15 @@ h1 {font-family: 'Roboto', sans-serif;}
   
 }
 
-.IDPW {margin-right: 230px; padding-top: 20px; padding-bottom: 10px; font-family: 'Roboto', sans-serif}
-.IDPW1 {margin-right: 320px; padding-top: 50px; padding-bottom: 10px; font-family: 'Roboto', sans-serif}
-.box1{width: 340px; height: 35px; margin-bottom: 10px;}
-.box2{width: 340px; height: 35px; margin-bottom: 50px;}
+.IDPW {margin-top:30px; margin-right: 250px;  font-family: 'Roboto', sans-serif}
+.IDPW4 {margin-top:20px; margin-right: 280px;  font-family: 'Roboto', sans-serif}
+.IDPW1 {padding-top:60px; margin-right: 320px;   font-family: 'Roboto', sans-serif}
+.IDPW2 {margin-right: 300px; font-family: 'Roboto', sans-serif}
+.IDPW3 {margin-right: 225px; font-family: 'Roboto', sans-serif}
+.box1{width: 340px; height: 35px; }
+.box2{width: 340px; height: 35px; margin-bottom: 20px; }
+.box4{width: 340px; height: 35px; margin-bottom: 20px; }
+.box3{width: 340px; height: 35px; margin-bottom: 20px; }
 .log_button {
   width: 167px; 
   height: 40px; 
