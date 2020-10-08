@@ -1,7 +1,7 @@
 function login(){
     
-    var ID = document.getElementsByClassName('box1')[0].value
-    var pw = document.getElementsByClassName('box2')[0].value
+    var ID = document.getElementsByClassName('form-control mb-4')[0].value
+    var pw = document.getElementsByClassName('form-control mb-4')[1].value
     // console.log(ID,pw)
 
     const data = { reg_user: ID, reg_pw: pw };
@@ -40,10 +40,10 @@ function register1(){
 
 
 function register(){
-    var ID = document.getElementsByClassName('box1')[0].value
-    var pw = document.getElementsByClassName('box2')[0].value
-    var pw1 = document.getElementsByClassName('box4')[0].value
-    var name = document.getElementsByClassName('box3')[0].value
+    var ID = document.getElementsByClassName('form-control mb-4')[0].value
+    var pw = document.getElementsByClassName('form-control mb-4')[1].value
+    var pw1 = document.getElementsByClassName('form-control mb-4')[2].value
+    var name = document.getElementsByClassName('form-control mb-4')[3].value
 
     const data = { reg_user: ID, reg_pw: pw, name: name };
 
@@ -69,3 +69,28 @@ function register(){
     }
     });
 }
+
+
+function enter_test(){
+    if(window.event.keyCode ==13){
+        chk.click()
+    }
+}
+
+function enter_test1(){
+    if(window.event.keyCode ==13){
+        chk1.click()
+    }
+}
+
+function changeMenu(statusitem){
+    var element = $("#littleMenu").text()
+    var element1 = $(statusitem).text()
+    console.log(element)
+    console.log(element1)
+
+    $("h2[name=4]").text(element1);
+ 
+}
+
+

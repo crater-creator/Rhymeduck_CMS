@@ -1,37 +1,90 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>login</title>
+    <!-- MDB icon -->
     
-    <!-- style -->
-    <link rel="stylesheet" href="./stylesheets/style.css">
-    <link rel="stylesheet" href="./stylesheets/reset.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="./css/mdb.min.css" />
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <!-- Custom styles -->
+    <style></style>
 
     <!-- script -->
     <script src="./javascripts/login.js"></script>
+    
+  </head>
+  <body >
+    <!-- Start your project here-->
+    <div style="  
+    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2) ),url(../images/backG.jpg);
+    height: 969px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    ">
+    <div style="position: relative;">
+    <img class="img_wantreez" style="margin-top: 120px; float: left; position:absolute; right:50%; transform:translate(50%);"  src="./images/gold_full_medium.png" alt="" >
+    
+    <!-- Default form login -->
+    <div class="card border" style="margin-top: 300px; clear:left; width: 35%; position:absolute; right:50%; transform:translate(50%)">
+      <div class="text-center border border-light p-5" >
 
-</head>
-<body>
-    <section class="main">
-        <div class="loginbox_big">
-            <div class="title">
-                    <div><img class="img_wantreez" src="./images/gold_full_medium.png" alt=""></div>
-                <div class="login">
-                        <div class="IDPW1"><h4>Id</h4></div>
-                        <div><input class="box1" type="text" placeholder="ID" ></div>
-                        <div class="IDPW4"><h4>Password</h4></div>
-                        <div><input class="box2" type="password" placeholder="passsword" ></div>
-                        <div class="IDPW3"><h4>Password Confirm</h4></div>
-                        <div><input class="box4" type="password" placeholder="passsword" ></div>
-                        <div class="IDPW2"><h4>Name</h4></div>
-                        <div><input class="box3" type="text" placeholder="name"></div>
-                        <input class="log_button" type="submit" value="회원가입" onclick=register()>
+        <p class="h4 mb-4">Sign up</p>
+        
+
+        <!-- Email -->
+        <input type="text" id="Id1" class="form-control mb-4" placeholder="Id">
+        <!-- Password -->
+        <input type="password" id="Password1" class="form-control mb-4" placeholder="Password">
+        <input type="password" id="Password2" class="form-control mb-4" placeholder="Password_confirm">
+        <input onkeypress="enter_test()" type="text" id="name1" class="form-control mb-4" placeholder="name">
+
+        <div class="d-flex justify-content-around">
+            <div>
+                <!-- Remember me -->
+                <div class="custom-control custom-checkbox">
+                    <label class="custom-control-label" for="defaultLoginFormRemember"></label>
                 </div>
             </div>
+            <div>
+                <!-- Forgot password -->
+                <a href=""></a>
+            </div>
         </div>
-    </section>
-</body>
+
+        <!-- Sign in button -->
+        <div class="text-center mb-3">
+          <button  id="chk" type="button" class="btn login-btn1 btn-block btn-rounded z-depth-1a" onclick=register()>Sign in</button>
+        </div>
+
+        <!-- Register -->
+        <p>Do you want back?
+            <a href="/">back</a>
+        </p>
+
+      </div>
+      </div>
+    </div>
+    </div>
+    
+      <!-- Default form login -->
+
+    <!-- End your project here-->
+  </body>
+
+  <!-- MDB -->
+  <script type="text/javascript" src="./js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
 </html>
