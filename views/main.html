@@ -1,104 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rhymeduck</title>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    * {margin: 0; padding: 0;}
+        
+		#wrap { margin: 0 auto;}
+		/* .header {width: 100%; height: 100px; } */
+		.aside {position: relative; float: left; width: 12%; height: 899px; background-color: #413a31; }
+		.article1 {float: left; width: 88%; height: 90px; background:#f5faf5;}
+		.article2 {float: left; width: 88%; height: 809px; background: #e2e2e2;}
 
+		/* 화면 너비 0 ~ 1000px */
+		@media (max-width: 1240px){
+			#wrap {width: 100%;}
+			/* .article1 {height: 100px;}
+			.article2 {height: 300px;} */
+			
+		}
+
+		/* 화면 너비 0 ~ 768px */
+		@media (max-width: 768px){
+			.aside { overflow:hidden;  width: 100%; height: 300px; }
+			.article1 {width: 100%;}
+            .article2 {width: 100%;}
+            .list2 li {width: 200%;}
+		}
+
+		/* 화면 너비 0 ~ 480px */
+		@media (max-width: 480px){
+			.article1 {width: 100%;}
+			.article2 {width: 100%;}
+			
+		} 
+    </style>
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
     <!-- MDB -->
     <link rel="stylesheet" href="./css/mdb.min.css" />
     <link rel="stylesheet" href="./stylesheets/style.css" />
     <!-- Custom styles -->
-    <style></style>
+    <link rel="stylesheet" href="./css/style2.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
 
     <!-- script -->
     <script src="./javascripts/login.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 <body>
-    <!--Navbar -->
-    <nav class="mb-1 navbar navbar-expand-lg navbar-dark navbar-fixed-top" style=" background-color: wheat; ">
-        <a class="navbar-brand" href="#"><img style="padding-left:30px; padding-right:30px; width: 350px;"src="./images/black_full_medium.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
-        aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-            </a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item avatar">
-            <a class="nav-link p-0" href="#">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
-                alt="avatar image" height="35">
-            </a>
-            </li>
-        </ul>
+	<div id="wrap">
+        <!-- 헤더 시작 -->
+		<header style=>
+            <!--Navbar -->
+            <nav class="mb-1 navbar navbar-expand-lg navbar-dark navbar-fixed-top" style=" background-color: wheat; ">
+                <a class="navbar-brand" href="#"><img style="padding-left:30px; padding-right:30px; width: 350px;"src="./images/black_full_medium.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+                aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+                
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item avatar">
+                    <a class="nav-link p-0" href="#">
+                        <div style="margin-right: 15px;">
+                        <i class="far fa-address-card" style="background-color: rgb(88, 46, 16); padding: 10px 10px 10px 10px; border-radius: 20%;"></i>
+                        <button onclick="logout()" type="button" class="btn" style="color:white; background-color: rgb(88, 46, 16);">Logout</button>
+                        </div>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </nav>
+            <!--/.Navbar -->
+        </header>
+        <!-- 헤더 끝 -->
+		<aside class="aside">
+                <!-- 사이드바 -->
+                <nav class="col-sm-3">
+                    <div class="list2">
+                    <ul class="list-group" >
+                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false"><i class="fas fa-border-all"style="margin-right:20px;"></i>계정 관리<i id="fas1" class="fas fa-angle-double-right"></i></a></li>
+                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false"><i class="far fa-calendar-alt"style="margin-right:20px;"></i>기능 2<i id="fas2" class="fas fa-angle-double-right"></i></a></li>
+                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false"><i class="far fa-address-book"style="margin-right:20px;"></i>기능 3<i id="fas3" class="fas fa-angle-double-right"></i></a></li>
+                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 4</a></li>
+                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 5</a></li>
+                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 6</a></li>
+                        <li class="list1"><a class="list1_a"href="#">기능 7</a></li>
+                        <li class="list1"><a class="list1_a"href="#">기능 8</a></li>
+                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
+                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
+                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
+                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
+                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
+                   
+                    </ul>
+                    </div>
+                </nav>
+                <!-- 사이드바 끝 -->
+
+        </aside>
+        <!-- 소 제목 시작 -->
+		<section class="article1">
+            <div class="example z-depth-5">
+                <h2 style="font-size:40px;font-family: 'Noto Sans KR', sans-serif;" name = "4" id="littleMenu">계정 관리</h2>
+            </div>
+        </section>
+        <!-- 소 제목 끝 -->
+		<section class="article2">
+            <div class="tb_wrap1">
+                <div class="tb_inbox">
+                    <input id="stora" type="text" placeholder="매장명 검색" value="롯데마트">
+                    <button onclick="tableCreate();" class="btn btn-outline-warning waves-effect">검색</button>
+
+                </div>
+            <div class="tb_box1">
+            <table id="dtDynamicVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+            width="100%">
+            <thead>
+                <tr>
+                <th class="th-sm">매장명
+                </th>
+                <th class="th-sm">아이디
+                </th>
+                <th class="th-sm">실패 회수 초기화
+                </th>
+                <th class="th-sm">비밀번호 변경
+                </th>
+                </tr>
+            </thead>
+            <tbody id="dynamicTbody">
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                <th>매장명
+                </th>
+                <th>아이디
+                </th>
+                <th>실패 회수 초기화
+                </th>
+                <th>비밀번호 변경
+                </th>
+                </tr>
+            </tfoot>
+            </table>
         </div>
-    </nav>
-    <!--/.Navbar -->
-
-    <!-- 사이드바 -->
-    <nav class="col-sm-3" style="
-    background-color: #413a31;
-    width: 220px;
-    height: 899px;
-    float: left;
-    margin-top: -4px;">
-    
-        <ul class="list-group" >
-            <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">Dashboard</a></li>
-            <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 2</a></li>
-            <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 3</a></li>
-            <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 4</a></li>
-            <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 5</a></li>
-            <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 6</a></li>
-            <li class="list1"><a class="list1_a"href="#">기능 7</a></li>
-            <li class="list1"><a class="list1_a"href="#">기능 8</a></li>
-            <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
-        </ul>
-    
-    </nav>
-    <!-- 사이드바 끝 -->
-
-    <!-- 소 제목 시작-->
-    <div style="
-    margin-top: -4px;
-    height: 60px;
-    width: 100%;
-    background-color: whitesmoke;">
-        <h2 name = "4" id="littleMenu">Dashboard</h2>
     </div>
-    <!-- 소 제목 끝 -->
-    
-    <!-- 메인 내용 시작 -->
-    <main >
-
-    </main>
-    <!-- 메인 내용 끝 -->
-    
-    
-
-    
+        </section>
+		
+		
+    </div>
 
 </body>
     <!-- MDB -->
@@ -106,3 +167,9 @@
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
 </html>
+
+
+
+
+
+

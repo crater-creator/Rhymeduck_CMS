@@ -14,4 +14,8 @@ router.get('/main', function(req, res, next) {
   res.render('main');
 });
 
+router.get('/password', function(req, res, next) {
+  res.render('password.html');
+});
+
 module.exports = router;
