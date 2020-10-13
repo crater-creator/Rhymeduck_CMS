@@ -1,7 +1,7 @@
 function login(){
     
-    var ID = document.getElementsByClassName('form-control mb-4')[0].value
-    var pw = document.getElementsByClassName('form-control mb-4')[1].value
+    var ID = document.getElementsByClassName('form-control')[0].value
+    var pw = document.getElementsByClassName('form-control')[1].value
     // console.log(ID,pw)
 
     const data = { reg_user: ID, reg_pw: pw };
@@ -40,10 +40,10 @@ function register1(){
 
 
 function register(){
-    var ID = document.getElementsByClassName('form-control mb-4')[0].value
-    var pw = document.getElementsByClassName('form-control mb-4')[1].value
-    var pw1 = document.getElementsByClassName('form-control mb-4')[2].value
-    var name = document.getElementsByClassName('form-control mb-4')[3].value
+    var ID = document.getElementsByClassName('form-control')[0].value
+    var pw = document.getElementsByClassName('form-control')[1].value
+    var pw1 = document.getElementsByClassName('form-control')[2].value
+    var name = document.getElementsByClassName('form-control')[3].value
 
     const data = { reg_user: ID, reg_pw: pw, name: name };
 

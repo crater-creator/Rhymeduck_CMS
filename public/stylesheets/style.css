@@ -16,14 +16,12 @@ box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 25
   background: rgb(105,163,255);
   background: linear-gradient(162deg, rgb(91, 171, 236) 30%, rgba(43,125,254,1) 50%, rgb(6, 59, 143) 100%);
 }
-/*
-.list1{
-  height: 50%;
-  width:100%;
+
+/* .list1{
+ 
   
-  
-}
-.list2{
+} */
+/* .list2{
   border: 1px solid yellow;
   position: absolute;
   width: 100%;
@@ -35,9 +33,9 @@ box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 25
   border-bottom: 2px solid #918e8e;
   margin: 25px 0px 0px 35px;
   
-}*/
+} */
 .list2{
-  width:400%
+  width:10vw
 }
 #fas1{
   position: absolute; right: 15%; top: 33%;
@@ -73,8 +71,9 @@ box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 25
 
 #littleMenu{ 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
- padding-top: 1vh;
-
+ padding-top: 0.5vh;
+ margin-left: 11vw;
+  
 }
 
 table.dataTable thead .sorting:after,

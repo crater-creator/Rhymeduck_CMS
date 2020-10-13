@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>login</title>
-    <!-- MDB icon -->
+    
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
@@ -23,63 +23,62 @@
     <!-- script -->
     <script src="./javascripts/login.js"></script>
     
+    <style>
+      @media (max-width: 360px){
+        article{background-color: white; border-radius:2%}
+        div > p{margin-top: -2vh;}
+      }
+
+    </style>
   </head>
   <body >
     <!-- Start your project here-->
     <div style="  
     background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2) ),url(../images/backG.jpg);
-    height: 969px;
+    height: 100vh;
+    width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     ">
-    <div style="position: relative;">
-    <img class="img_wantreez" style="margin-top: 120px; float: left; position:absolute; right:50%; transform:translate(50%);"  src="./images/gold_full_medium.png" alt="" >
-    
-    <!-- Default form login -->
-    <div class="card border" style="margin-top: 300px; clear:left; width: 35%; position:absolute; right:50%; transform:translate(50%)">
-      <div class="text-center border border-light p-5" >
-
-        <p class="h4 mb-4">Sign up</p>
-        
-
-        <!-- Email -->
-        <input type="text" id="Id1" class="form-control mb-4" placeholder="Id">
-        <!-- Password -->
-        <input type="password" id="Password1" class="form-control mb-4" placeholder="Password">
-        <input type="password" id="Password2" class="form-control mb-4" placeholder="Password_confirm">
-        <input onkeypress="enter_test()" type="text" id="name1" class="form-control mb-4" placeholder="name">
-
-        <div class="d-flex justify-content-around">
-            <div>
-                <!-- Remember me -->
-                <div class="custom-control custom-checkbox">
-                    <label class="custom-control-label" for="defaultLoginFormRemember"></label>
-                </div>
-            </div>
-            <div>
-                <!-- Forgot password -->
-                <a href=""></a>
-            </div>
+      <div style="height: 100vh; width: 100vw; position: relative;">
+        <div style=>
+        <img class="img_wantreez" style="width: 60vw; margin-top: 80px;  position:absolute; right:50%; transform:translate(50%);"  src="./images/gold_full_medium.png" alt="" >
         </div>
+          <!-- Default form login -->
+          <main>
+          <article class="" style="margin-top: 25vh; clear:left; height:65vh; width: 80vw; position:absolute; right:50%; transform:translate(50%)">
+            
+              <div class="text-center" style="margin-top:3vh; background-color:white; height:45vh; width: 40vw; position:absolute; right:50%; transform:translate(50%); border-radius:2%">
+              <p class="h4 mb-4" style="margin-top: 1vh;"><span>Sign up</span></p>
+              
 
-        <!-- Sign in button -->
-        <div class="text-center mb-3">
-          <button  id="chk" type="button" class="btn login-btn1 btn-block btn-rounded z-depth-1a" onclick=register()>Sign in</button>
-        </div>
+              <!-- Email -->
+              <input type="text" id="Id1" style="margin-top:2vh; margin-left:2vw; width:36vw" class="form-control" placeholder="Id">
 
-        <!-- Register -->
-        <p>Do you want back?
-            <a href="/">back</a>
-        </p>
+              <!-- Password -->
+              <input style="margin-top:2vh; margin-left:2vw; width:36vw" type="password" id="Password1" class="form-control" placeholder="Password">
+              <input type="password" id="Password2" style="margin-top:2vh; margin-left:2vw; width:36vw" class="form-control" placeholder="Password_confirm">
+              <input onkeypress="enter_test()" style="margin-top:2vh; margin-left:2vw; width:36vw" type="text" id="name1" class="form-control" placeholder="name">
 
-      </div>
+              <!-- Sign in button -->
+              <div class="text-center mb-3" style="margin-top: 2vh;">
+                <button id="chk1" style="width:31vw" type="button" class="btn login-btn1  btn-rounded z-depth-1a" onclick=register()>Sign in</button>
+              </div>
+
+              <!-- Register -->
+              <p>Do you want back?
+                <a href="/">back</a>
+              </p>
+
+            </div>
+            </article>
+          </main>
+      
+      
+        <!-- Default form login -->
       </div>
     </div>
-    </div>
-    
-      <!-- Default form login -->
-
     <!-- End your project here-->
   </body>
 
