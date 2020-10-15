@@ -1,89 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>login</title>
-    
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-    />
-    <!-- MDB -->
-    <link rel="stylesheet" href="./css/mdb.min.css" />
-    <link rel="stylesheet" href="./stylesheets/style.css" />
-    <!-- Custom styles -->
-    <style></style>
 
-    <!-- script -->
-    <script src="./javascripts/login.js"></script>
-    
-    <style>
-      @media (max-width: 360px){
-        article{background-color: white; border-radius:2%}
-        div > p{margin-top: -2vh;}
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - Wantreez</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/mdb.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/mdb.min.css.map"> -->
+    <link rel="stylesheet" href="./assets/vendors/chartjs/Chart.min.css">
 
-    </style>
-  </head>
-  <body >
-    <!-- Start your project here-->
-    <div style="  
-    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2) ),url(../images/backG.jpg);
-    height: 100vh;
-    width: 100vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    ">
-      <div style="height: 100vh; width: 100vw; position: relative;">
-        <div style=>
-        <img class="img_wantreez" style="width: 60vw; margin-top: 80px;  position:absolute; right:50%; transform:translate(50%);"  src="./images/gold_full_medium.png" alt="" >
-        </div>
-          <!-- Default form login -->
-          <main>
-          <article class="" style="margin-top: 25vh; clear:left; height:65vh; width: 80vw; position:absolute; right:50%; transform:translate(50%)">
-            
-              <div class="text-center" style="margin-top:3vh; background-color:white; height:45vh; width: 40vw; position:absolute; right:50%; transform:translate(50%); border-radius:2%">
-              <p class="h4 mb-4" style="margin-top: 1vh;"><span>Sign up</span></p>
-              
+    <link rel="stylesheet" href="./assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"> -->
+    <link rel="stylesheet" type="text/css" href="./assets/DataTables/datatables.min.css"/>
+</head>
 
-              <!-- Email -->
-              <input type="text" id="Id1" style="margin-top:2vh; margin-left:2vw; width:36vw" class="form-control" placeholder="Id">
-
-              <!-- Password -->
-              <input style="margin-top:2vh; margin-left:2vw; width:36vw" type="password" id="Password1" class="form-control" placeholder="Password">
-              <input type="password" id="Password2" style="margin-top:2vh; margin-left:2vw; width:36vw" class="form-control" placeholder="Password_confirm">
-              <input onkeypress="enter_test()" style="margin-top:2vh; margin-left:2vw; width:36vw" type="text" id="name1" class="form-control" placeholder="name">
-
-              <!-- Sign in button -->
-              <div class="text-center mb-3" style="margin-top: 2vh;">
-                <button id="chk1" style="width:31vw" type="button" class="btn login-btn1  btn-rounded z-depth-1a" onclick=register()>Sign in</button>
-              </div>
-
-              <!-- Register -->
-              <p>Do you want back?
-                <a href="/">back</a>
-              </p>
-
+<body>
+    <div id="auth">
+        
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 col-sm-12 mx-auto">
+            <div class="card pt-4">
+                <div class="card-body">
+                    <div class="text-center mb-5">
+                        <img src="./assets/images/gold_full_medium.png" height="35" class='mb-4'>
+                        <h3>Sign Up</h3>
+                        <p>Please fill the form to register.</p>
+                    </div>
+                   
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="first-name-column">Name</label>
+                                    <input type="text" id="first-name-column" class="form-control"  name="fname-column">
+                                </div>
+                            </div>
+                           
+                            
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="country-floating">ID</label>
+                                    <input type="text" id="country-floating" class="form-control" name="country-floating">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="company-column">Password</label>
+                                    <input type="password" id="company-column" class="form-control" name="company-column">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="company-column">Password confirm</label>
+                                    <input onkeypress="enter_test()" type="password" id="company-column1" class="form-control" name="company-column">
+                                </div>
+                            </div>
+                        </diV>
+                                <a href="/">Have an account? Login</a>
+                        <div class="clearfix">
+                            <input id="chk" class="btn btn-primary" style="float: right; right: 0;"type="button" onclick="register()" value="signup">
+                        </div>
+                  
+                    <div class="divider">
+                        <div class="divider-text"></div>
+                    </div>
+                    
+                </div>
             </div>
-            </article>
-          </main>
-      
-      
-        <!-- Default form login -->
-      </div>
+        </div>
     </div>
-    <!-- End your project here-->
-  </body>
+</div>
 
-  <!-- MDB -->
-  <script type="text/javascript" src="./js/mdb.min.js"></script>
-  <!-- Custom scripts -->
-  <script type="text/javascript"></script>
+    </div>
+    <script src="./assets/js/feather-icons/feather.min.js"></script>
+    <script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/login.js"></script>
+    <script src="./assets/js/mdb.min.js"></script>
+    <!-- <script src="assets/js/mdb.min.js.map"></script> -->
+    
+    <script src="./assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="./assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <!-- <script src="assets/js/pages/dashboard.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/DataTables/datatables.min.js"></script>
+</body>
+
 </html>

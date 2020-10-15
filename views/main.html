@@ -1,157 +1,289 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-	    /* 여백 초기화 */
-        * {margin: 0; padding: 0;}
-        
-        body {margin: 0 auto;}
-		#wrap { height:100vh; width: 100vw;}
-        header {height: 8vh; width: 100vw;}
-        /* .header {width: 100%; height: 100px; } */
-		.aside {position: relative;float:left;height:92vh;width:10vw; background-color: #413a31; }
-		.article1 {height:6vh; width:100vw; background:#f5faf5; }
-		.article2 {float:left; height:86vh; width:90vw; background: #e2e2e2;}
-        ul{list-style:none;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main - Wantreez</title>
     
-        @media screen and (max-width: 1435px) {
-            .article1 {height:6vh; width:100vw; background:#f5faf5; }
-            .article2 {float:left; height:86vh; width:90vw; background: #e2e2e2;}
-            #fas1{display: none;}
-            #fas2{display: none;}
-            #fas3{display: none;}
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/mdb.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/mdb.min.css.map"> -->
+    <link rel="stylesheet" href="./assets/vendors/chartjs/Chart.min.css">
+
+    <link rel="stylesheet" href="./assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"> -->
+    <link rel="stylesheet" type="text/css" href="./assets/DataTables/datatables.min.css"/>
+    <style>
+        @media(max-width: 450px){
+            .card-title{display: none;}
+            #duck1{margin-top: 15px;}
         }
-     
+        @media(max-width: 321px){
+            .card-title{display: none;}
+            #duck1{margin-top: 15px;}
+            #stora2{width: 65px;}
 
+        }
     </style>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-    <!-- MDB -->
-    <link rel="stylesheet" href="./css/mdb.min.css" />
-    <link rel="stylesheet" href="./stylesheets/style.css" />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="./css/style2.css">
-    <link rel="stylesheet" href="./css/font-awesome.css">
-    
-
-    <!-- script -->
-    <script src="./javascripts/login.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<div id="wrap">
-        <!-- 헤더 시작 -->
-		<header>
-            <!--Navbar -->
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+    <div id="sidebar-headbox" class="sidebar-header">
+        <img src="./assets/images/gold_full_medium.png" alt="" srcset="">
+    </div>
+    <div class="sidebar-menu">
+        <ul class="menu">
             
-            <nav class="mb-1 navbar navbar-expand-lg " style="height:7vh;background-color:wheat; ">
-                <a class="navbar-brand" href="#"><img style="padding-left:30px; padding-right:30px; width: 350px;"src="./images/black_full_medium.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
-                aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-                
-                <ul class="navbar-nav ml-auto nav-flex-icons">
-                    <li class="nav-item avatar">
-                    <a class="nav-link p-0" href="#">
-                        <div style="margin-right: 15px;">
-                        <i class="far fa-address-card" style="background-color: rgb(88, 46, 16); padding: 10px 10px 10px 10px; border-radius: 20%;"></i>
-                        <button onclick="logout()" type="button" class="btn" style="color:white; background-color: rgb(88, 46, 16);">Logout</button>
-                        </div>
+            
+                <li class='sidebar-title'>Main Menu</li>
+            
+            
+            
+                <li class="sidebar-item ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="home" width="20"></i> 
+                        <span>계정관리</span>
                     </a>
-                    </li>
-                </ul>
+                    
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="triangle" width="20"></i> 
+                        <span>Components</span>
+                    </a>
+                     
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="briefcase" width="20"></i> 
+                        <span>Extra Components</span>
+                    </a>    
+                </li>
+
+            
+            
+            
+                <li class='sidebar-title'>Forms &amp; Tables</li>
+            
+            
+            
+                <li class="sidebar-item">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="file-text" width="20"></i> 
+                        <span>Form Elements</span>
+                    </a>
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span>Form Layout</span>
+                    </a>
+                    
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>Form Editor</span>
+                    </a>
+                    
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="grid" width="20"></i> 
+                        <span>Table</span>
+                    </a>
+                    
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="file-plus" width="20"></i> 
+                        <span>Datatable</span>
+                    </a>
+                    
+                </li>
+
+            
+            
+            
+                <li class='sidebar-title'>Extra UI</li>
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="user" width="20"></i> 
+                        <span>Widgets</span>
+                    </a>
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="trending-up" width="20"></i> 
+                        <span>Charts</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="trending-up" width="20"></i> 
+                        <span>Charts</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="trending-up" width="20"></i> 
+                        <span>Charts</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="trending-up" width="20"></i> 
+                        <span>Charts</span>
+                    </a>
+                </li>
+
+            
+            
+            
+                <li class='sidebar-title'>Pages</li>
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="user" width="20"></i> 
+                        <span>Authentication</span>
+                    </a>
+                </li>
+
+            
+            
+            
+                <li class="sidebar-item  ">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="alert-circle" width="20"></i> 
+                        <span>Errors</span>
+                    </a>
+                </li>
+
+            
+            
+         
+        </ul>
+    </div>
+    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+</div>
+        </div>
+        <div id="main">
+            <nav style="background-color: rgb(185, 153, 65);" class="navbar navbar-header navbar-expand navbar-light">
+                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <div class="avatar mr-1">
+                            <span id="duck1" style="margin:10px 20px 0 0;">Hi. duck</span>
+                            <input type="button" class="btn btn-warning" value="Logout" onclick="logout()">
+                        </div>
+                    </ul>
                 </div>
             </nav>
-            <!--/.Navbar -->
-        </header>
-        <!-- 헤더 끝 -->
-        <div>
-        <div style=>
-		<aside class="aside" style="padding-bottom:30%;position: relative;">
-                <!-- 사이드바 -->
-                <nav style="position: absolute;" class="col-sm-3">
-                    <div class="list2">
-                    <ul class="list-group" >
-                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false"><i class="fas fa-border-all"style="margin-right:20px;"></i>계정 관리<i id="fas1" class="fas fa-angle-double-right"></i></a></li>
-                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false"><i class="far fa-calendar-alt"style="margin-right:20px;"></i>기능 2<i id="fas2" class="fas fa-angle-double-right"></i></a></li>
-                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false"><i class="far fa-address-book"style="margin-right:20px;"></i>기능 3<i id="fas3" class="fas fa-angle-double-right"></i></a></li>
-                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 4</a></li>
-                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 5</a></li>
-                        <li class="list1"><a class="list1_a"href="javascript:void(0)" onclick="changeMenu(this); return false">기능 6</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 7</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 8</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
-                        <li class="list1"><a class="list1_a"href="#">기능 9</a></li>
-                        
-                   
-                    </ul>
-                    </div>
-                </nav>
-                <!-- 사이드바 끝 -->
-
-        </aside>
-        <!-- 소 제목 시작 -->
-		<section class="article1">
-                <h2 style="font-size:40px;font-family: 'Noto Sans KR', sans-serif;" name = "4" id="littleMenu">계정 관리</h2>
-        </section>
-        <!-- 소 제목 끝 -->
-        <!--메인 section -->
-		<section class="article2">
-            <div class="tb_wrap1">
-                <div class="tb_inbox">
-                    <input id="stora" type="text" placeholder="매장명 검색" value="롯데마트">
-                    <button onclick="tableCreate();" class="btn btn-outline-warning waves-effect">검색</button>
-
-                </div>
-            <div class="tb_box1">
-            <table id="dtDynamicVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0"
-            width="100%">
-            <thead>
-                <tr>
-                <th class="th-sm">매장명
-                </th>
-                <th class="th-sm">아이디
-                </th>
-                <th class="th-sm">실패 회수 초기화
-                </th>
-                <th class="th-sm">비밀번호 변경
-                </th>
-                </tr>
-            </thead>
-            <tbody id="dynamicTbody">
-                
-            </tbody>
             
-            </table>
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <h3>계정관리</h3>
+        <p class="text-subtitle text-muted">매장별 사용자 계정 조회 및 관리</p>
+    </div>
+    <section class="section">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title">계정</h4>
+                        <div class="d-flex ">
+                            <input id="stora" type="text" placeholder="매장명" value="롯데마트">
+                            <input id="stora2"type="button" class="btn  btn-outline-warning waves-effect" onclick="tableCreate()" value="검색">
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped mb-0" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>매장명</th>
+                                        <th>아이디</th>
+                                        <th>실패 회수 초기화</th>
+                                        <th>비밀번호 변경</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dynamicTbody">
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-        </section>	
-     </div>
+    </section>
+</div>
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-left">
+                        <p>2020 &copy; wantreez</p>
+                    </div>
+                    
+                </div>
+            </footer>
+        </div>
     </div>
-    </div>
+    <script src="./assets/js/feather-icons/feather.min.js"></script>
+    <script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/login.js"></script>
+    <script src="./assets/js/mdb.min.js"></script>
+    <!-- <script src="assets/js/mdb.min.js.map"></script> -->
+    
+    <script src="./assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="./assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <!-- <script src="assets/js/pages/dashboard.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/DataTables/datatables.min.js"></script>
 </body>
-    <!-- MDB -->
-    <script type="text/javascript" src="./js/mdb.min.js"></script>
-    <!-- Custom scripts -->
-    <script type="text/javascript"></script>
 </html>
-
-
-
-
-
-

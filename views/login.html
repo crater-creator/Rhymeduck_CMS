@@ -1,90 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>login</title>
-    
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-    />
-    <!-- MDB -->
-    <link rel="stylesheet" href="./css/mdb.min.css" />
-    <link rel="stylesheet" href="./stylesheets/style.css" />
-    <!-- Custom styles -->
-    <style></style>
 
-    <!-- script -->
-    <script src="./javascripts/login.js"></script>
-    
-    <style>
-      @media (max-width: 360px){
-        article{background-color: white; border-radius:2%}
-        img{margin-top: 80px;}
-        div >input { width: 50vw;}
-       
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Wantreez</title>
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/mdb.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/mdb.min.css.map"> -->
+    <link rel="stylesheet" href="./assets/vendors/chartjs/Chart.min.css">
+
+    <link rel="stylesheet" href="./assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"> -->
+    <link rel="stylesheet" type="text/css" href="./assets/DataTables/datatables.min.css"/>
+</head>
+
+<body>
+    <div id="auth">
         
-      }
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 mx-auto">
+            <div class="card pt-4">
+                <div class="card-body">
+                    <div class="text-center mb-5">
+                        <img src="./assets/images/gold_full_medium.png" height="35" class='mb-4'>
+                        <h3>Sign In</h3>
+                        <p>Please sign in to continue to rhymeduck cms.</p>
+                    </div>
+                    
+                        <div class="form-group position-relative">
+                            <label for="username">ID</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="username">
+                                <div class="form-control-icon">
+                                    <i data-feather="user"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative ">
+                            <div class="clearfix">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="position-relative">
+                                <input onkeypress="enter_test1()" type="password" class="form-control" id="password">
+                                <div class="form-control-icon">
+                                    <i data-feather="lock"></i>
+                                </div>
+                            </div>
+                        </div>
 
-    </style>
-  </head>
-  <body >
-    <!-- Start your project here-->
-    <div style="  
-    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2) ),url(../images/backG.jpg);
-    height: 100vh;
-    width: 100vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    ">
-      <div style="height: 100vh; width: 100vw; position: relative;">
-        <div style=>
-        <img class="img_wantreez" style="width: 60vw; margin-top: 80px;  position:absolute; right:50%; transform:translate(50%);"  src="./images/gold_full_medium.png" alt="" >
-        </div>
-          <!-- Default form login -->
-          <main>
-          <article class="" style="margin-top: 30vh; clear:left; height:60vh; width: 80vw; position:absolute; right:50%; transform:translate(50%)">
-            
-              <div class="text-center" style=" background-color:white; height:40vh; width: 40vw; position:absolute; right:50%; transform:translate(50%); border-radius:2%">
-              <p class="h4 mb-4" style="margin-top: 2vh;"><span>Sign in</span></p>
-              
-
-              <!-- Email -->
-              <input type="text" id="Id1" style="margin-top:4vh; margin-left:2vw; width:35vw" class="form-control" placeholder="Id">
-
-              <!-- Password -->
-              <input onkeypress="enter_test1()" style="margin-top:4vh; margin-left:2vw; width:35vw" type="password" id="Password1" class="form-control" placeholder="Password">
-
-              <!-- Sign in button -->
-              <div class="text-center mb-3" style="margin-top: 4vh;">
-                <button id="chk1" style="width:30vw" type="button" class="btn login-btn1  btn-rounded z-depth-1a" onclick=login()>Sign in</button>
-              </div>
-
-              <!-- Register -->
-              <p>Not a member?
-                <a href="register">Register</a>
-              </p>
-
+                        <div class='form-check clearfix my-4'>
+                            
+                            <div class="float-right">
+                                <a href="register">Do you want register?</a>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <input id="chk1" class="btn btn-primary" style="float: right; right: 0;"type="button" onclick="login()" value="signup">
+                        </div>
+                    
+                    <div class="divider">
+                        <div class="divider-text"></div>
+                    </div>
+                </div>
             </div>
-            </article>
-          </main>
-      
-      
-        <!-- Default form login -->
-      </div>
+        </div>
     </div>
-    <!-- End your project here-->
-  </body>
+</div>
 
-  <!-- MDB -->
-  <script type="text/javascript" src="./js/mdb.min.js"></script>
-  <!-- Custom scripts -->
-  <script type="text/javascript"></script>
+    </div>
+    <script src="./assets/js/feather-icons/feather.min.js"></script>
+    <script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/login.js"></script>
+    <script src="./assets/js/mdb.min.js"></script>
+    <!-- <script src="assets/js/mdb.min.js.map"></script> -->
+    
+    <script src="./assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="./assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <!-- <script src="assets/js/pages/dashboard.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/DataTables/datatables.min.js"></script>
+</body>
+
 </html>
