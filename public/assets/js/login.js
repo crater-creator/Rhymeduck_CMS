@@ -15,8 +15,12 @@ function login(){
     .then(response => response.json())
     .then(data => {
     if(data.result.ret === 'success'){
-        location.href="main";
-
+        
+        location.href="main"
+        
+       
+         
+        
     }else if(data.result.ret === 'failure'){
         if(data.result.msg === 'There are no required parameters'){
             location.href="/";
@@ -84,6 +88,12 @@ function enter_test1(){
     }
 }
 
+function enter_test2(){
+    if(window.event.keyCode ==13){
+        stora2.click()
+    }
+}
+
 var count1 =''
 function tableCreate(){
     
@@ -106,21 +116,13 @@ function tableCreate(){
         var len1 = data.data.member_list
         var len = len1.length-1
         var count1 = range(0,len)
-        var storename = new Array();
-        var storeid = new Array();
-        for (x in count1){
-            var name =data.data.member_list[x].member_name
-            var name1 =data.data.member_list[x].member_info
-            storename.push(name)
-            storeid.push(name1)
-        }
         for(key in count1){
             html += `<tr><th scope="row">${key}</th>`;
-            html += '<td>'+storename[key]+'</td>';
-            html += '<td >'+storeid[key]+'</td>';
-            html += `<td><div class="text-center"><input onclick="reset_pwdCount('${storeid[key]}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
+            html += '<td>'+data.data.member_list[key].member_name+'</td>';
+            html += '<td >'+data.data.member_list[key].member_info+'</td>';
+            html += `<td><div class="text-center"><input onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
             html += `<td>
-            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -133,27 +135,25 @@ function tableCreate(){
                 <div class="modal-body mx-3">
                   <div class="md-form mb-5">
                     <i class="fas fa-lock prefix grey-text"></i><br>
-                    <label data-error="wrong" data-success="right" for="defaultForm-email">Id</label>
-                    <input type="email" name="defaultForm-id" class="form-control validate">
                   </div>
-                  <div class="md-form mb-4">
+                  <div style="margin-top:-60px" class="md-form mb-4">
                     <i class="fas fa-lock prefix grey-text"></i>
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
                     <input type="password" name="defaultForm-pass" class="form-control validate">
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
-                    <input type="password" name="defaultForm-pass1" class="form-control validate">
+                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" name="defaultForm-pass1" class="form-control validate">
                   </div>
           
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                  <button onclick="reset_pwd3()" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                  <button id="chPw`+`${key}" onclick="reset_pwd3('${data.data.member_list[key].member_info}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
                 </div>
               </div>
             </div>
           </div>
           <div style="width=5%">
           <div class="text-center">
-            <a href=""  class="btn btn-primary" role="button" data-toggle="modal" data-target="#modalLoginForm">변경</a>
+            <a href=""  class="btn btn-primary" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
           </div>
           </div>`
           ;html += '</tr>';
@@ -200,17 +200,17 @@ function reset_pwdCount(count7){
     });
 }
 
-function reset_pwd3(){
-    var id = document.getElementsByName("defaultForm-id")[0].value
+function reset_pwd3(id){
+    var ID1 = id
     var password = document.getElementsByName("defaultForm-pass")[0].value
     var password1 = document.getElementsByName("defaultForm-pass1")[0].value
 
-    if(id === '' || password===''){
+    if(ID1 === '' || password===''){
         alert('아이디와 비밀번호를 입력해주세요.')
     }else if(password !== password1){
         alert('비밀번호를 확인해주세요.')
     }else{
-        const data = { member_info: id, member_pw: password };
+        const data = { member_info: ID1, member_pw: password };
 
         fetch('http://api.wantreez.com/a/v1/soundfier/changepw', {
         method: 'POST', // or 'PUT'
@@ -221,6 +221,12 @@ function reset_pwd3(){
         })
         .then(response => response.json())
         .then(data => {
+            if ( data.result.ret === 'success'){
+                location.href='main'
+                alert('성공입니다.')
+            }else{
+                alert('다시 시도해주세요')
+            }
         });
     }
 }
