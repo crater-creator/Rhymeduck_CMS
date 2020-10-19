@@ -16,22 +16,11 @@
     <!-- <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"> -->
     <link rel="stylesheet" type="text/css" href="./assets/DataTables/datatables.min.css"/>
     <style>
-        @media(max-width: 450px){
-            .card-title{display: none;}
-            #duck1{margin-top: 15px;}
-        }
-        @media(max-width: 321px){
-            .card-title{display: none;}
-            #duck1{margin-top: 15px;}
-            #stora2{width: 65px;}
+        @media(max-width: 500px){
+        #lbs9{display: block;}
 
         }
     </style>
-    <!-- <script>$(function(){
-        var setTag = "<p>동적을 확인하기</p>";
-        $("#lbs1").html(setTag);
-    })
-                </script> -->
 </head>
 <body>
     <div id="app">
@@ -49,9 +38,9 @@
             
             
                 <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="#" onclick="pagereload('TTS')" class='sidebar-link'>
                         <i data-feather="home" width="20"></i> 
-                        <span>계정관리</span>
+                        <span>TTS 계정관리</span>
                     </a>
                     
                 </li>
@@ -60,7 +49,7 @@
             
             
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                    <a href="#" onclick="pagereload('component')" class='sidebar-link'>
                         <i data-feather="triangle" width="20"></i> 
                         <span>Components</span>
                     </a>
@@ -211,10 +200,10 @@
         </div>
         <div id="main">
             <nav style="background-color: rgb(185, 153, 65);" class="navbar navbar-header navbar-expand navbar-light">
-                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <a class="sidebar-toggler" href="#"><span id="lbs9" class="navbar-toggler-icon"></span></a>
                 <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" ></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
@@ -226,9 +215,9 @@
                 </div>
             </nav>
             
-<div class="main-content container-fluid">
+<div id="bodycontents"class="main-content container-fluid">
     <div class="page-title">
-        <h3>계정관리</h3>
+        <h3>TTS 계정관리</h3>
         <p class="text-subtitle text-muted">매장별 사용자 계정 조회 및 관리</p>
     </div>
     <section class="section">
@@ -236,7 +225,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">계정</h4>
+                        <h4 class="card-title"></h4>
                         <div class="d-flex ">
                             <input id="stora" type="text" placeholder="매장명" onkeypress="enter_test2()" >
                             <input id="stora2"type="button" class="btn  btn-outline-warning waves-effect" onclick="tableCreate()" value="검색">
@@ -279,7 +268,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="./assets/js/feather-icons/feather.min.js"></script>
-    <script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- <script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script> -->
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/login.js"></script>
     <script src="./assets/js/mdb.min.js"></script>

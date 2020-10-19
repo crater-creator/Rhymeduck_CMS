@@ -8,9 +8,11 @@
 display: block;
 }
 
+#lbs9{display: none;}
+@media(max-width: 500px){
+  #lbs9{display: block;}
 
-
-
+}
 .dtHorizontalVerticalExampleWrapper {
   max-width: 600px;
   margin: 0 auto;

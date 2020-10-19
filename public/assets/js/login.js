@@ -1,9 +1,24 @@
 
+function pagereload(id){
+    $("#bodycontents").load(`./assets/js/side_menu/${id}.html`);
+
+}
+
 $(function(){
     var cat = localStorage.getItem('key1')
     $("div #duck1").html('Welcome. '+cat);})
 
-
+// $(document).ready(function(){              
+//     $(window).resize(function (){
+//         var width = window.outerWidth;
+//         if (width <= 450) {
+//         $('div #lbs9').html('<span class="navbar-toggler-icon"></span>');
+//         }else if(width>=450){
+//         $('div #lbs9').remove('<span class="navbar-toggler-icon"></span>');
+//         }
+//         })
+//     });
+        
 function login(){
     
     var ID = document.getElementsByClassName('form-control')[0].value
@@ -107,7 +122,8 @@ function tableCreate(){
     if (storeName1 === ''){
         return alert("매장명을 입력해주세요")
     }else{
-        const data = { member_name: storeName1 };
+        const data = { word: storeName1 };
+        
         
         fetch('http://api.wantreez.com/a/v1/soundfier/search', {
         method: 'POST', 
@@ -118,6 +134,7 @@ function tableCreate(){
         })
         .then(response => response.json())
         .then(data => {
+       
         var html =''
         var len1 = data.data.member_list
         var len = len1.length-1
@@ -145,14 +162,14 @@ function tableCreate(){
                   <div style="margin-top:-60px" class="md-form mb-4">
                     <i class="fas fa-lock prefix grey-text"></i>
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-                    <input type="password" name="defaultForm-pass" class="form-control validate">
+                    <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
-                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" name="defaultForm-pass1" class="form-control validate">
+                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId2`+`${key}" name="defaultForm-pass" class="form-control validate">
                   </div>
           
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                  <button id="chPw`+`${key}" onclick="reset_pwd3('${data.data.member_list[key].member_info}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                  <button id="chPw`+`${key}" onclick="reset_pwd3('${data.data.member_list[key].member_info}','PwId`+`${key}','PwId2`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
                 </div>
               </div>
             </div>
@@ -206,17 +223,19 @@ function reset_pwdCount(count7){
     });
 }
 
-function reset_pwd3(id){
-    var ID1 = id
-    var password = document.getElementsByName("defaultForm-pass")[0].value
-    var password1 = document.getElementsByName("defaultForm-pass1")[0].value
+function reset_pwd3(id, pwId,pwId_confirm){
+    var member_ID = id
+    var pwdId = pwId
+    var pwdId_confirm = pwId_confirm
+    var password = document.getElementById(pwdId).value
+    var password1 = document.getElementById(pwdId_confirm).value
 
-    if(ID1 === '' || password===''){
-        alert('아이디와 비밀번호를 입력해주세요.')
+    if(password1 === '' || password===''){
+        alert('비밀번호를 입력해주세요.')
     }else if(password !== password1){
         alert('비밀번호를 확인해주세요.')
     }else{
-        const data = { member_info: ID1, member_pw: password };
+        const data = { member_info: member_ID, member_pw: password };
 
         fetch('http://api.wantreez.com/a/v1/soundfier/changepw', {
         method: 'POST', // or 'PUT'

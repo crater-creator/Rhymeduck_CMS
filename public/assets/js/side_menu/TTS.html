@@ -1,0 +1,38 @@
+<div class="page-title">
+    <h3>TTS 계정관리</h3>
+    <p class="text-subtitle text-muted">매장별 사용자 계정 조회 및 관리</p>
+</div>
+<section class="section">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title"></h4>
+                    <div class="d-flex ">
+                        <input id="stora" type="text" placeholder="매장명" onkeypress="enter_test2()" >
+                        <input id="stora2"type="button" class="btn  btn-outline-warning waves-effect" onclick="tableCreate()" value="검색">
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped mb-0" id="table1">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>매장명</th>
+                                    <th>아이디</th>
+                                    <th>실패 초기화</th>
+                                    <th>비밀번호 변경</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dynamicTbody">
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
