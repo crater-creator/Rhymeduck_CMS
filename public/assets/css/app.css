@@ -818,10 +818,9 @@ footer {
 }
 .sidebar-wrapper .sidebar-toggler.x {
   position: absolute;
-  width: 1px;
   right: 0;
-  padding-left: 10px;
-  margin-right: 5px;
+  margin-right: 3px;
+  padding: 5px 8px 5px 8px;
   top: 0.3rem;
   display: none;
 }
@@ -907,6 +906,7 @@ footer {
   }
   .sidebar-wrapper .sidebar-toggler.x {
     display: block;
+    
   }
 }
 /** 2.12 Card **/

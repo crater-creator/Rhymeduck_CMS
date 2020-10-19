@@ -1,3 +1,9 @@
+
+$(function(){
+    var cat = localStorage.getItem('key1')
+    $("div #duck1").html('Welcome. '+cat);})
+
+
 function login(){
     
     var ID = document.getElementsByClassName('form-control')[0].value
@@ -15,7 +21,7 @@ function login(){
     .then(response => response.json())
     .then(data => {
     if(data.result.ret === 'success'){
-        
+        localStorage.setItem("key1", data.data.member_info.name)
         location.href="main"
         
        
@@ -120,7 +126,7 @@ function tableCreate(){
             html += `<tr><th scope="row">${key}</th>`;
             html += '<td>'+data.data.member_list[key].member_name+'</td>';
             html += '<td >'+data.data.member_list[key].member_info+'</td>';
-            html += `<td><div class="text-center"><input onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
+            html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
             html += `<td>
             <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
@@ -152,8 +158,8 @@ function tableCreate(){
             </div>
           </div>
           <div style="width=5%">
-          <div class="text-center">
-            <a href=""  class="btn btn-primary" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
+          <div  class="text-center">
+            <a href=""  id="lbs3" class="btn btn-primary" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
           </div>
           </div>`
           ;html += '</tr>';

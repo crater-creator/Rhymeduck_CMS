@@ -15,9 +15,13 @@ display: block;
   max-width: 600px;
   margin: 0 auto;
   }
-  #dtHorizontalVerticalExample th, td {
+  #dtHorizontalVerticalExample tr, th, td {
   white-space: nowrap;
+  /* font-size: 5pt; */
+
   }
+  /* #lbs2{width: 10px; font-size: 5pt;} */
+
   table.dataTable thead .sorting:after,
   table.dataTable thead .sorting:before,
   table.dataTable thead .sorting_asc:after,
@@ -33,4 +37,19 @@ display: block;
 
 #sidebar-headbox{
   border-bottom: 2px solid grey;
+}
+
+@media(max-width: 450px){
+  .dtHorizontalVerticalExampleWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    }
+    #dtHorizontalVerticalExample tr, th, td {
+    white-space: nowrap;
+    font-size: 7pt;
+   
+  
+    }
+    #lbs2{padding-left:10px; font-size:6pt; padding-right:10px; }
+    #lbs3{padding-left:15px; font-size: 6pt; padding-right:15px; }
 }
