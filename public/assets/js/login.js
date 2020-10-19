@@ -140,8 +140,9 @@ function tableCreate(){
         var len = len1.length-1
         var count1 = range(0,len)
         for(key in count1){
-            html += `<tr><th scope="row">${key}</th>`;
-            html += '<td>'+data.data.member_list[key].member_name+'</td>';
+            // html += `<tr><th scope="row">${key}</th>`;
+            // html += '<td>'+data.data.member_list[key].member_name+'</td>';
+            html += '<tr><th scope="row">'+data.data.member_list[key].member_name+'</th>';
             html += '<td >'+data.data.member_list[key].member_info+'</td>';
             html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
             html += `<td>
