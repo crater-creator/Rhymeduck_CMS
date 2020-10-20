@@ -14,8 +14,4 @@ router.get('/main', function(req, res, next) {
   res.render('main');
 });
 
-router.get('/main_test', function(req, res, next) {
-  res.render('main_test.html');
-});
-
 module.exports = router;

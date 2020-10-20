@@ -1,24 +1,29 @@
+$(document).ready(function(){  
+    var width = window.outerWidth;
+        if (width <= 450) {
+        $('#sidebar').attr('class','');
+        }else if(width>=450){
+        $('#sidebar').attr('class','active');
+        }
+    
+    $(window).resize(function (){
+        
+        })
+    });
 
 function pagereload(id){
     $("#bodycontents").load(`./assets/js/side_menu/${id}.html`);
-
+    var width = window.outerWidth;
+    if (width <= 450) {
+        var sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('active')) sidebar.classList.remove('active');
+    }
 }
 
 $(function(){
     var cat = localStorage.getItem('key1')
     $("div #duck1").html('Welcome. '+cat);})
-
-// $(document).ready(function(){              
-//     $(window).resize(function (){
-//         var width = window.outerWidth;
-//         if (width <= 450) {
-//         $('div #lbs9').html('<span class="navbar-toggler-icon"></span>');
-//         }else if(width>=450){
-//         $('div #lbs9').remove('<span class="navbar-toggler-icon"></span>');
-//         }
-//         })
-//     });
-        
+     
 function login(){
     
     var ID = document.getElementsByClassName('form-control')[0].value
@@ -165,12 +170,12 @@ function tableCreate(){
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
                     <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
-                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId2`+`${key}" name="defaultForm-pass" class="form-control validate">
+                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
                   </div>
           
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                  <button id="chPw`+`${key}" onclick="reset_pwd3('${data.data.member_list[key].member_info}','PwId`+`${key}','PwId2`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                  <button id="chPw`+`${key}" onclick="reset_pwd3('${data.data.member_list[key].member_info}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
                 </div>
               </div>
             </div>

@@ -24,8 +24,8 @@
 </head>
 <body>
     <div id="app" >
-        <div id="sidebar" class='active'>
-            <div class="sidebar-wrapper active">
+        <div id="sidebar" class=''>
+            <div class="sidebar-wrapper ">
     <div id="sidebar-headbox" class="sidebar-header">
         <img src="./assets/images/gold_full_medium.png" alt="" srcset="">
     </div>
@@ -38,9 +38,9 @@
             
             
                 <li class="sidebar-item ">
-                    <a href="#" onclick="pagereload('TTS')" class='sidebar-link'>
-                        <i data-feather="home" width="20"></i> 
-                        <span>TTS 계정관리</span>
+                    <a href="#"  onclick="pagereload('Dashboard')" class='sidebar-link'>
+                        <i data-feather="grid" width="20"></i> 
+                        <span>Dashboard</span>
                     </a>
                     
                 </li>
@@ -49,9 +49,9 @@
             
             
                 <li class="sidebar-item">
-                    <a href="#" onclick="pagereload('component')" class='sidebar-link'>
-                        <i data-feather="triangle" width="20"></i> 
-                        <span>Components</span>
+                    <a href="#" onclick="pagereload('TTS')" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>TTS 계정관리</span>
                     </a>
                      
                 </li>
@@ -60,16 +60,16 @@
             
             
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="briefcase" width="20"></i> 
-                        <span>Extra Components</span>
+                    <a href="#" id="sidemenu3" onclick="pagereload('component')"  class='sidebar-link'>
+                        <i data-feather="user" width="20"></i> 
+                        <span>멤버 계정 관리</span>
                     </a>    
                 </li>
 
             
             
             
-                <li class='sidebar-title'>Forms &amp; Tables</li>
+                <!-- <li class='sidebar-title'>Forms &amp; Tables</li>
             
             
             
@@ -122,77 +122,9 @@
                         <span>Datatable</span>
                     </a>
                     
-                </li>
+                </li> -->
 
-            
-            
-            
-                <li class='sidebar-title'>Extra UI</li>
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>Widgets</span>
-                    </a>
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="trending-up" width="20"></i> 
-                        <span>Charts</span>
-                    </a>
-                </li>
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="trending-up" width="20"></i> 
-                        <span>Charts</span>
-                    </a>
-                </li>
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="trending-up" width="20"></i> 
-                        <span>Charts</span>
-                    </a>
-                </li>
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="trending-up" width="20"></i> 
-                        <span>Charts</span>
-                    </a>
-                </li>
-
-            
-            
-            
-                <li class='sidebar-title'>Pages</li>
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>Authentication</span>
-                    </a>
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="alert-circle" width="20"></i> 
-                        <span>Errors</span>
-                    </a>
-                </li>
-
-            
-            
-         
+           
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -217,8 +149,8 @@
             
 <div id="bodycontents"class="main-content container-fluid">
     <div class="page-title">
-        <h3>TTS 계정관리</h3>
-        <p class="text-subtitle text-muted">매장별 사용자 계정 조회 및 관리</p>
+        <h3>Dashboard</h3>
+        <p class="text-subtitle text-muted">Dashboard</p>
     </div>
     <section class="section">
         <div class="row mb-4">
@@ -226,27 +158,10 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title"></h4>
-                        <div class="d-flex ">
-                            <input id="stora" type="text" placeholder="매장명,ID" onkeypress="enter_test2()" >
-                            <input id="stora2"type="button" class="btn  btn-outline-warning waves-effect" onclick="tableCreate()" value="검색">
-                        </div>
+                      
                     </div>
                     <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped mb-0" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>매장명</th>
-                                        <th>아이디</th>
-                                        <th>실패 초기화</th>
-                                        <th>비밀번호 변경</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dynamicTbody">
-                                   
-                                </tbody>
-                            </table>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -115,8 +115,10 @@ var sidebarToggler = document.querySelectorAll(".sidebar-toggler");
 for (var i = 0; i < sidebarToggler.length; i++) {
   var toggler = sidebarToggler[i];
   toggler.addEventListener('click', function () {
+    
     var sidebar = document.getElementById('sidebar');
     if (sidebar.classList.contains('active')) sidebar.classList.remove('active');else sidebar.classList.add('active');
+    
   });
 } // Perfect Scrollbar INit
 
@@ -128,11 +130,11 @@ if (typeof PerfectScrollbar == 'function') {
 
 window.onload = function () {
   var w = window.innerWidth;
-
-  if (w < 768) {
-    console.log('widthnya ', w);
-    document.getElementById('sidebar').classList.remove('active');
-  }
+  
+  // if (w < 768) {
+  //   console.log('widthnya ', w);
+  //   // document.getElementById('sidebar').classList.remove('active');
+  // }
 };
 
 feather.replace();
