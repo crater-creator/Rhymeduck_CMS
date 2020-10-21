@@ -19,48 +19,54 @@ function pagereload(id){
         if (sidebar.classList.contains('active')) sidebar.classList.remove('active');
     }
 }
-
+/*
 $(function(){
     var cat = localStorage.getItem('key1')
-    $("div #duck1").html('Welcome. '+cat);})
+    $("div #duck1").html('Welcome. '+cat);})*/
      
-function login(){
+// function login(){
+//     // var ID = x
+//     // var pw = y
+//     var ID = document.getElementsByClassName('form-control')[0].value
+//     var pw = document.getElementsByClassName('form-control')[1].value
+
+//     const data = { reg_user: ID, reg_pw: pw };
+
+//     fetch('http://api.wantreez.com/a/v1/backoffice/login', { //http://webapi.rhymeduck.com/a/v1/backoffice/login
+//     method: 'POST', // or 'PUT'
+//     headers: {
+       
+//         'Content-Type': 'application/json',
+     
+//     },
     
-    var ID = document.getElementsByClassName('form-control')[0].value
-    var pw = document.getElementsByClassName('form-control')[1].value
-
-    const data = { reg_user: ID, reg_pw: pw };
-
-    fetch('http://api.wantreez.com/a/v1/backoffice/login', {
-    method: 'POST', // or 'PUT'
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-    if(data.result.ret === 'success'){
-        localStorage.setItem("key1", data.data.member_info.name)
-        location.href="main"
+//     body: JSON.stringify(data),
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+    
+//     if(data.result.ret === 'success'){
+//         localStorage.setItem("key1", data.data.member_info.name)
+        
+//         location.href="main"
         
        
          
         
-    }else if(data.result.ret === 'failure'){
-        if(data.result.msg === 'There are no required parameters'){
-            location.href="/";
-            alert('ID,PASSWORD를 입력해주세요.')
-        }else if(data.result.msg === 'can not find member info'){
-            location.href="/"
-            alert('조회된 계정이 없습니다.')
-    }else{
-        location.href="/"
-        alert('DB에러 입니다.')
-    }
-    }
-    });
-}
+//     }else if(data.result.ret === 'failure'){
+//         if(data.result.msg === 'There are no required parameters'){
+//             location.href="/";
+//             alert('ID,PASSWORD를 입력해주세요.')
+//         }else if(data.result.msg === 'can not find member info'){
+//             location.href="/"
+//             alert('조회된 계정이 없습니다.')
+//     }else{
+//         location.href="/"
+//         alert('DB에러 입니다.')
+//     }
+//     }
+//     });
+// }
 
 function logout(){
     location.href='/'
@@ -80,7 +86,7 @@ function register(){
 
     const data = { reg_user: ID, reg_pw: pw, name: name };
 
-    fetch('http://api.wantreez.com/a/v1/backoffice/join', {
+    fetch('http://webapi.rhymeduck.com/a/v1/backoffice/join', {
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -130,7 +136,7 @@ function tableCreate(){
         const data = { word: storeName1 };
         
         
-        fetch('http://api.wantreez.com/a/v1/soundfier/search', {
+        fetch('http://webapi.rhymeduck.com/a/v1/soundfier/search', {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',
@@ -211,7 +217,7 @@ function range(start, end) {
 function reset_pwdCount(count7){
     const data = { member_info: count7 };
     
-    fetch('http://api.wantreez.com/a/v1/soundfier/initpw', {
+    fetch('http://webapi.rhymeduck.com/a/v1/soundfier/initpw', {
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -243,7 +249,7 @@ function reset_pwd3(id, pwId,pwId_confirm){
     }else{
         const data = { member_info: member_ID, member_pw: password };
 
-        fetch('http://api.wantreez.com/a/v1/soundfier/changepw', {
+        fetch('http://webapi.rhymeduck.com/a/v1/soundfier/changepw', {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',

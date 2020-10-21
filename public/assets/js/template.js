@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+module.exports = {
+    HTML:function(head_memberName){
+        return `
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -140,7 +143,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
                         <div class="avatar mr-1">
-                            <div id="duck1" style="margin: 10px 10px 0 0; color: white;"></div>
+                            <div id="duck1" style="margin: 10px 10px 0 0; color: white;">Welcome. ${head_memberName}</div>
                             <form action="/logout" method="get">
                             <input type="submit" class="btn btn-warning" value="Logout" >
                             </form>
@@ -198,3 +201,6 @@
     <script type="text/javascript" src="./assets/DataTables/datatables.min.js"></script>
 </body>
 </html>
+`
+    }
+}
