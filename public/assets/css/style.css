@@ -19,7 +19,8 @@ display: block;
   margin: 0 auto;
   }
   #dtHorizontalVerticalExample tr, th, td {
-  white-space: nowrap;
+    word-break: break-all;
+  /* white-space: nowrap; */
   /* font-size: 5pt; */
 
   }
@@ -55,4 +56,27 @@ display: block;
     }
     #lbs2{padding-left:10px; font-size:6pt; padding-right:10px; }
     #lbs3{padding-left:15px; font-size: 6pt; padding-right:15px; }
+    #lbs4{ padding-left:10px;font-size: 6pt;padding-right:10px; }
+    div > #mid1{display: block;}
+    div > #version1{display: block;}
+    div > #recentLog1{display: block;}
+    div > #src1{display: block;}
+    #mid2{display: none;}
+    #version2{display: none;}
+    #recentLog2{display: none;}
+    #src2{display: none;}
+    tr > #mid3{display: none;}
+    tr > #version3{display: none;}
+    tr > #recentLog3{display: none;}
+    tr > #src3{display: none;}
+    th > #br1{display: block;}
+    th > #br2{display: block;}
+    
 }
+
+#mid1{display: none;}
+#version1{display: none;}
+#recentLog1{display: none;}
+#src1{display: none;}
+#br1{display: none;}
+#br2{display: none;}
