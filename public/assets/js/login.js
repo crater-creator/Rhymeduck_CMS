@@ -1,14 +1,11 @@
+
 $(document).ready(function(){  
     var width = window.outerWidth;
         if (width <= 450) {
-        $('#sidebar').attr('class','');
+            $('#sidebar').attr('class','');
         }else if(width>=450){
-        $('#sidebar').attr('class','active');
+            $('#sidebar').attr('class','active');
         }
-    
-    $(window).resize(function (){
-        
-        })
     });
 
 function pagereload(id){
@@ -19,54 +16,6 @@ function pagereload(id){
         if (sidebar.classList.contains('active')) sidebar.classList.remove('active');
     }
 }
-/*
-$(function(){
-    var cat = localStorage.getItem('key1')
-    $("div #duck1").html('Welcome. '+cat);})*/
-     
-// function login(){
-//     // var ID = x
-//     // var pw = y
-//     var ID = document.getElementsByClassName('form-control')[0].value
-//     var pw = document.getElementsByClassName('form-control')[1].value
-
-//     const data = { reg_user: ID, reg_pw: pw };
-
-//     fetch('http://api.wantreez.com/a/v1/backoffice/login', { //http://webapi.rhymeduck.com/a/v1/backoffice/login
-//     method: 'POST', // or 'PUT'
-//     headers: {
-       
-//         'Content-Type': 'application/json',
-     
-//     },
-    
-//     body: JSON.stringify(data),
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-    
-//     if(data.result.ret === 'success'){
-//         localStorage.setItem("key1", data.data.member_info.name)
-        
-//         location.href="main"
-        
-       
-         
-        
-//     }else if(data.result.ret === 'failure'){
-//         if(data.result.msg === 'There are no required parameters'){
-//             location.href="/";
-//             alert('ID,PASSWORD를 입력해주세요.')
-//         }else if(data.result.msg === 'can not find member info'){
-//             location.href="/"
-//             alert('조회된 계정이 없습니다.')
-//     }else{
-//         location.href="/"
-//         alert('DB에러 입니다.')
-//     }
-//     }
-//     });
-// }
 
 function logout(){
     location.href='/'
@@ -129,7 +78,7 @@ function enter_test2(){
 var count1 =''
 function TTStableCreate(){
     
-    var storeName1 = document.getElementById('stora').value
+    var storeName1 = document.getElementById('stora').value;
     if (storeName1 === ''){
         return alert("매장명을 입력해주세요")
     }else{
@@ -146,14 +95,12 @@ function TTStableCreate(){
         .then(response => response.json())
         .then(data => {
        
-        var html =''
-        var len1 = data.data.member_list
-        var len = len1.length-1
-        var count1 = range(0,len)
+        var html ='';
+        var len1 = data.data.member_list;
+        var len = len1.length-1;
+        var count1 = range(0,len);
         
         for(key in count1){
-            // html += `<tr><th scope="row">${key}</th>`;
-            // html += '<td>'+data.data.member_list[key].member_name+'</td>';
             html += '<tr><th scope="row">'+data.data.member_list[key].member_name+'</th>';
             html += '<td >'+data.data.member_list[key].member_info+'</td>';
             html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
@@ -175,10 +122,12 @@ function TTStableCreate(){
                   <div style="margin-top:-60px" class="md-form mb-4">
                     <i class="fas fa-lock prefix grey-text"></i>
                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-                    <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
-                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
-                  </div>
+                    <form>
+                        <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
+                        <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
+                    </form>
+                    </div>
           
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
@@ -202,7 +151,7 @@ function TTStableCreate(){
 
 function member_tableCreate(){
     
-    var storeName1 = document.getElementById('stora').value
+    var storeName1 = document.getElementById('stora').value;
     if (storeName1 === ''){
         return alert("검색어를 입력해주세요")
     }else{
@@ -218,29 +167,46 @@ function member_tableCreate(){
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data.data)
-        var html =''
-        var len = data.data.member_list.length-1
-        var count1 = range(0,len)
+        if (data.result.ret ==='failure'){
+            alert('검색결과가 없습니다.')
+        }else{
+        var html ='';
+        var len = data.data.member_list.length-1;
+        var count1 = range(0,len);
         for(key in count1){
+            var width = window.outerWidth;
+            var meminfo = data.data.member_list[key].member_info;
+            var memname = data.data.member_list[key].name;
+            var memid = data.data.member_list[key].id;
+            var memver = data.data.member_list[key].version;
+            var memrecentLog = data.data.member_list[key].recentlogin;
+            var memid1 = data.data.member_list[key].member_id;
+            var memsrc = data.data.member_list[key].music_src;
+            var memContr = data.data.member_list[key].contract_state;
+            html += '<tr><th id="mid2" scope="row">'+memid1+'</th>';
+            if (width <= 450) {
+                $('#member_name3').css('display','none');
+                $('#name3').text('업체명/매장명');
+                if(meminfo.substr(12)==='')
+                    html += '<td >'+memname+'<br>'+meminfo+'</td>';
+                else{
+                    html += '<td >'+memname+'<br>'+meminfo.substr(0,10)+'<br>'+meminfo.substr(10,20)+'<br>'+meminfo.substr(20)+'</td>';
+                }
+            }else if(width>=450){
+                html += '<td >'+memname+'</td>';
+                html += '<td >'+meminfo+'</td>';
+            }
 
-            html += '<tr><th id="mid2" scope="row">'+data.data.member_list[key].member_id+'</th>';
-            html += '<td >'+data.data.member_list[key].name+'</td>';
-            var memName = data.data.member_list[key].member_info
-            // if (memName.length > 7){
-            //     var memName = memName.substr(0,7) + '<br>'+memName.substr(5)
-            // }
-            html += '<td >'+memName+'</td>';
-            html += '<td >'+data.data.member_list[key].id+'</td>';
-            html += '<td id="version2">'+data.data.member_list[key].version+'</td>';
-            if(data.data.member_list[key].recentlogin === null){
+            html += '<td >'+memid+'</td>';
+            html += '<td id="version2">'+memver+'</td>';
+            if(memrecentLog === null){
                 html += '<td id="recentLog2">'+''+'</td>';
             }else{
-                html += '<td id="recentLog2">'+moment(data.data.member_list[key].recentlogin).format("MMMM Do YYYY, h:mm:ss a")+'</td>';
+                html += '<td id="recentLog2">'+moment(memrecentLog).format("YYYY-MM-DD/HH:mm:ss")+'</td>';
             }
-            html += '<td id="src2" >'+data.data.member_list[key].music_src+'</td>';
-            html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${data.data.member_list[key].member_info}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
-            html += `<td>
+            html += '<td id="src2" >'+memsrc+'</td>';
+            html += `<td id="mobile_hdsr"><div class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
+            html += `<td id="mobile_hdsr1">
             <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -265,50 +231,79 @@ function member_tableCreate(){
           
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                  <button id="chPw`+`${key}" onclick="reset_pwd2('${data.data.member_list[key].member_info}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                  <button id="chPw`+`${key}" onclick="reset_pwd2('${meminfo}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
                 </div>
               </div>
             </div>
-          </div>
-          <div style="width=5%">
-          <div  class="text-center">
-            <a href=""  id="lbs3" class="btn btn-primary" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
-          </div>
-          </div></td>`
-            if(data.data.member_list[key].recentlogin === null){
-                data.data.member_list[key].recentlogin =''
+            </div>
+            <div style="width=5%">
+            <div  class="text-center">
+                <a href=""  id="lbs3" class="btn btn-primary" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
+            </div>
+            </div></td>`;
+            if(memrecentLog === null){
+                memrecentLog =''
             }
             html += `<td >
             <div class="modal fade" id="exampleModalCenter${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
 
-            <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+            
             <div class="modal-dialog modal-dialog-centered" role="document">
 
 
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">세부사항</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div id="detail${key}" class="modal-body">
-                    <div id="mid1">-MID: ${data.data.member_list[key].member_id}<br></div>
-                    <div id="version1">-버전: ${data.data.member_list[key].version}<br></div>
-                    <div id="recentLog1">-최근로그인: ${moment(data.data.member_list[key].recentlogin).format("MMMM Do YYYY, h:mm:ss a")}<br></div>
-                    <div id="src1">-신탁/비신탁: ${data.data.member_list[key].music_src}<br></div>
-                    <div>-계약상태: ${data.data.member_list[key].contract_state}</div>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">세부사항</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div id="detail${key}" class="modal-body">
+                            <div id="mid1">-MID: ${memid1}<br></div>
+                            <div id="version1">-버전: ${memver}<br></div>
+                            <div id="recentLog1">-최근로그인: ${moment(memrecentLog).format("YYYY-MM-DD/HH:mm:ss")}<br></div>
+                            <div id="src1">-신탁/비신탁: ${memsrc}<br></div>
+                            <div>-계약상태: ${ memContr}</div>
+                        </div>
+                        <div id="detailBox" > 
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">하드시리얼 초기화</h5>
+                            </div>
+                            <div id="detail${key}" class="modal-body">
+                                <div class="d-flex justify-content-center">
+                                <div id = "hardserial" class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-outline-primary btn-rounded waves-effect" type="button" value="RESET"></div>
+                                </div>
+                            </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">비밀번호 변경</h5>
+                            </div>
+                            <div id="detail${key}" class="modal-body">
+                                <div class="modal-body mx-3" style="margin-top:-30px;">
+                                    <div class="md-form mb-5">
+                                    <i class="fas fa-lock prefix grey-text"></i><br>
+                                    </div>
+                                    <div style="margin-top:-60px" class="md-form mb-4">
+                                    <i class="fas fa-lock prefix grey-text"></i>
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                                    <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
+                                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                <button id="chPw`+`${key}" onclick="reset_pwd2('${meminfo}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">CHANGE</button>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                    </div>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        
                 </div>
             </div>
             </div>
             <button type="button"  id="lbs4"class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
-            기타
+            자세히
             </button>
             </td>`;
 
@@ -316,9 +311,10 @@ function member_tableCreate(){
         }
         $("#dynamicTbody").empty();
         $("#dynamicTbody").append(html);
-        })
+    } })
     } 
 };
+
 
 function range(start, end) {
  
@@ -424,8 +420,9 @@ function reset_pwd3(member_info, pwId,pwId_confirm){
     }
 }
 
-function reset_hardSerial(member_info){
-    const data = { member_info: member_info };
+function reset_hardSerial(member){
+    // console.log(member)
+    const data = { member_id: member };
     
     fetch('http://webapi.rhymeduck.com/a/v1/member/inithdd', {
     method: 'POST', // or 'PUT'
@@ -436,6 +433,7 @@ function reset_hardSerial(member_info){
     })
     .then(response => response.json())
     .then(data => {
+        // console.log(data)
     if(data.result.ret === 'success'){
         alert("하드 시리얼이 초기화 되었습니다.")
     }else{

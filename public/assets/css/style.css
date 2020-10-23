@@ -68,10 +68,19 @@ display: block;
     tr > #mid3{display: none;}
     tr > #version3{display: none;}
     tr > #recentLog3{display: none;}
+    tr > #hardSerial3{display: none;}
+    tr > #chpwd3{display: none;}
+    tr > #name3{display: none;}
+    tr > #dou_name3{display: block;}
+    tr > #member_name3{display: none;}
     tr > #src3{display: none;}
     th > #br1{display: block;}
     th > #br2{display: block;}
-    
+    div > #hardserial{display: block;}
+    div > #detailBox{display:block;}
+    #mobile_hdsr{display: none;}
+    #mobile_hdsr1{display: none;}
+
 }
 
 #mid1{display: none;}
@@ -80,3 +89,6 @@ display: block;
 #src1{display: none;}
 #br1{display: none;}
 #br2{display: none;}
+#hardserial{display:none;}
+#detailBox{display:none;}
+#dou_name3{display:none;}
