@@ -218,6 +218,7 @@ function member_tableCreate(){
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data.data)
         var html =''
         var len = data.data.member_list.length-1
         var count1 = range(0,len)
@@ -230,7 +231,7 @@ function member_tableCreate(){
             //     var memName = memName.substr(0,7) + '<br>'+memName.substr(5)
             // }
             html += '<td >'+memName+'</td>';
-            html += '<td >'+'아이디'+'</td>';
+            html += '<td >'+data.data.member_list[key].id+'</td>';
             html += '<td id="version2">'+data.data.member_list[key].version+'</td>';
             if(data.data.member_list[key].recentlogin === null){
                 html += '<td id="recentLog2">'+''+'</td>';
