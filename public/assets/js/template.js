@@ -26,6 +26,7 @@ module.exports = {
     </style>
 </head>
 <body>
+<input type="hidden" id="hdnSession" data-value="@Request.RequestContext.HttpContext.Session['member_name']" />
     <div id="app" >
         <div id="sidebar" class=''>
             <div class="sidebar-wrapper ">
@@ -38,18 +39,13 @@ module.exports = {
             
                 <li class='sidebar-title'>Main Menu</li>
             
-            
-            
-                <li class="sidebar-item ">
-                    <a href="#"  onclick="pagereload('Dashboard')" class='sidebar-link'>
-                        <i data-feather="grid" width="20"></i> 
-                        <span>Dashboard</span>
-                    </a>
-                    
+      
+                <li class="sidebar-item">
+                    <a href="#" id="sidemenu3" onclick="pagereload('component')"  class='sidebar-link'>
+                        <i data-feather="user" width="20"></i> 
+                        <span>멤버 계정 관리</span>
+                    </a>    
                 </li>
-
-            
-            
             
                 <li class="sidebar-item">
                     <a href="#" onclick="pagereload('TTS')" class='sidebar-link'>
@@ -60,17 +56,7 @@ module.exports = {
                 </li>
 
             
-            
-            
-                <li class="sidebar-item">
-                    <a href="#" id="sidemenu3" onclick="pagereload('component')"  class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>멤버 계정 관리</span>
-                    </a>    
-                </li>
-
-            
-            
+   
             
                 <!-- <li class='sidebar-title'>Forms &amp; Tables</li>
             
@@ -153,26 +139,51 @@ module.exports = {
             </nav>
             
 <div id="bodycontents"class="main-content container-fluid">
-    <div class="page-title">
-        <h3>Dashboard</h3>
-        <p class="text-subtitle text-muted">Dashboard</p>
-    </div>
-    <section class="section">
-        <div class="row mb-4">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title"></h4>
-                      
-                    </div>
-                    <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
-                        
-                    </div>
+<div class="page-title">
+<h3>멤버 계정 관리</h3>
+<p class="text-subtitle text-muted">멤버 계정 조회</p>
+</div>
+<section class="section">
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="card-title"></h4>
+                <div class="d-flex ">
+                    <input id="stora" type="text" placeholder="업체명,매장명,ID" onkeypress="enter_test2()" >
+                    <input id="stora2"type="button" class="btn  btn-outline-warning waves-effect" onclick="member_tableCreate()" value="검색">
+                </div>
+              
+            </div>
+            <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-0" id="table1">
+                        <thead>
+                            <tr>
+                                <th id="mid3">MID</th>
+                                <th id="dou_name3">업체명/매장명</th>
+                                <th id="name3">업체명</th>
+                                <th id="member_name3">매장명</th>
+                                <th id="id3">아이디</th>
+                                <th id="version3">버전</th>
+                                <th id="recentLog3">최근로그인</th>
+                                <th id="src3">신탁/비신탁</th>
+                                <th id="hardSerial3">하드시리얼<br id="br1">초기화</th>
+                                <th id="chpwd3">비밀번호<br id="br2">변경</th>
+                                <th id="g3">세부사항</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dynamicTbody">
+                           
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            
         </div>
-    </section>
+    </div>
+    
+</div>
+</section>
 </div>
 
             <footer>
@@ -185,21 +196,21 @@ module.exports = {
             </footer>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="./assets/js/feather-icons/feather.min.js"></script>
-    <script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="./assets/js/app.js"></script>
-    <script src="./assets/js/login.js"></script>
-    <script src="./assets/js/mdb.min.js"></script>
-    <!-- <script src="assets/js/mdb.min.js.map"></script> -->
     
-    <script src="./assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="./assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <!-- <script src="assets/js/pages/dashboard.js"></script> -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/main.js"></script>
-    <script type="text/javascript" src="./assets/DataTables/datatables.min.js"></script>
-    
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="./assets/js/feather-icons/feather.min.js"></script>
+<script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="./assets/js/app.js"></script>
+<script src="./assets/js/login.js"></script>
+<script src="./assets/js/mdb.min.js"></script>
+<!-- <script src="assets/js/mdb.min.js.map"></script> -->
+
+<script src="./assets/vendors/chartjs/Chart.min.js"></script>
+<script src="./assets/vendors/apexcharts/apexcharts.min.js"></script>
+<!-- <script src="assets/js/pages/dashboard.js"></script> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="./assets/js/main.js"></script>
+<script type="text/javascript" src="./assets/DataTables/datatables.min.js"></script>
 </body>
 </html>
 `

@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var session = require('express-session')
 var request = require('request')
 var template = require('../public/assets/js/template.js');
+const { options } = require('../app.js');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('login');
@@ -16,7 +17,8 @@ router.get('/main', function(req, res, next) {
       res.send(html);
     });
   }else{
-    res.render('login');
+    res.render('error-403');
+    
   }
   
 });
@@ -36,6 +38,7 @@ router.post("/login", function(req,res,next){
       var login_result = body.result.ret
       if(login_result === 'success'){
         req.session.member_name = body.data.member_info.name //세션 저장
+        
         var html = template.HTML(req.session.member_name)
         req.session.save(() => {
           res.send(html);
@@ -56,6 +59,7 @@ router.get('/logout', function(req, res, next) {
         return;
       }
       console.log('세션 삭제 성공')
+      
       res.render('login');
       
     })

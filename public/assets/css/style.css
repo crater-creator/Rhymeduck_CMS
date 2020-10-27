@@ -57,10 +57,6 @@ display: block;
     #lbs2{padding-left:10px; font-size:6pt; padding-right:10px; }
     #lbs3{padding-left:15px; font-size: 6pt; padding-right:15px; }
     #lbs4{ padding-left:10px;font-size: 6pt;padding-right:10px; }
-    div > #mid1{display: block;}
-    div > #version1{display: block;}
-    div > #recentLog1{display: block;}
-    div > #src1{display: block;}
     #mid2{display: none;}
     #version2{display: none;}
     #recentLog2{display: none;}
@@ -80,15 +76,16 @@ display: block;
     div > #detailBox{display:block;}
     #mobile_hdsr{display: none;}
     #mobile_hdsr1{display: none;}
+    div > #hds1{display: block;}
+    div > #pwc1{display: block;}
 
 }
 
-#mid1{display: none;}
-#version1{display: none;}
-#recentLog1{display: none;}
-#src1{display: none;}
+
 #br1{display: none;}
 #br2{display: none;}
 #hardserial{display:none;}
 #detailBox{display:none;}
 #dou_name3{display:none;}
+#hds1{display: none;}
+#pwc1{display: none;}

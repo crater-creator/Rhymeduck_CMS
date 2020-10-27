@@ -1,5 +1,6 @@
 
 $(document).ready(function(){  
+    
     var width = window.outerWidth;
         if (width <= 450) {
             $('#sidebar').attr('class','');
@@ -202,7 +203,7 @@ function member_tableCreate(){
             if(memrecentLog === null){
                 html += '<td id="recentLog2">'+''+'</td>';
             }else{
-                html += '<td id="recentLog2">'+moment(memrecentLog).format("YYYY-MM-DD/HH:mm:ss")+'</td>';
+                html += '<td id="recentLog2">'+moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")+'</td>';
             }
             html += '<td id="src2" >'+memsrc+'</td>';
             html += `<td id="mobile_hdsr"><div class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
@@ -215,7 +216,7 @@ function member_tableCreate(){
                   <h4 class="modal-title w-100 font-weight-bold">Password change</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                  </button>
+                    </button>
                 </div>
                 <div class="modal-body mx-3">
                   <div class="md-form mb-5">
@@ -231,7 +232,7 @@ function member_tableCreate(){
           
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                  <button id="chPw`+`${key}" onclick="reset_pwd2('${meminfo}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                  <button id="chPw`+`${key}" onclick="reset_pwd2('${memid1}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
                 </div>
               </div>
             </div>
@@ -255,54 +256,31 @@ function member_tableCreate(){
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">세부사항</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
+                            
                         </div>
                         <div id="detail${key}" class="modal-body">
-                            <div id="mid1">-MID: ${memid1}<br></div>
-                            <div id="version1">-버전: ${memver}<br></div>
-                            <div id="recentLog1">-최근로그인: ${moment(memrecentLog).format("YYYY-MM-DD/HH:mm:ss")}<br></div>
-                            <div id="src1">-신탁/비신탁: ${memsrc}<br></div>
-                            <div>-계약상태: ${ memContr}</div>
+                            <div style="font-size:12pt">-MID: ${memid1}<br></div>
+                            <div style="font-size:12pt">-업체명: ${meminfo}<br></div>
+                            <div style="font-size:12pt">-매장명: ${memname}<br></div>
+                            <div style="font-size:12pt">-아이디: ${memid}<br></div>
+                            <div style="font-size:12pt">-버전: ${memver}<br></div>
+                            <div style="font-size:12pt">-최근로그인: ${moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")}<br></div>
+                            <div style="font-size:12pt">-신탁/비신탁: ${memsrc}<br></div>
+                            <div style="font-size:12pt">-계약상태: ${ memContr} (1:계약중, 0:계약만료)</div>
+                            <div id="hds1"style="font-size:12pt">-하드시리얼 초기화<button onclick="reset_hardSeria('${memid1}')"style=" font-size: 2px; width: 16vw; height:3vh; float:right; "  class="btn btn-primary btn-sm">Reset</button></div>
+                            <div id="pwc1"style="font-size:12pt">-비밀번호 초기화:(초기값:12345)<button onclick="reset_pwd2('${memid1}')"style="font-size: 2px; width: 16vw; height:3vh; float:right;"  class="btn btn-primary btn-sm">Reset</button></div>
+                            
                         </div>
                         <div id="detailBox" > 
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">하드시리얼 초기화</h5>
+                            <div class="modal-body">
+                                <div class="modal-body mx-3" style="margin-top:-30px;"></div>
+                            </div> 
                             </div>
-                            <div id="detail${key}" class="modal-body">
-                                <div class="d-flex justify-content-center">
-                                <div id = "hardserial" class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-outline-primary btn-rounded waves-effect" type="button" value="RESET"></div>
-                                </div>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                             </div>
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">비밀번호 변경</h5>
-                            </div>
-                            <div id="detail${key}" class="modal-body">
-                                <div class="modal-body mx-3" style="margin-top:-30px;">
-                                    <div class="md-form mb-5">
-                                    <i class="fas fa-lock prefix grey-text"></i><br>
-                                    </div>
-                                    <div style="margin-top:-60px" class="md-form mb-4">
-                                    <i class="fas fa-lock prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-                                    <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
-                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
-                                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                <button id="chPw`+`${key}" onclick="reset_pwd2('${meminfo}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">CHANGE</button>
-                                </div>
-                            </div>
-                        </div> 
-                        
-                    </div>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        
-                </div>
+                        </div>
             </div>
-            </div>
-            <button type="button"  id="lbs4"class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
+            <button type="button" id="lbs4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
             자세히
             </button>
             </td>`;
