@@ -131,7 +131,7 @@ module.exports = {
                         <div class="avatar mr-1">
                             <div id="duck1" style="margin: 10px 10px 0 0; color: white;">Welcome. ${head_memberName}</div>
                             <form action="/logout" method="get">
-                            <input type="submit" class="btn btn-warning" value="Logout" >
+                            <input type="submit" class="btn btn-warning btn-rounded waves-effect" value="Logout" >
                             </form>
                         </div>
                     </ul>
@@ -170,7 +170,7 @@ module.exports = {
                                 <th id="src3">신탁/비신탁</th>
                                 <th id="hardSerial3">하드시리얼<br id="br1">초기화</th>
                                 <th id="chpwd3">비밀번호<br id="br2">변경</th>
-                                <th id="g3">세부사항</th>
+                                <th id="g3">자세히</th>
                             </tr>
                         </thead>
                         <tbody id="dynamicTbody">

@@ -76,6 +76,12 @@ function enter_test2(){
     }
 }
 
+function enter_test3(){
+    if(window.event.keyCode ==13){
+        stora3.click()
+    }
+}
+
 var count1 =''
 function TTStableCreate(){
     
@@ -184,6 +190,11 @@ function member_tableCreate(){
             var memid1 = data.data.member_list[key].member_id;
             var memsrc = data.data.member_list[key].music_src;
             var memContr = data.data.member_list[key].contract_state;
+            if(memContr ==='1'){
+                memContr='계약중'
+            }else{
+                memContr='계약만료'
+            }
             html += '<tr><th id="mid2" scope="row">'+memid1+'</th>';
             if (width <= 450) {
                 $('#member_name3').css('display','none');
@@ -245,6 +256,7 @@ function member_tableCreate(){
             if(memrecentLog === null){
                 memrecentLog =''
             }
+            
             html += `<td >
             <div class="modal fade" id="exampleModalCenter${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
@@ -266,9 +278,9 @@ function member_tableCreate(){
                             <div style="font-size:12pt">-버전: ${memver}<br></div>
                             <div style="font-size:12pt">-최근로그인: ${moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")}<br></div>
                             <div style="font-size:12pt">-신탁/비신탁: ${memsrc}<br></div>
-                            <div style="font-size:12pt">-계약상태: ${ memContr} (1:계약중, 0:계약만료)</div>
-                            <div id="hds1"style="font-size:12pt">-하드시리얼 초기화<button onclick="reset_hardSeria('${memid1}')"style=" font-size: 2px; width: 16vw; height:3vh; float:right; "  class="btn btn-primary btn-sm">Reset</button></div>
-                            <div id="pwc1"style="font-size:12pt">-비밀번호 초기화:(초기값:12345)<button onclick="reset_pwd2('${memid1}')"style="font-size: 2px; width: 16vw; height:3vh; float:right;"  class="btn btn-primary btn-sm">Reset</button></div>
+                            <div style="font-size:12pt">-계약상태: ${ memContr}</div>
+                            <div id="hds1"style="font-size:12pt">-하드시리얼 초기화<button onclick="reset_hardSeria('${memid1}')"style=" font-size: 2px; width: 16vw; height:3.8vh; float:right; "  class="btn btn-primary btn-sm">초기화</button></div>
+                            <div id="pwc1"style="font-size:12pt">-비밀번호 변경<span style="font-size:10pt;">(미입력시'12345'로 변경)</span><input id="mpw1`+`${key}"style="margin-left:10px;width: 120px; float:left" type="password"><input id="mpw2`+`${key}"style="margin-left:8px;width: 120px; float:left" type="password"><button onclick="reset_pwd2('${memid1}','mpw1`+`${key}','mpw2`+`${key}')"style=" font-size: 2px; width: 16vw; height:3.8vh; float:right;"  class="btn btn-primary btn-sm">변경</button></div>
                             
                         </div>
                         <div id="detailBox" > 
@@ -330,22 +342,16 @@ function reset_pwdCount(count7){
     });
 }
 
-function reset_pwd2(member_info, pwId,pwId_confirm){
-    var member_Id = member_info
-    var pwdId = pwId
-    var pwdId_confirm = pwId_confirm
-    var password = document.getElementById(pwdId).value
-    var password1 = document.getElementById(pwdId_confirm).value
+function reset_pwd2(member_id, pwId, pwId_confirm){
+    var member_Id = member_id
+    var password = document.getElementById(pwId).value
+    var password1 = document.getElementById(pwId_confirm).value
     console.log(member_Id)
     console.log(password, password1)
 
-    if(password1 === '' || password===''){
-        alert('비밀번호를 입력해주세요.')
-    }else if(password !== password1){
-        alert('비밀번호를 확인해주세요.')
-    }else{
-        const data = { member_info: member_Id, member_pw: password };
-
+    if(password1 === '' && password===''){
+        var data = {member_id: member_Id};
+        console.log(data)
         fetch('http://webapi.rhymeduck.com/a/v1/member/changepw', {
         method: 'POST', // or 'PUT'
         headers: {
@@ -357,7 +363,30 @@ function reset_pwd2(member_info, pwId,pwId_confirm){
         .then(data => {
             if ( data.result.ret === 'success'){
                 location.href='main'
-                alert('성공입니다.')
+                alert('비밀번호가 12345로 변경되었습니다..')
+            }else{
+                alert('다시 시도해주세요')
+            }
+        });
+    }else if(password !== password1){
+        alert('비밀번호가 다릅니다.')
+    }else if(password1 === '' || password===''){
+        alert('비밀번호를 입력해주세요.')
+    }else{
+        var data = { member_id: member_Id, member_pw: password };
+        console.log(data)
+        fetch('http://webapi.rhymeduck.com/a/v1/member/changepw', {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if ( data.result.ret === 'success'){
+                location.href='main'
+                alert('비밀번호가 변경되었습니다.')
             }else{
                 alert('다시 시도해주세요')
             }
@@ -425,3 +454,28 @@ function reset_hardSerial(member){
 // 		"dom": 'iptfl'
 // 	});
 // });
+
+function newttsCreate(){
+    var storename = document.getElementById('sName').value
+    var id = document.getElementById('sId').value
+    var password = document.getElementById('sPas').value
+    var data = {member_info:storename, member_name:id, member_pw:password}
+    console.log(data)
+    
+    fetch('http://webapi.rhymeduck.com/a/v1/soundfier/create', {
+    method: 'POST', // or 'PUT'
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data)
+    if(data.result.ret === 'success'){
+        alert("계정이 생성되었습니다.")
+    }else{
+        alert("error입니다.")
+    }
+    });
+}

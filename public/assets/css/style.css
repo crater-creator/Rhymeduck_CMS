@@ -78,10 +78,16 @@ display: block;
     #mobile_hdsr1{display: none;}
     div > #hds1{display: block;}
     div > #pwc1{display: block;}
+   
+    #stora{width:150px;
+    padding-right: 20px;}
+    div > #modal2{display: block; margin-left: 4px; font-size: 7pt; padding-bottom: 11px;}
+    div > #modal1{display: none;}
+
 
 }
 
-
+#modal2{display: none;}
 #br1{display: none;}
 #br2{display: none;}
 #hardserial{display:none;}
@@ -89,3 +95,5 @@ display: block;
 #dou_name3{display:none;}
 #hds1{display: none;}
 #pwc1{display: none;}
+#stora3{margin-left: 10px;;}
+#modal1{margin-left:10px;}
