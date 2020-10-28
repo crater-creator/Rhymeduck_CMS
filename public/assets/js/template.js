@@ -155,24 +155,27 @@ module.exports = {
                 </div>
               
             </div>
+            <table class="table table-bordered table-striped mb-0" id="table2">
+                    <thead>
+                        <tr>
+                            <th id="mid3">MID</th>
+                            <th id="dou_name3">업체명/매장명</th>
+                            <th id="name3">업체명</th>
+                            <th id="member_name3">매장명</th>
+                            <th id="id3">아이디</th>
+                            <th id="version3">버전</th>
+                            <th id="recentLog3">최근로그인</th>
+                            <th id="src3">신탁/비신탁</th>
+                            <th id="hardSerial3">하드시리얼<br id="br1">초기화</th>
+                            <th id="chpwd3">비밀번호<br id="br2">변경</th>
+                            <th id="g3">자세히</th>
+                        </tr>
+                    </thead>
+                </table>
             <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped mb-0" id="table1">
-                        <thead>
-                            <tr>
-                                <th id="mid3">MID</th>
-                                <th id="dou_name3">업체명/매장명</th>
-                                <th id="name3">업체명</th>
-                                <th id="member_name3">매장명</th>
-                                <th id="id3">아이디</th>
-                                <th id="version3">버전</th>
-                                <th id="recentLog3">최근로그인</th>
-                                <th id="src3">신탁/비신탁</th>
-                                <th id="hardSerial3">하드시리얼<br id="br1">초기화</th>
-                                <th id="chpwd3">비밀번호<br id="br2">변경</th>
-                                <th id="g3">자세히</th>
-                            </tr>
-                        </thead>
+                    <table class="table table-striped mb-0" id="table1">
+                        
                         <tbody id="dynamicTbody">
                            
                         </tbody>

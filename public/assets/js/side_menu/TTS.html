@@ -9,6 +9,10 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title"></h4>
                     <div class="d-flex ">
+                        <div class="text-center">
+                            <button id="modal1" class="btn btn-warning waves-effect" data-toggle="modal" data-target="#modalLoginForm3" >계정생성</button>
+                            <button id="modal2" class="btn btn-warning waves-effect" data-toggle="modal" data-target="#modalLoginForm3" > 생성</button>
+                        </div>
                         <input id="stora" type="text" placeholder="매장명,ID" onkeypress="enter_test2()" >
                         <input id="stora2"type="button" class="btn  btn-outline-warning waves-effect" onclick="TTStableCreate()" value="검색">
                         <div class="modal fade" id="modalLoginForm3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -28,11 +32,11 @@
                             <div style="margin-top:-60px" class="md-form mb-4">
                                 <form>
                                     <i class="fas fa-lock prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Member_name</label>
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">매장명</label>
                                     <input id="sName"type="text" name="defaultForm-pass" class="form-control validate">
-                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">ID</label>
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">아이디</label>
                                     <input id="sId"type="text" name="defaultForm-pass" class="form-control validate">
-                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">비밀번호</label>
                                     <input onkeypress="enter_test3()"id="sPas"type="password" name="defaultForm-pass" class="form-control validate">
                                 </form>
                                 </div>
@@ -45,25 +49,26 @@
                         </div>
                     </div>
                     <div>
-                    <div class="text-center">
-                        <button id="modal1" class="btn btn-warning waves-effect" data-toggle="modal" data-target="#modalLoginForm3" >계정생성</button>
-                        <button id="modal2" class="btn btn-warning waves-effect" data-toggle="modal" data-target="#modalLoginForm3" >생성</button>
-                    </div>
+                    
                     </div>
                         
                     </div>
                 </div>
+                <table class="table table-bordered table-striped mb-0" id="table2">
+                    <thead>
+                        <tr>
+                            <th>매장명</th>
+                            <th>아이디</th>
+                            <th>실패 초기화</th>
+                            <th>비밀번호 변경</th>
+                        </tr>
+                    </thead>
+                </table>
                 <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped mb-0" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>매장명</th>
-                                    <th>아이디</th>
-                                    <th>실패 초기화</th>
-                                    <th>비밀번호 변경</th>
-                                </tr>
-                            </thead>
+                        
+                        <table class="table  table-striped mb-0" id="table1">
+                            
                             <tbody id="dynamicTbody">
                                
                             </tbody>

@@ -107,10 +107,21 @@ function TTStableCreate(){
         var len = len1.length-1;
         var count1 = range(0,len);
         
+        
         for(key in count1){
-            html += '<tr><th scope="row">'+data.data.member_list[key].member_name+'</th>';
+            var memname1 = data.data.member_list[key].member_name
+            var width = window.outerWidth;
+            if (width <= 450) {
+                if (memname1.substr(7)===''){
+                    html += '<tr><th scope="row">'+ memname1+'</th>';
+                }else{
+                    html += '<tr><th scope="row">'+ memname1.substr(0,7)+'<br>'+memname1.substr(7)+'</th>';
+                }}
+                else if(width>=450){
+                    html += '<tr><th scope="row">'+ memname1+'</th>';
+                }
             html += '<td >'+data.data.member_list[key].member_info+'</td>';
-            html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
+            html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn" type="button" value="초기화"></div></td>`;
             html += `<td>
             <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
@@ -145,7 +156,7 @@ function TTStableCreate(){
           </div>
           <div style="width=5%">
           <div  class="text-center">
-            <a href=""  id="lbs3" class="btn btn-primary" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
+            <a href=""  id="lbs3" class="btn" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
           </div>
           </div>`
           ;html += '</tr>';
@@ -199,9 +210,9 @@ function member_tableCreate(){
             if (width <= 450) {
                 $('#member_name3').css('display','none');
                 $('#name3').text('업체명/매장명');
-                if(meminfo.substr(12)==='')
+                if(meminfo.substr(11)===''){
                     html += '<td >'+memname+'<br>'+meminfo+'</td>';
-                else{
+                }else{
                     html += '<td >'+memname+'<br>'+meminfo.substr(0,10)+'<br>'+meminfo.substr(10,20)+'<br>'+meminfo.substr(20)+'</td>';
                 }
             }else if(width>=450){
@@ -209,15 +220,15 @@ function member_tableCreate(){
                 html += '<td >'+meminfo+'</td>';
             }
 
-            html += '<td >'+memid+'</td>';
-            html += '<td id="version2">'+memver+'</td>';
+            html += '<td ><span id="xx4">x</span>'+memid+'</td>';
+            html += '<td id="version2"><span id="xx2">x</span>'+memver+'</td>';
             if(memrecentLog === null){
                 html += '<td id="recentLog2">'+''+'</td>';
             }else{
-                html += '<td id="recentLog2">'+moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")+'</td>';
+                html += '<td id="recentLog2"><span id="xx3">xx</span>'+moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")+'</td>';
             }
-            html += '<td id="src2" >'+memsrc+'</td>';
-            html += `<td id="mobile_hdsr"><div class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-primary" type="button" value="초기화"></div></td>`;
+            html += '<td id="src2" ><span id="xx1">xx</span>'+memsrc+'</td>';
+            html += `<td id="mobile_hdsr"><div class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-primary center-block" type="button" value="초기화"></div></td>`;
             html += `<td id="mobile_hdsr1">
             <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
@@ -292,9 +303,11 @@ function member_tableCreate(){
                             </div>
                         </div>
             </div>
+            <div>
             <button type="button" id="lbs4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
             자세히
             </button>
+            </div>
             </td>`;
 
           ;html += '</tr>';
@@ -346,12 +359,12 @@ function reset_pwd2(member_id, pwId, pwId_confirm){
     var member_Id = member_id
     var password = document.getElementById(pwId).value
     var password1 = document.getElementById(pwId_confirm).value
-    console.log(member_Id)
-    console.log(password, password1)
+    // console.log(member_Id)
+    // console.log(password, password1)
 
     if(password1 === '' && password===''){
         var data = {member_id: member_Id};
-        console.log(data)
+        // console.log(data)
         fetch('http://webapi.rhymeduck.com/a/v1/member/changepw', {
         method: 'POST', // or 'PUT'
         headers: {
@@ -364,6 +377,7 @@ function reset_pwd2(member_id, pwId, pwId_confirm){
             if ( data.result.ret === 'success'){
                 location.href='main'
                 alert('비밀번호가 12345로 변경되었습니다..')
+
             }else{
                 alert('다시 시도해주세요')
             }
@@ -384,6 +398,7 @@ function reset_pwd2(member_id, pwId, pwId_confirm){
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if ( data.result.ret === 'success'){
                 location.href='main'
                 alert('비밀번호가 변경되었습니다.')
@@ -428,7 +443,6 @@ function reset_pwd3(member_info, pwId,pwId_confirm){
 }
 
 function reset_hardSerial(member){
-    // console.log(member)
     const data = { member_id: member };
     
     fetch('http://webapi.rhymeduck.com/a/v1/member/inithdd', {
@@ -440,7 +454,6 @@ function reset_hardSerial(member){
     })
     .then(response => response.json())
     .then(data => {
-        // console.log(data)
     if(data.result.ret === 'success'){
         alert("하드 시리얼이 초기화 되었습니다.")
     }else{
@@ -449,18 +462,12 @@ function reset_hardSerial(member){
     
     });
 }
-// jQuery(function($){
-// 	$("#foo-table").DataTable({
-// 		"dom": 'iptfl'
-// 	});
-// });
 
 function newttsCreate(){
     var storename = document.getElementById('sName').value
     var id = document.getElementById('sId').value
     var password = document.getElementById('sPas').value
-    var data = {member_info:storename, member_name:id, member_pw:password}
-    console.log(data)
+    var data = {member_info:id, member_name:storename, member_pw:password}
     
     fetch('http://webapi.rhymeduck.com/a/v1/soundfier/create', {
     method: 'POST', // or 'PUT'
@@ -471,8 +478,8 @@ function newttsCreate(){
     })
     .then(response => response.json())
     .then(data => {
-        // console.log(data)
     if(data.result.ret === 'success'){
+        location.href='main'
         alert("계정이 생성되었습니다.")
     }else{
         alert("error입니다.")

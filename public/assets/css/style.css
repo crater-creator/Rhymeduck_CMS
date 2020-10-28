@@ -3,10 +3,15 @@
   position: relative;
   height: 500px;
   overflow: auto;
+  
   }
 .table-wrapper-scroll-y {
 display: block;
 }
+
+#table1{table-layout: fixed;}
+#table2{table-layout: fixed;}
+
 
 #lbs9{display: none;}
 @media(max-width: 500px){
@@ -14,17 +19,17 @@ display: block;
  
 
 }
-.dtHorizontalVerticalExampleWrapper {
+/* .dtHorizontalVerticalExampleWrapper {
   max-width: 600px;
   margin: 0 auto;
   }
   #dtHorizontalVerticalExample tr, th, td {
     word-break: break-all;
-  /* white-space: nowrap; */
-  /* font-size: 5pt; */
+  white-space: nowrap; 
+   font-size: 5pt;
 
   }
-  /* #lbs2{width: 10px; font-size: 5pt;} */
+  #lbs2{width: 10px; font-size: 5pt;} */
 
   table.dataTable thead .sorting:after,
   table.dataTable thead .sorting:before,
@@ -81,8 +86,10 @@ display: block;
    
     #stora{width:150px;
     padding-right: 20px;}
-    div > #modal2{display: block; margin-left: 4px; font-size: 7pt; padding-bottom: 11px;}
+    div > #modal2{display: block; margin-right: 5px; font-size: 6pt; padding-bottom: 11px;}
     div > #modal1{display: none;}
+    div > #titleimg{width: 100vw;}
+    div > #lbs4{margin-left: 20px;}
 
 
 }
@@ -96,4 +103,13 @@ display: block;
 #hds1{display: none;}
 #pwc1{display: none;}
 #stora3{margin-left: 10px;;}
-#modal1{margin-left:10px;}
+#modal1{margin-right:25px; margin-bottom: 3px;}
+#lbs4{margin-left: 35px; background-color: cornflowerblue; color: white;}
+#src2{margin-left: 50px;}
+#xx1{visibility: hidden;}
+#xx2{visibility: hidden;}
+#xx3{visibility: hidden;}
+#xx4{visibility: hidden;}
+#recentLog2{font-size: 10pt;}
+#lbs2{background-color: cornflowerblue; color: white;}
+#lbs3{background-color: cornflowerblue; color: white;}
