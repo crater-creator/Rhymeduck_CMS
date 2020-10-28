@@ -190,7 +190,7 @@ function member_tableCreate(){
             var memid1 = data.data.member_list[key].member_id;
             var memsrc = data.data.member_list[key].music_src;
             var memContr = data.data.member_list[key].contract_state;
-            if(memContr ==='1'){
+            if(memContr === 1){
                 memContr='계약중'
             }else{
                 memContr='계약만료'
