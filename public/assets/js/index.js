@@ -516,18 +516,9 @@ function channelList(){
 }
 
 function channelListlog(filePath){
-    data={file_path:filePath}
-    fetch('http://localhost:6935/read_ch_update_log', {
-    method: 'POST', 
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-    })
-    .then(response =>response.json)
-    .then(data => {
-        $("#ch_update_log_area").append(`<span>${data}</span>`);
-    });
+    $.post('http://localhost:6935/read_ch_update_log', { file_path : filePath }, function (data) {
+		$('#ch_update_log_area').text(data);	
+	})
    
     
     
