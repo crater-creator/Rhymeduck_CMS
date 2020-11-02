@@ -32,8 +32,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); //public폴더에 대한 접근을 가상 경로인 /로 설정함.
-// app.use('/views', express.static(path.resolve(__dirname, 'views')));
-// app.use('/public', express.static(path.resolve(__dirname, 'public'))); 
 
 app.use('/', indexRouter);
 

@@ -4,6 +4,8 @@ var bodyParser = require('body-parser')
 var session = require('express-session')
 var request = require('request')
 var template = require('../public/assets/js/template.js');
+var cmd = require('node-cmd')
+var fs = require('fs');
 const { options } = require('../app.js');
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -68,6 +70,50 @@ router.get('/logout', function(req, res, next) {
 
 router.get('/register', function(req, res, next) {
   res.render('register');
+});
+
+router.post('/settop_reset', function (req, res) {
+  var member_id = request.body.member_id
+  cmd.run('mosquitto_pub -t vodka_python/user_'+member_id+' -m "reset|"');
+  res.send('리셋완료');
+});
+
+router.post('/settop_etp_reset', function (req, res) {
+  var enterprise_id = req.body.enterprise_id
+ 
+  request.post({
+    url: 'http://localhost:6925/mid_by_enterprise',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    form: {
+      enterprise_id: enterprise_id
+    }
+  }, function (error, response, body) {
+    for(var i=0; i<JSON.parse(body).length; i++)
+      cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
+      res.send('리셋완료');
+    });
+});
+
+router.post('/channel_update', function (request, response) {
+  cmd.run('/data/script/music_update/channel_update.sh');  
+  response.redirect('/main');
+});
+
+router.post('/get_ch_update_loglist', function (request, response) {
+  fs.readdir('/data/log/music_channel_update', function(error, filelist){
+    response.send(filelist);
+  })   
+  
+});
+
+router.post('/read_ch_update_log', function (request, response) {
+  var file_path = request.body.file_path
+  console.log(file_path)
+  fs.readFile('/data/log/music_channel_update/'+file_path, 'utf-8',function(error, data){
+    response.send(data);
+  })
 });
 
 

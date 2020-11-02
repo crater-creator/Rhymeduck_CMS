@@ -4,6 +4,8 @@ $(document).ready(function(){
     var width = window.outerWidth;
         if (width <= 450) {
             $('#sidebar').attr('class','');
+            $('#member_name3').css('display','none');
+            $('#name3').text('업체명/매장명');
         }else if(width>=450){
             $('#sidebar').attr('class','active');
         }
@@ -101,7 +103,9 @@ function TTStableCreate(){
         })
         .then(response => response.json())
         .then(data => {
-       
+        if(data.data.member_list ===undefined){
+            alert('검색결과가 없습니다.')
+        }else{
         var html ='';
         var len1 = data.data.member_list;
         var len = len1.length-1;
@@ -160,7 +164,7 @@ function TTStableCreate(){
           </div>
           </div>`
           ;html += '</tr>';
-        }
+        }}
         $("#dynamicTbody").empty();
         $("#dynamicTbody").append(html);
         })
@@ -208,8 +212,7 @@ function member_tableCreate(){
             }
             html += '<tr><th id="mid2" scope="row">'+memid1+'</th>';
             if (width <= 450) {
-                $('#member_name3').css('display','none');
-                $('#name3').text('업체명/매장명');
+                
                 if(meminfo.substr(11)===''){
                     html += '<td >'+memname+'<br>'+meminfo+'</td>';
                 }else{
@@ -485,4 +488,47 @@ function newttsCreate(){
         alert("error입니다.")
     }
     });
+}
+
+function channelList(){
+    var data = {}
+    fetch('http://localhost:6935/get_ch_update_loglist', {
+    method: 'POST', // or 'PUT'
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        var len = data.length
+        var loop = range(0,len-1)
+        var count = 0
+        for(key in loop){
+            if(count === 5){
+                $("#ch_update_log_list").append(`<br>`);
+                count = 0
+            }
+            $("#ch_update_log_list").append(`<a class="channelLog" href="javascript:channelListlog('${data[key]}')">${data[key]}</a>`);
+            count += 1
+        }
+    });
+}
+
+function channelListlog(filePath){
+    data={file_path:filePath}
+    fetch('http://localhost:6935/read_ch_update_log', {
+    method: 'POST', 
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    })
+    .then(response =>response.json)
+    .then(data => {
+        $("#ch_update_log_area").append(`<span>${data}</span>`);
+    });
+   
+    
+    
 }

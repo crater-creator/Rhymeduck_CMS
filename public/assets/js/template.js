@@ -37,11 +37,11 @@ module.exports = {
         <ul class="menu">
             
             
-                <li class='sidebar-title'>Main Menu</li>
+                <li class='sidebar-title'>계정 관리</li>
             
       
                 <li class="sidebar-item">
-                    <a href="#" id="sidemenu3" onclick="pagereload('component')"  class='sidebar-link'>
+                    <a href="/main"  class='sidebar-link'>
                         <i data-feather="user" width="20"></i> 
                         <span>멤버 계정 관리</span>
                     </a>    
@@ -55,65 +55,17 @@ module.exports = {
                      
                 </li>
 
+                <li class='sidebar-title'>음원 관리</li>
             
-   
-            
-                <!-- <li class='sidebar-title'>Forms &amp; Tables</li>
-            
-            
-            
+      
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="file-text" width="20"></i> 
-                        <span>Form Elements</span>
-                    </a>
+                    <a href="javascript:channelList()" onclick="pagereload('update')" class='sidebar-link'>
+                    <i data-feather="file-plus" width="20"></i> 
+                        <span>채널 업데이트 Log</span>
+                    </a>    
                 </li>
 
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="layout" width="20"></i> 
-                        <span>Form Layout</span>
-                    </a>
-                    
-                </li>
 
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="layers" width="20"></i> 
-                        <span>Form Editor</span>
-                    </a>
-                    
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="grid" width="20"></i> 
-                        <span>Table</span>
-                    </a>
-                    
-                </li>
-
-            
-            
-            
-                <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="file-plus" width="20"></i> 
-                        <span>Datatable</span>
-                    </a>
-                    
-                </li> -->
-
-           
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -121,6 +73,7 @@ module.exports = {
         </div>
         <div id="main">
             <nav style="background-color: rgb(185, 153, 65);" class="navbar navbar-header navbar-expand navbar-light">
+                <p class="header_title">라임덕 CMS</p>
                 <a class="sidebar-toggler" href="#"><span id="lbs9" class="navbar-toggler-icon"></span></a>
                 <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,7 +112,6 @@ module.exports = {
                     <thead>
                         <tr>
                             <th id="mid3">MID</th>
-                            <th id="dou_name3">업체명/매장명</th>
                             <th id="name3">업체명</th>
                             <th id="member_name3">매장명</th>
                             <th id="id3">아이디</th>
@@ -204,7 +156,7 @@ module.exports = {
 <script src="./assets/js/feather-icons/feather.min.js"></script>
 <script src="./assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="./assets/js/app.js"></script>
-<script src="./assets/js/login.js"></script>
+<script src="./assets/js/index.js"></script>
 <script src="./assets/js/mdb.min.js"></script>
 <!-- <script src="assets/js/mdb.min.js.map"></script> -->
 
