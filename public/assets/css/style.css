@@ -89,6 +89,7 @@ display: block;
     div > #titleimg{width: 100vw;}
     div > #lbs4{margin-left: 20px;}
     .header_title{display: none;}
+   
 
 
 }
@@ -132,3 +133,5 @@ display: block;
     overflow-y: scroll;
 }
 .channelLog{margin-right:40px}
+
+.ch_update_loglist{margin: 0px 30px 0px 10px;}

@@ -60,7 +60,7 @@ module.exports = {
       
                 <li class="sidebar-item">
                     <a href="javascript:channelList()" onclick="pagereload('update')" class='sidebar-link'>
-                    <i data-feather="file-plus" width="20"></i> 
+                        <i data-feather="file-plus" width="20"></i> 
                         <span>채널 업데이트 Log</span>
                     </a>    
                 </li>

@@ -40,11 +40,11 @@ router.post("/login", function(req,res,next){
       var login_result = body.result.ret
       if(login_result === 'success'){
         req.session.member_name = body.data.member_info.name //세션 저장
-        
-        var html = template.HTML(req.session.member_name)
-        req.session.save(() => {
-          res.send(html);
-        });
+        res.redirect('/main')
+        // var html = template.HTML(req.session.member_name)
+        // req.session.save(() => {
+        //   res.send(html);
+        // });
       }else{
         res.redirect('/')
         
@@ -72,29 +72,29 @@ router.get('/register', function(req, res, next) {
   res.render('register');
 });
 
-router.post('/settop_reset', function (req, res) {
-  var member_id = request.body.member_id
-  cmd.run('mosquitto_pub -t vodka_python/user_'+member_id+' -m "reset|"');
-  res.send('리셋완료');
-});
+// app.post('/settop_reset', function (request, response) {
+//   var member_id = request.body.member_id
+//   cmd.run('mosquitto_pub -t vodka_python/user_'+member_id+' -m "reset|"');
+//   response.send('리셋완료');
+// });
 
-router.post('/settop_etp_reset', function (req, res) {
-  var enterprise_id = req.body.enterprise_id
+// app.post('/settop_etp_reset', function (req, res) {
+//   var enterprise_id = req.body.enterprise_id
  
-  request.post({
-    url: 'http://localhost:6925/mid_by_enterprise',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    form: {
-      enterprise_id: enterprise_id
-    }
-  }, function (error, response, body) {
-    for(var i=0; i<JSON.parse(body).length; i++)
-      cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
-      res.send('리셋완료');
-    });
-});
+//   request.post({
+//     url: 'http://localhost:6925/mid_by_enterprise',
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     form: {
+//       enterprise_id: enterprise_id
+//     }
+//   }, function (error, response, body) {
+//     for(var i=0; i<JSON.parse(body).length; i++)
+//       cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
+//       res.send('리셋완료');
+//     });
+// });
 
 router.post('/channel_update', function (request, response) {
   cmd.run('/data/script/music_update/channel_update.sh');  
@@ -110,7 +110,9 @@ router.post('/get_ch_update_loglist', function (request, response) {
 
 router.post('/read_ch_update_log', function (request, response) {
   var file_path = request.body.file_path
+  console.log(file_path)
   fs.readFile('/data/log/music_channel_update/'+file_path, 'utf-8',function(error, data){
+   
     response.send(data);
   })
 });

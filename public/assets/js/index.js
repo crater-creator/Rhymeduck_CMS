@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){  
     
     var width = window.outerWidth;
@@ -6,6 +7,7 @@ $(document).ready(function(){
             $('#sidebar').attr('class','');
             $('#member_name3').css('display','none');
             $('#name3').text('업체명/매장명');
+            
         }else if(width>=450){
             $('#sidebar').attr('class','active');
         }
@@ -490,36 +492,28 @@ function newttsCreate(){
     });
 }
 
-function channelList(){
-    var data = {}
-    fetch('http://localhost:6935/get_ch_update_loglist', {
-    method: 'POST', // or 'PUT'
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-        var len = data.length
-        var loop = range(0,len-1)
-        var count = 0
-        for(key in loop){
-            if(count === 5){
-                $("#ch_update_log_list").append(`<br>`);
-                count = 0
-            }
-            $("#ch_update_log_list").append(`<a class="channelLog" href="javascript:channelListlog('${data[key]}')">${data[key]}</a>`);
-            count += 1
-        }
-    });
-}
 
-function channelListlog(filePath){
-    $.post('http://localhost:6935/read_ch_update_log', { file_path : filePath }, function (data) {
+function channelList() {
+	$.post('/get_ch_update_loglist', function (data) {
+		loglist = data.toString().split(',');
+		var context = '<span>';
+		var cnt = 1;
+
+		for(var i = loglist.length-1 ; i >= 0 ; i--) {
+            context += `<a class="ch_update_loglist" href="javascript:read_ch_update_log('${i}')">`+loglist[i]+'</a>';
+            if (cnt % 5 == 0){
+                context += '</span><span>'}
+			cnt++;
+		}
+
+		$('#ch_update_log_list').html(context);
+					
+	})
+} 
+
+function read_ch_update_log(i) {
+	$.post('/read_ch_update_log', { file_path : loglist[i] }, function (data) {
 		$('#ch_update_log_area').text(data);	
 	})
-   
-    
-    
 }
+
