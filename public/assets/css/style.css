@@ -19,17 +19,6 @@ display: block;
  
 
 }
-/* .dtHorizontalVerticalExampleWrapper {
-  max-width: 600px;
-  margin: 0 auto;
-  }
-  #dtHorizontalVerticalExample tr, th, td {
-    word-break: break-all;
-  white-space: nowrap; 
-   font-size: 5pt;
-
-  }
-  #lbs2{width: 10px; font-size: 5pt;} */
 
   table.dataTable thead .sorting:after,
   table.dataTable thead .sorting:before,

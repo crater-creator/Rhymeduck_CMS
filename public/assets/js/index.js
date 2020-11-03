@@ -364,12 +364,9 @@ function reset_pwd2(member_id, pwId, pwId_confirm){
     var member_Id = member_id
     var password = document.getElementById(pwId).value
     var password1 = document.getElementById(pwId_confirm).value
-    // console.log(member_Id)
-    // console.log(password, password1)
 
     if(password1 === '' && password===''){
         var data = {member_id: member_Id};
-        // console.log(data)
         fetch('http://webapi.rhymeduck.com/a/v1/member/changepw', {
         method: 'POST', // or 'PUT'
         headers: {

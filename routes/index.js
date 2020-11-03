@@ -27,7 +27,6 @@ router.get('/main', function(req, res, next) {
 
 router.post("/login", function(req,res,next){
   const body = req.body;
-  // console.log(body)
   
   const data1 = { reg_user: body.user_id2, reg_pw: body.user_pwd2 };
   request.post({
@@ -41,10 +40,6 @@ router.post("/login", function(req,res,next){
       if(login_result === 'success'){
         req.session.member_name = body.data.member_info.name //세션 저장
         res.redirect('/main')
-        // var html = template.HTML(req.session.member_name)
-        // req.session.save(() => {
-        //   res.send(html);
-        // });
       }else{
         res.redirect('/')
         
