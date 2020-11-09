@@ -128,9 +128,9 @@ router.post('/channel_update', function (request, response) {
   cmd.run('/data/script/music_update/channel_update.sh');  
   response.redirect('/main');
 });
-// data/log/music_channel_update
+
 router.post('/get_ch_update_loglist', function (request, response) {
-  fs.readdir('/', function(error, filelist){
+  fs.readdir('/data/log/music_channel_update', function(error, filelist){
     response.send(filelist);
   })   
   
