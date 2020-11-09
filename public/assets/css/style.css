@@ -99,7 +99,7 @@ display: block;
     #settop3{width: 92%; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
     #settop4{width: 92%; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
     #settop5{width: 92%; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
-    div > #ch_update_log_list{height: 100px;}
+    div > #ch_update_log_list{height: 100px; font-size: 14pt;}
 }
 
 @media(max-width: 321px){
