@@ -73,6 +73,8 @@ display: block;
    
     #stora{width:150px;
     padding-right: 20px;}
+    #stora1{width:150px;
+      padding-right: 20px;}
     div > #modal2{display: block; margin-right: 5px; font-size: 6pt; padding-bottom: 11px;}
     div > #modal1{display: none;}
     div > #titleimg{width: 100vw;}
@@ -89,18 +91,37 @@ display: block;
     #setrelog1{display: none;}
     #set2{width:120px;}
     #set6{width: 140px;}
-    #settopSer{width: 180px;}
-    #settopSer1{width: 80px;}
+    /* h4 > #settopSer{width: 110px;}
+    h4 > #settopSer1{width: 80px;} */
     #settopName{display: none;}
-    #settop1{width: 300px; float: left; height: 60px; line-height: 20px;} 
-    #settop2{width: 300px; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
-    #settop3{width: 300px; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
-    #settop4{width: 300px; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
-    #settop5{width: 300px; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
+    #settop1{width: 92%; float: left; height: 60px; line-height: 20px;} 
+    #settop2{width: 92%; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
+    #settop3{width: 92%; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
+    #settop4{width: 92%; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
+    #settop5{width: 92%; float: left; margin-left: 3.5vw; height: 60px; line-height: 20px;}
     div > #ch_update_log_list{height: 100px;}
+}
+
+@media(max-width: 321px){
+  #stora1{
+    height: 35px; 
+    width: 100px;}
+    #stora2{
+      vertical-align: text-bottom;
+      width: 80px;
+      height: 35px;
+      padding: 0 -5px 0 -5px;
+    }
+    #modal2{
+      width: 70px;
+    }
+    #settopSer{
+      width: 150px;
+    }
 
 
 }
+
 
 #modal2{display: none;}
 #br1{display: none;}

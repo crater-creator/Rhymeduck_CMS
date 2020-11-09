@@ -88,8 +88,13 @@ function enter_test3(){
     }
 }
 
-var count1 =''
+function enter_test4(){
+    if(window.event.keyCode ==13){
+        settopSer1.click()
+    }
+}
 
+var count1 =''
 function settableCreate(){
     var settopName = document.getElementById('settopSer').value;
     if (settopName === ''){
