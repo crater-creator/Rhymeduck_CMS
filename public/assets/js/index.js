@@ -153,7 +153,7 @@ function settableCreate(){
 
 function TTStableCreate(){
     
-    var storeName1 = document.getElementById('stora').value;
+    var storeName1 = document.getElementById('stora1').value;
     if (storeName1 === ''){
         return alert("매장명을 입력해주세요")
     }else{
