@@ -67,37 +67,70 @@ router.get('/register', function(req, res, next) {
   res.render('register');
 });
 
-// app.post('/settop_reset', function (request, response) {
-//   var member_id = request.body.member_id
-//   cmd.run('mosquitto_pub -t vodka_python/user_'+member_id+' -m "reset|"');
-//   response.send('리셋완료');
-// });
+router.post('/settop_reset', function (request, response) {
+  var member_id = request.body.member_id
+  console.log(member_id)
+  cmd.run('mosquitto_pub -t vodka_python/user_'+member_id+' -m "reset|"');
+  response.send('리셋완료');
+});
 
-// app.post('/settop_etp_reset', function (req, res) {
-//   var enterprise_id = req.body.enterprise_id
- 
-//   request.post({
-//     url: 'http://localhost:6925/mid_by_enterprise',
-//     headers: {
-//       'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     form: {
-//       enterprise_id: enterprise_id
-//     }
-//   }, function (error, response, body) {
-//     for(var i=0; i<JSON.parse(body).length; i++)
-//       cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
-//       res.send('리셋완료');
-//     });
-// });
+router.post('/settop_etp_reset', function (req, res) {
+  var enterprise_id = req.body.enterprise_id
+    request.post({
+      url: 'http://webapi.rhymeduck.com/a/v1/member/search_by_eid',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      form: {
+        eid: enterprise_id
+      }
+    }, function (error, response, body) {
+        for(var i=0; i<JSON.parse(body).length; i++)
+          cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
+          res.send('리셋완료');
+      });
+});
+
+router.post('/settop_etp_reset1', function(req,res){
+  var enterprise_id = req.body.enterprise_id
+  var one = enterprise_id.substr(4)
+  var two = enterprise_id.substr(0,3)
+  request.post({
+    url: 'http://webapi.rhymeduck.com/a/v1/member/search_by_eid',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    form: {
+      eid: one
+    }
+  }, function (error, response, body) {
+      for(var i=0; i<JSON.parse(body).length; i++)
+        cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
+    });
+  request.post({
+    url: 'http://webapi.rhymeduck.com/a/v1/member/search_by_eid',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    form: {
+      eid: two
+    }
+  }, function (error, response, body) {
+      for(var i=0; i<JSON.parse(body).length; i++)
+        cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
+        
+    });
+    res.send('리셋완료');
+
+})
 
 router.post('/channel_update', function (request, response) {
   cmd.run('/data/script/music_update/channel_update.sh');  
   response.redirect('/main');
 });
-
+// data/log/music_channel_update
 router.post('/get_ch_update_loglist', function (request, response) {
-  fs.readdir('/data/log/music_channel_update', function(error, filelist){
+  fs.readdir('/', function(error, filelist){
     response.send(filelist);
   })   
   

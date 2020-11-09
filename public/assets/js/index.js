@@ -7,6 +7,8 @@ $(document).ready(function(){
             $('#sidebar').attr('class','');
             $('#member_name3').css('display','none');
             $('#name3').text('업체명/매장명');
+            $('#set2').css('class', 'md-3');
+            
             
         }else if(width>=450){
             $('#sidebar').attr('class','active');
@@ -87,6 +89,63 @@ function enter_test3(){
 }
 
 var count1 =''
+
+function settableCreate(){
+    var settopName = document.getElementById('settopSer').value;
+    if (settopName === ''){
+        return alert("매장명을 입력해주세요")
+    }else{
+        var data = { word: settopName };}
+
+        fetch('http://webapi.rhymeduck.com/a/v1/member/stb_search',{
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+            },
+            body:JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data =>{
+            if(data.result.ret ==='failure'){
+                alert('검색결과가 없습니다.')
+            }else{
+                var html=''
+                var len = data.data.member_list.length-1;
+                var count1 = range(0,len);
+                var width = window.outerWidth;
+                for(key in count1){
+                    html += '<tr><th id="setmId" class="col-md-1">'+data.data.member_list[key].member_id+'</th>';
+                    if (width <= 450) {
+                        
+                        if(data.data.member_list[key].member_info.substr(8)===''){
+                            html += '<td>' +data.data.member_list[key].id+'<br>'+data.data.member_list[key].member_info+'</td>';
+                        }else{
+                            html += '<td>' +data.data.member_list[key].id+'<br>'+data.data.member_list[key].member_info.substr(0,8)+'<br>'+data.data.member_list[key].member_info.substr(8)+'</td>';
+                        }
+
+                    }else if(width>=450){
+                        html += '<td class="col-md-2">'+ data.data.member_list[key].member_info+'</td>';
+                        html += '<td class="col-md-2">'+ data.data.member_list[key].member_info+'</td>';
+                    }
+                    html += '<td id="setId" class="col-md-2">'+ data.data.member_list[key].id+'</td>';
+                    html += '<td id="setVr" class="col-md-1"><span id="xx5">x</span>'+ data.data.member_list[key].version+'</td>';
+                    if(data.data.member_list[key].recentlogin === null){
+                        html += '<td id="setrelog" class="col-md-2">'+''+'</td>';
+                    }else{
+                        html += '<td id="setrelog1 class="col-md-2"><span id="xx6">x</span>'+moment(data.data.member_list[key].recentlogin).format("YYYY-MM-DD HH:mm:ss")+'</td>';
+                    }
+                    html += `<td class="col-md-2"><div class="text-center"><input  onclick="settop_reset('${data.data.member_list[key].member_id}')" id="lbs2" class="btn" type="button" value="리셋"></div></td>`;
+                }
+                $("#dynamicTbody1").empty();
+                $("#dynamicTbody1").append(html);
+
+            }
+            
+        })
+
+        
+}
+
 function TTStableCreate(){
     
     var storeName1 = document.getElementById('stora').value;
@@ -112,11 +171,11 @@ function TTStableCreate(){
         var len1 = data.data.member_list;
         var len = len1.length-1;
         var count1 = range(0,len);
-        
+        var width = window.outerWidth;
         
         for(key in count1){
             var memname1 = data.data.member_list[key].member_name
-            var width = window.outerWidth;
+            
             if (width <= 450) {
                 if (memname1.substr(7)===''){
                     html += '<tr><th scope="row">'+ memname1+'</th>';
@@ -497,9 +556,7 @@ function channelList() {
 		var cnt = 1;
 
 		for(var i = loglist.length-1 ; i >= 0 ; i--) {
-            context += `<a class="ch_update_loglist" href="javascript:read_ch_update_log('${i}')">`+loglist[i]+'</a>';
-            if (cnt % 5 == 0){
-                context += '</span><span>'}
+            context += `<a class="ch_update_loglist" href="javascript:read_ch_update_log('${i}')">`+loglist[i]+'</a></span><br><span>';
 			cnt++;
 		}
 
@@ -512,5 +569,29 @@ function read_ch_update_log(i) {
 	$.post('/read_ch_update_log', { file_path : loglist[i] }, function (data) {
 		$('#ch_update_log_area').text(data);	
 	})
+}
+
+
+function settop_reset(member_id) {
+	if (confirm('실행하시겠습니까?'))
+		$.post('/settop_reset', { member_id : member_id } ,function (data) {
+			alert(data);
+		})
+}
+
+function ent_reset(enterprise_id) {
+    console.log(enterprise_id)
+	if (confirm('실행하시겠습니까?'))
+		$.post('/settop_etp_reset', { enterprise_id : enterprise_id } ,function (data) {
+			alert(data);
+    	})
+}
+
+function ent_reset1(enterprise_id) {
+    
+	if (confirm('실행하시겠습니까?'))
+		$.post('/settop_etp_reset1', { enterprise_id : enterprise_id } ,function (data) {
+			alert(data);
+    	})
 }
 

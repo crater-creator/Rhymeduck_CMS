@@ -65,6 +65,13 @@ module.exports = {
                     </a>    
                 </li>
 
+                <li class="sidebar-item">
+                    <a href="#" onclick="pagereload('settop')" class='sidebar-link'>
+                        <i data-feather="grid" width="20"></i> 
+                        <span>셋톱 박스 관리</span>
+                    </a>    
+                </li>
+
 
         </ul>
     </div>

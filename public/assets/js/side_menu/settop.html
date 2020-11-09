@@ -1,0 +1,62 @@
+<div class="page-title">
+    <h3>셋톱박스 관리</h3>
+    <p class="text-subtitle text-muted"></p>
+</div>
+<section class="section">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">업체별 관리</h4>
+                </div>
+                <div  class="card-body px-0 pb-0">
+                        <div class="align-items-center">
+                        <input id="settop1" class="btn btn-warning" type="submit" value="자연드림" onclick="ent_reset1('656,954')">
+                        <input id="settop2" class="btn btn-warning" type="submit" value="제일은행" onclick="ent_reset(696)">
+                        <input id="settop3" class="btn btn-warning" type="submit" value="커피에 반하다24" onclick="ent_reset(741)">
+                        <input id="settop4" class="btn btn-warning" type="submit" value="스테이락호텔" onclick="ent_reset('751')">
+                        <input id="settop5" class="btn btn-warning" type="submit" value="유니클로" onclick="ent_reset(1007)">
+                        </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 id="settopName" class="card-title">지점별 관리</h4>
+                    <form action="">
+                        <input id="settopSer" type="text" placeholder="업체명,매장명,ID" onkeypress="" >
+                        <input id="settopSer1" type="button" class="btn  btn-outline-warning waves-effect" onclick="settableCreate()" value="검색">
+                    </form>
+                </div>
+                
+                <table class="table table-bordered table-striped mb-0" >
+                    <thead>
+                        <tr>
+                            <th id="set1" class="col-md-1">MID</th>
+                            <th id="set2" class="col-md-2">업체명</th>
+                            <th id="set3" class="col-md-2">매장명</th>
+                            <th id="set4" class="col-md-2">아이디</th>
+                            <th id="set5" class="col-md-1">버전</th>
+                            <th id="set6" class="col-md-2">최근로그인</th>
+                            <th id="set7" class="col-md-2">컨텐츠 리셋</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
+                    <div class="table-responsive">
+                        
+                        <table class="table  table-striped mb-0" >
+                            
+                            <tbody id="dynamicTbody1">
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
