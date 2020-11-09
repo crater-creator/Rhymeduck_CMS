@@ -111,6 +111,7 @@ function settableCreate(){
         })
         .then(response => response.json())
         .then(data =>{
+            
             if(data.result.ret ==='failure'){
                 alert('검색결과가 없습니다.')
             }else{
@@ -123,23 +124,23 @@ function settableCreate(){
                     if (width <= 450) {
                         
                         if(data.data.member_list[key].member_info.substr(8)===''){
-                            html += '<td>' +data.data.member_list[key].id+'<br>'+data.data.member_list[key].member_info+'</td>';
+                            html += '<td class="col-6 col-md-2">' +data.data.member_list[key].name+'<br>'+data.data.member_list[key].member_info+'</td>';
                         }else{
-                            html += '<td>' +data.data.member_list[key].id+'<br>'+data.data.member_list[key].member_info.substr(0,8)+'<br>'+data.data.member_list[key].member_info.substr(8)+'</td>';
+                            html += '<td class="col-6 col-md-2">' +data.data.member_list[key].name+'<br>'+data.data.member_list[key].member_info.substr(0,8)+'<br>'+data.data.member_list[key].member_info.substr(8)+'</td>';
                         }
 
                     }else if(width>=450){
-                        html += '<td class="col-md-2">'+ data.data.member_list[key].member_info+'</td>';
+                        html += '<td class="col-md-2">'+ data.data.member_list[key].name+'</td>';
                         html += '<td class="col-md-2">'+ data.data.member_list[key].member_info+'</td>';
                     }
-                    html += '<td id="setId" class="col-md-2">'+ data.data.member_list[key].id+'</td>';
+                    html += '<td id="setId" class="col-md-2"><span id="xx7">x</span>'+ data.data.member_list[key].id+'</td>';
                     html += '<td id="setVr" class="col-md-1"><span id="xx5">x</span>'+ data.data.member_list[key].version+'</td>';
                     if(data.data.member_list[key].recentlogin === null){
                         html += '<td id="setrelog" class="col-md-2">'+''+'</td>';
                     }else{
-                        html += '<td id="setrelog1 class="col-md-2"><span id="xx6">x</span>'+moment(data.data.member_list[key].recentlogin).format("YYYY-MM-DD HH:mm:ss")+'</td>';
+                        html += '<td id="setrelog1" class="col-8 col-md-2"><span id="xx6">x</span>'+moment(data.data.member_list[key].recentlogin).format("YYYY-MM-DD HH:mm:ss")+'</td>';
                     }
-                    html += `<td class="col-md-2"><div class="text-center"><input  onclick="settop_reset('${data.data.member_list[key].member_id}')" id="lbs2" class="btn" type="button" value="리셋"></div></td>`;
+                    html += `<td class="col-4 col-md-2"><div class="text-center"><input  onclick="settop_reset('${data.data.member_list[key].member_id}')" id="lbs2" class="btn" type="button" value="리셋"></div></td>`;
                 }
                 $("#dynamicTbody1").empty();
                 $("#dynamicTbody1").append(html);
@@ -182,10 +183,10 @@ function TTStableCreate(){
             var memname1 = data.data.member_list[key].member_name
             
             if (width <= 450) {
-                if (memname1.substr(7)===''){
+                if (memname1.substr(6)===''){
                     html += '<tr><th scope="row">'+ memname1+'</th>';
                 }else{
-                    html += '<tr><th scope="row">'+ memname1.substr(0,7)+'<br>'+memname1.substr(7)+'</th>';
+                    html += '<tr><th scope="row">'+ memname1.substr(0,6)+'<br>'+memname1.substr(6)+'</th>';
                 }}
                 else if(width>=450){
                     html += '<tr><th scope="row">'+ memname1+'</th>';
@@ -279,10 +280,10 @@ function member_tableCreate(){
             html += '<tr><th id="mid2" scope="row">'+memid1+'</th>';
             if (width <= 450) {
                 
-                if(meminfo.substr(11)===''){
+                if(meminfo.substr(8)===''){
                     html += '<td >'+memname+'<br>'+meminfo+'</td>';
                 }else{
-                    html += '<td >'+memname+'<br>'+meminfo.substr(0,10)+'<br>'+meminfo.substr(10,20)+'<br>'+meminfo.substr(20)+'</td>';
+                    html += '<td >'+memname+'<br>'+meminfo.substr(0,8)+'<br>'+meminfo.substr(8,16)+'<br>'+meminfo.substr(16)+'</td>';
                 }
             }else if(width>=450){
                 html += '<td >'+memname+'</td>';
