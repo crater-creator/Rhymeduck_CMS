@@ -194,38 +194,44 @@ function TTStableCreate(){
             html += '<td >'+data.data.member_list[key].member_info+'</td>';
             html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn" type="button" value="초기화"></div></td>`;
             html += `<td>
-            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#primary">
-            Primary
-        </button>
+            <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div style="z-index:999" class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Password change</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                    <i class="fas fa-lock prefix grey-text"></i><br>
+                  </div>
+                  <div style="margin-top:-60px" class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text"></i>
+                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                    <form>
+                        <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
+                        <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
+                    </form>
+                    </div>
+          
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button id="chPw`+`${key}" onclick="reset_pwd3('${data.data.member_list[key].member_info}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <!--primary theme Modal -->
-        <div class="modal fade text-left" id="primary" tabindex="-1" role="dialog"
-            aria-labelledby="myModalLabel160" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                <h5 class="modal-title white" id="myModalLabel160">Primary Modal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i data-feather="x"></i>
-                </button>
-                </div>
-                <div class="modal-body">
-                Tart lemon drops macaroon oat cake chocolate toffee chocolate bar icing. Pudding jelly beans
-                carrot cake pastry gummies cheesecake lollipop. I love cookie lollipop cake I love sweet
-                gummi
-                bears cupcake dessert.
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                    <i class="bx bx-x d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Close</span>
-                </button>
-                <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
-                    <i class="bx bx-check d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Accept</span>
-                </button>
-                </div>
-            </div>`
+          
+          <div style="width=5%">
+          <div  class="text-center">
+            <a href="#" id="lbs3" class="btn" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
+          </div>
+          </div>`
           ;html += '</tr>';
         }}
         $("#dynamicTbody").empty();
