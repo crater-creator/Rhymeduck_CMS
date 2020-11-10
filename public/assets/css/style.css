@@ -124,7 +124,7 @@ display: block;
 
 #modalIn1{margin-top: 10px; font-size: 10pt; width: 18vw; height:4.8vh; float:right}
 #modalIn{font-size: 10pt; width: 18vw; height:4.8vh; float:right;}
-.moDal1{margin-top: 10px; margin-left:7px;width: 120px; float:left}
+.moDdal1{margin-top: 10px; margin-left:7px;width: 35%; float:left}
 #modal2{display: none;}
 #br1{display: none;}
 #br2{display: none;}
@@ -146,7 +146,7 @@ display: block;
 
 #recentLog2{font-size: 10pt;}
 #lbs2{background-color: cornflowerblue; color: white;}
-#lbs3{background-color: cornflowerblue; color: white;}
+#lbs3{background-color: cornflowerblue; color: white; cursor: pointer;}
 #update_log{background-color: cornflowerblue; color: white;}
 .header_title{margin-top:20px;width: 200px; font-size: 20pt; color: whitesmoke;}
 .sidebar-link{transition: box-shadow 0.25s ease-in-out;}

@@ -197,7 +197,7 @@ function TTStableCreate(){
             <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div style="z-index:999" class="modal-content">
                 <div class="modal-header text-center">
                   <h4 class="modal-title w-100 font-weight-bold">Password change</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -310,7 +310,7 @@ function member_tableCreate(){
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body mx-3">
+                <div  class="modal-body mx-3">
                   <div class="md-form mb-5">
                     <i class="fas fa-lock prefix grey-text"></i><br>
                   </div>
@@ -339,19 +339,20 @@ function member_tableCreate(){
             }
             
             html += `<td >
-            <div class="modal fade" id="exampleModalCenter${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            <div>
+                <button type="button" id="lbs4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
+                자세히
+                </button>
+            </div>
+            <div  class="modal fade" id="exampleModalCenter${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
-
-            
             <div class="modal-dialog modal-dialog-centered" role="document">
-
-
-                    <div class="modal-content">
+                    <div style="z-index:998; " class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">세부사항</h5>
                             
                         </div>
-                        <div id="detail${key}" class="modal-body">
+                        <div id="detail${key}"  class="modal-body">
                             <div style="font-size:12pt">-MID: ${memid1}<br></div>
                             <div style="font-size:12pt">-업체명: ${meminfo}<br></div>
                             <div style="font-size:12pt">-매장명: ${memname}<br></div>
@@ -362,9 +363,9 @@ function member_tableCreate(){
                             <div style="font-size:12pt">-계약상태: ${ memContr}</div>
                             <div id="hds1"style="font-size:12pt">-하드시리얼 초기화
                                 <button onclick="reset_hardSerial('${memid1}')" id="modalIn"  class="btn btn-primary btn-sm">초기화</button></div>
-                            <div id="pwc1"style="font-size:12pt">-비밀번호 변경<span style="font-size:10pt;">(미입력시'12345'로 변경)</span>
-                                <input id="mpw1`+`${key}" class="moDal1"  type="password">
-                                <input id="mpw2`+`${key}" class="moDal1"  type="password">
+                            <div id="pwc1"style="position:relative; font-size:12pt">-비밀번호 변경<span style="font-size:10pt;">(미입력시'12345'로 변경)</span>
+                                <input style="position:absolute; top:97%; right:62%" id="mpw1`+`${key}" class="moDdal1"  type="password">
+                                <input style="position:absolute; top:97%; right:25%" id="mpw2`+`${key}" class="moDdal1"  type="password">
                                 <button id="modalIn1" onclick="reset_pwd2('${memid1}','mpw1`+`${key}','mpw2`+`${key}')"  class="btn btn-primary btn-sm">변경</button>
                             </div>
                             
@@ -378,11 +379,7 @@ function member_tableCreate(){
                             </div>
                         </div>
             </div>
-            <div>
-            <button type="button" id="lbs4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
-            자세히
-            </button>
-            </div>
+            
             </td>`;
 
           ;html += '</tr>';
