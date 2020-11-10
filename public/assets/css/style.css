@@ -60,7 +60,6 @@ display: block;
     tr > #recentLog3{display: none;}
     tr > #hardSerial3{display: none;}
     tr > #chpwd3{display: none;}
-    /* tr > #member_name3{display: none;} */
     tr > #src3{display: none;}
     th > #br1{display: block;}
     th > #br2{display: block;}
@@ -118,11 +117,14 @@ display: block;
     #settopSer{
       width: 150px;
     }
-
+    div > #modalIn{font-size: 8.5pt;width: 19vw;}
+    div > #modalIn1{font-size: 8.5pt;}
 
 }
 
-
+#modalIn1{margin-top: 10px; font-size: 10pt; width: 18vw; height:4.8vh; float:right}
+#modalIn{font-size: 10pt; width: 18vw; height:4.8vh; float:right;}
+.moDal1{margin-top: 10px; margin-left:7px;width: 120px; float:left}
 #modal2{display: none;}
 #br1{display: none;}
 #br2{display: none;}
@@ -132,7 +134,7 @@ display: block;
 #pwc1{display: none;}
 #stora3{margin-left: 10px;;}
 #modal1{margin-right:25px; margin-bottom: 3px;}
-#lbs4{margin-left: 35px; background-color: cornflowerblue; color: white;}
+#lbs4{margin-left: 35px; background-color: cornflowerblue; color: white; cursor: pointer;}
 #src2{margin-left: 50px;}
 #xx1{visibility: hidden;}
 #xx2{visibility: hidden;}

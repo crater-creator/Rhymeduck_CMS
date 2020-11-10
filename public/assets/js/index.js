@@ -227,7 +227,7 @@ function TTStableCreate(){
           </div>
           <div style="width=5%">
           <div  class="text-center">
-            <a href=""  id="lbs3" class="btn" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
+            <a href="#" id="lbs3" class="btn" role="button" data-toggle="modal" data-target="#modalLoginForm`+key+`">변경</a>
           </div>
           </div>`
           ;html += '</tr>';
@@ -360,8 +360,13 @@ function member_tableCreate(){
                             <div style="font-size:12pt">-최근로그인: ${moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")}<br></div>
                             <div style="font-size:12pt">-신탁/비신탁: ${memsrc}<br></div>
                             <div style="font-size:12pt">-계약상태: ${ memContr}</div>
-                            <div id="hds1"style="font-size:12pt">-하드시리얼 초기화<button onclick="reset_hardSeria('${memid1}')"style=" font-size: 2px; width: 16vw; height:3.8vh; float:right; "  class="btn btn-primary btn-sm">초기화</button></div>
-                            <div id="pwc1"style="font-size:12pt">-비밀번호 변경<span style="font-size:10pt;">(미입력시'12345'로 변경)</span><input id="mpw1`+`${key}"style="margin-left:10px;width: 120px; float:left" type="password"><input id="mpw2`+`${key}"style="margin-left:8px;width: 120px; float:left" type="password"><button onclick="reset_pwd2('${memid1}','mpw1`+`${key}','mpw2`+`${key}')"style=" font-size: 2px; width: 16vw; height:3.8vh; float:right;"  class="btn btn-primary btn-sm">변경</button></div>
+                            <div id="hds1"style="font-size:12pt">-하드시리얼 초기화
+                                <button onclick="reset_hardSerial('${memid1}')" id="modalIn"  class="btn btn-primary btn-sm">초기화</button></div>
+                            <div id="pwc1"style="font-size:12pt">-비밀번호 변경<span style="font-size:10pt;">(미입력시'12345'로 변경)</span>
+                                <input id="mpw1`+`${key}" class="moDal1"  type="password">
+                                <input id="mpw2`+`${key}" class="moDal1"  type="password">
+                                <button id="modalIn1" onclick="reset_pwd2('${memid1}','mpw1`+`${key}','mpw2`+`${key}')"  class="btn btn-primary btn-sm">변경</button>
+                            </div>
                             
                         </div>
                         <div id="detailBox" > 
