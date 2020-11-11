@@ -140,6 +140,8 @@ module.exports = {
                         </tbody>
                     </table>
                 </div>
+                <div id="dynamicModal"></div>
+                
             </div>
         </div>
     </div>
@@ -149,6 +151,7 @@ module.exports = {
 </div>
 
             <footer>
+                
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-left">
                         <p>2020 &copy; wantreez</p>

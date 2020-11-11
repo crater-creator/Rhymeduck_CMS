@@ -173,6 +173,7 @@ function TTStableCreate(){
         if(data.data.member_list ===undefined){
             alert('검색결과가 없습니다.')
         }else{
+        var html1='';
         var html ='';
         var len1 = data.data.member_list;
         var len = len1.length-1;
@@ -194,18 +195,54 @@ function TTStableCreate(){
             html += '<td >'+data.data.member_list[key].member_info+'</td>';
             html += `<td><div class="text-center"><input  id="lbs2" onclick="reset_pwdCount('${data.data.member_list[key].member_info}')" class="btn" type="button" value="초기화"></div></td>`;
             html += `<td>
-            
+            <div style="width=5%">
+            <div  class="text-center">
+                <a href="#" id="lbs3" class="btn" role="button" data-toggle="modal" data-target="#modalLoginForm${key}">변경</a>
+            </div>
+            </div>`
+            ;html += '</tr>';
 
-          
-          <div style="width=5%">
-          <div  class="text-center">
-            <a href="#" id="lbs3" class="btn" role="button" data-toggle="modal" data-target="#modalLoginForm">변경</a>
-          </div>
-          </div>`
-          ;html += '</tr>';
+            html1 +=`<div>
+            <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div style="z-index:999" class="modal-content">
+                            <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Password change</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                                <i class="fas fa-lock prefix grey-text"></i><br>
+                            </div>
+                            <div style="margin-top:-60px" class="md-form mb-4">
+                                <i class="fas fa-lock prefix grey-text"></i>
+                                
+                                <form>
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                                    <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
+                                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
+                                </form>
+                                </div>
+                    
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                            <button id="chPw`+`${key}"  onclick="reset_pwd3('${data.data.member_list[key].member_info}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+            </div>`;
         }}
         $("#dynamicTbody").empty();
         $("#dynamicTbody").append(html);
+
+        $("#dynamicModal").empty();
+        $("#dynamicModal").append(html1);
+        
         })
     } 
 };
@@ -231,6 +268,7 @@ function member_tableCreate(){
         if (data.result.ret ==='failure'){
             alert('검색결과가 없습니다.')
         }else{
+        var html1='';
         var html ='';
         var len = data.data.member_list.length-1;
         var count1 = range(0,len);
@@ -315,7 +353,11 @@ function member_tableCreate(){
                 <button type="button" id="lbs4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
                 자세히
                 </button>
-            </div>
+            </div>`;
+
+            ;html += '</tr>';
+
+            html1 += `<div>
             <div  class="modal fade" id="exampleModalCenter${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -351,13 +393,14 @@ function member_tableCreate(){
                             </div>
                         </div>
             </div>
-            
-            </td>`;
-
-          ;html += '</tr>';
+            </div>`;
         }
         $("#dynamicTbody").empty();
         $("#dynamicTbody").append(html);
+        
+        $("#dynamicModal").empty();
+        $("#dynamicModal").append(html1);
+
     } })
     } 
 };
@@ -456,6 +499,7 @@ function reset_pwd3(member_info, pwId,pwId_confirm){
     var pwdId_confirm = pwId_confirm
     var password = document.getElementById(pwdId).value
     var password1 = document.getElementById(pwdId_confirm).value
+    
 
     if(password1 === '' || password===''){
         alert('비밀번호를 입력해주세요.')
@@ -463,6 +507,7 @@ function reset_pwd3(member_info, pwId,pwId_confirm){
         alert('비밀번호를 확인해주세요.')
     }else{
         const data = { member_info: member_Id, member_pw: password };
+        console.log(data)
 
         fetch('http://webapi.rhymeduck.com/a/v1/soundfier/changepw', {
         method: 'POST', // or 'PUT'
