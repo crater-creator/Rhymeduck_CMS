@@ -13,8 +13,75 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/main', function(req, res, next) {
+  console.log(req.session.auth_tts,req.session.auth_member)
   if(req.session.member_name){
-    var html = template.HTML(req.session.member_name)
+    if(req.session.auth_member === '1' && req.session.auth_memberD==='1'){
+      var html = template.HTML(req.session.member_name,'block')
+      if(req.session.auth_tts==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block')
+        if(req.session.auth_stb ==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block','block')
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block','block','block')}
+        }else{
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block')}
+        }
+      }else{
+        var html = template.HTML(req.session.member_name,'block')
+        if(req.session.auth_stb==='1'){
+          var html = template.HTML(req.session.member_name,'block',undefined,undefined,'block')
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block')
+        }
+        }else{
+          var html = template.HTML(req.session.member_name,'block')
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block')
+        }
+        }
+      }
+    }else if(req.session.auth_member === '1' && req.session.auth_memberD==='0'){
+      var html = template.HTML(req.session.member_name,undefined,'block')
+      if(req.session.auth_tts==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block')
+        if(req.session.auth_stb ==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block','block')
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block','block','block')}
+
+        }else{
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block')}
+        }
+      }else{
+        var html = template.HTML(req.session.member_name,undefined,'block')
+        if(req.session.auth_stb==='1'){
+          var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block')
+        }
+        }else{
+          var html = template.HTML(req.session.member_name,undefined,'block')
+          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,'block')
+        }
+        }
+      }
+    }else{
+      var html = template.HTML(req.session.member_name)
+      if(req.session.auth_tts ==='1'){
+        var html = template.HTML(req.session.member_name,undefined,'block')
+        if(req.session.auth_stb ==='1'){
+          var html = template.HTML(req.session.member_name,undefined,'block','block')
+          if(req.session.auth_channel ==='1'){
+            var html = template.HTML(req.session.member_name,undefined,'block','block','block')
+          }
+        }
+        if(req.session.auth_stb==='0'){
+          if(req.session.auth_channel==='1'){
+            var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
+          }
+        }
+      }
+      if(req.session.auth_tts ==='0'&& req.session.auth_stb ==='1'){
+        var html = template.HTML(req.session.member_name,undefined,undefined,'block')
+        if(req.session.auth_channel==='1'){
+          var html = template.HTML(req.session.member_name,undefined,undefined,'block','block')
+        }
+      }
+      if(req.session.auth_tts ==='0'&& req.session.auth_stb ==='0'&&req.session.auth_channel==='1'){
+        var html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block')
+      }
+    }
     req.session.save(() => {
       res.send(html);
     });
@@ -35,10 +102,16 @@ router.post("/login", function(req,res,next){
     body:data1,
     json: true
   }, function(err,response,body){
-      console.log(body)
+      console.log(body.data.member_info[0])
       var login_result = body.result.ret
       if(login_result === 'success'){
-        req.session.member_name = body.data.member_info.name //세션 저장
+        req.session.member_name = body.data.member_info[0].name //세션 저장
+        req.session.auth_member = body.data.member_info[0].member
+        req.session.auth_memberD = body.data.member_info[0].member_detail
+        req.session.auth_tts = body.data.member_info[0].tts
+        req.session.auth_stb = body.data.member_info[0].stb
+        req.session.auth_channel = body.data.member_info[0].channel_update
+        
         res.redirect('/main')
       }else{
         res.redirect('/')

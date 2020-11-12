@@ -1,12 +1,10 @@
 
-
 $(document).ready(function(){  
     
     var width = window.outerWidth;
         if (width <= 450) {
             $('#sidebar').attr('class','');
             $('#member_name3').css('display','none');
-            $('#name3').text('업체명/매장명');
             $('#set2').css('class', 'md-3');
             
             
@@ -17,8 +15,10 @@ $(document).ready(function(){
 
 function pagereload(id){
     $("#bodycontents").load(`./assets/js/side_menu/${id}.html`);
+    
     var width = window.outerWidth;
     if (width <= 450) {
+        
         var sidebar = document.getElementById('sidebar');
         if (sidebar.classList.contains('active')) sidebar.classList.remove('active');
     }
@@ -375,8 +375,10 @@ function member_tableCreate(){
                             <div style="font-size:12pt">-최근로그인: ${moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")}<br></div>
                             <div style="font-size:12pt">-신탁/비신탁: ${memsrc}<br></div>
                             <div style="font-size:12pt">-계약상태: ${ memContr}</div>
-                            <div id="hds1"style="font-size:12pt">-하드시리얼 초기화
-                                <button onclick="reset_hardSerial('${memid1}')" id="modalIn"  class="btn btn-primary btn-sm">초기화</button></div>
+                            <div id="cmTab"style="font-size:12pt">-안드로이드 CM_TAB 부여
+                                <button onclick="cmApply('${memid1}')" id="modalIn2"  class="btn btn-primary btn-sm">적용</button></div>
+                            <div id="hds1"style="font-size:12pt; margin-top:5px;">-하드시리얼 초기화
+                                <button onclick="reset_hardSerial('${memid1}')" id="modalIn"  class="btn btn-primary btn-sm">적용</button></div>
                             <div id="pwc1"style="position:relative; font-size:12pt">-비밀번호 변경<span style="font-size:10pt;">(미입력시'12345'로 변경)</span>
                                 <input style="position:absolute; top:97%; right:62%" id="mpw1`+`${key}" class="moDdal1"  type="password">
                                 <input style="position:absolute; top:97%; right:25%" id="mpw2`+`${key}" class="moDdal1"  type="password">
@@ -405,6 +407,188 @@ function member_tableCreate(){
     } 
 };
 
+function member_tableCreate1(){
+    
+    var storeName1 = document.getElementById('stora').value;
+    if (storeName1 === ''){
+        return alert("검색어를 입력해주세요")
+    }else{
+        const data = { word: storeName1 };
+        
+        
+        fetch('http://webapi.rhymeduck.com/a/v1/member/search', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+        if (data.result.ret ==='failure'){
+            alert('검색결과가 없습니다.')
+        }else{
+        var html1='';
+        var html ='';
+        var len = data.data.member_list.length-1;
+        var count1 = range(0,len);
+        for(key in count1){
+            var width = window.outerWidth;
+            var meminfo = data.data.member_list[key].member_info;
+            var memname = data.data.member_list[key].name;
+            var memid = data.data.member_list[key].id;
+            var memver = data.data.member_list[key].version;
+            var memrecentLog = data.data.member_list[key].recentlogin;
+            var memid1 = data.data.member_list[key].member_id;
+            var memsrc = data.data.member_list[key].music_src;
+            var memContr = data.data.member_list[key].contract_state;
+            if(memContr === 1){
+                memContr='계약중'
+            }else{
+                memContr='계약만료'
+            }
+            html += '<tr><th id="mid2" scope="row">'+memid1+'</th>';
+            if (width <= 450) {
+                
+                if(meminfo.substr(8)===''){
+                    html += '<td >'+memname+'<br>'+meminfo+'</td>';
+                }else{
+                    html += '<td >'+memname+'<br>'+meminfo.substr(0,8)+'<br>'+meminfo.substr(8,16)+'<br>'+meminfo.substr(16)+'</td>';
+                }
+            }else if(width>=450){
+                html += '<td >'+memname+'</td>';
+                html += '<td >'+meminfo+'</td>';
+            }
+
+            html += '<td ><span id="xx4">x</span>'+memid+'</td>';
+            html += '<td id="version2"><span id="xx2">x</span>'+memver+'</td>';
+            if(memrecentLog === null){
+                html += '<td id="recentLog2">'+''+'</td>';
+            }else{
+                html += '<td id="recentLog2"><span id="xx3">xx</span>'+moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")+'</td>';
+            }
+            html += '<td id="src2" ><span id="xx1">xx</span>'+memsrc+'</td>';
+            html += `<td id="mobile_hdsr"><div class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-primary center-block" type="button" value="초기화" disabled></div></td>`;
+            html += `<td id="mobile_hdsr1">
+            <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Password change</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div  class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                    <i class="fas fa-lock prefix grey-text"></i><br>
+                  </div>
+                  <div style="margin-top:-60px" class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text"></i>
+                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                    <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
+                    <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
+                  </div>
+          
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button id="chPw`+`${key}" onclick="reset_pwd2('${memid1}','PwId`+`${key}','PwId_confirm`+`${key}')" class="btn btn-outline-primary btn-rounded waves-effect">change</button>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div style="width=5%">
+            <div  class="text-center" disabled>
+                
+
+                <button type="button" id="lbs3" class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm`+key+`" disabled>
+                변경
+                </button>
+            </div>
+            </div></td>`;
+            if(memrecentLog === null){
+                memrecentLog =''
+            }
+            
+            html += `<td >
+            <div>
+                <button type="button" id="lbs4" class="btn btn-primary  " data-toggle="modal" data-target="#exampleModalCenter${key}">
+                자세히
+                </button>
+            </div>`;
+
+            ;html += '</tr>';
+
+            html1 += `<div>
+            <div  class="modal fade" id="exampleModalCenter${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div style="z-index:998; " class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">세부사항</h5>
+                            
+                        </div>
+                        <div id="detail${key}"  class="modal-body">
+                            <div style="font-size:12pt">-MID: ${memid1}<br></div>
+                            <div style="font-size:12pt">-업체명: ${meminfo}<br></div>
+                            <div style="font-size:12pt">-매장명: ${memname}<br></div>
+                            <div style="font-size:12pt">-아이디: ${memid}<br></div>
+                            <div style="font-size:12pt">-버전: ${memver}<br></div>
+                            <div style="font-size:12pt">-최근로그인: ${moment(memrecentLog).format("YYYY-MM-DD HH:mm:ss")}<br></div>
+                            <div style="font-size:12pt">-신탁/비신탁: ${memsrc}<br></div>
+                            <div style="font-size:12pt">-계약상태: ${ memContr}</div>
+                            <div id="cmTab"style="font-size:12pt">-안드로이드 CM_TAB 부여
+                                <button onclick="cmApply('${memid1}')" id="modalIn2"  class="btn btn-primary btn-sm" disabled>적용</button></div>
+                            <div id="hds1"style="font-size:12pt; margin-top:5px;">-하드시리얼 초기화
+                                <button onclick="reset_hardSerial('${memid1}')" id="modalIn"  class="btn btn-primary btn-sm" disabled>적용</button></div>
+                            <div id="pwc1"style="position:relative; font-size:12pt">-비밀번호 변경<span style="font-size:10pt;">(미입력시'12345'로 변경)</span>
+                                <input style="position:absolute; top:97%; right:62%" id="mpw1`+`${key}" class="moDdal1"  type="password">
+                                <input style="position:absolute; top:97%; right:25%" id="mpw2`+`${key}" class="moDdal1"  type="password">
+                                <button id="modalIn1" onclick="reset_pwd2('${memid1}','mpw1`+`${key}','mpw2`+`${key}')"  class="btn btn-primary btn-sm" disabled>변경</button>
+                            </div>
+                            
+                        </div>
+                        <div id="detailBox" > 
+                            <div class="modal-body">
+                                <div class="modal-body mx-3" style="margin-top:-30px;"></div>
+                            </div> 
+                            </div>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+            </div>
+            </div>`;
+        }
+        $("#dynamicTbody").empty();
+        $("#dynamicTbody").append(html);
+        
+        $("#dynamicModal").empty();
+        $("#dynamicModal").append(html1);
+
+    } })
+    } 
+};
+
+function cmApply(member_id){
+    var data = {member_id : member_id}
+    fetch ('http://webapi.rhymeduck.com/a/v1/member/changecmtab',{
+        method: 'post',
+        headers:{
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response=>response.json())
+    .then(data => {
+        if(data.result.ret ==='success'){
+            alert('CM_tab이 부여되었습니다.')
+        }else{
+            alert('error입니다.')
+        }
+    })
+}
 
 function range(start, end) {
  

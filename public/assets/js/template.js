@@ -1,5 +1,5 @@
 module.exports = {
-    HTML:function(head_memberName){
+    HTML:function(head_memberName, display='none',display1="none", dis='none',display2='none',display3='none', ){
         return `
         <!DOCTYPE html>
 <html lang="en">
@@ -37,17 +37,24 @@ module.exports = {
         <ul class="menu">
             
             
-                <li class='sidebar-title'>계정 관리</li>
+                <li class='sidebar-title'>회원 관리</li>
             
       
-                <li class="sidebar-item">
-                    <a href="/main"  class='sidebar-link'>
+                <li  style="display:${display}" class="sidebar-item">
+                    <a href="#"  onclick="pagereload('member')" class='sidebar-link'>
                         <i data-feather="user" width="20"></i> 
-                        <span>멤버 계정 관리</span>
+                        <span>라임덕 계정 관리</span>
+                    </a>    
+                </li>
+
+                <li  style="display:${display1}" class="sidebar-item">
+                    <a href="#"  onclick="pagereload('member_nodetail')" class='sidebar-link'>
+                        <i data-feather="user" width="20"></i> 
+                        <span>라임덕 계정 관리detail x</span>
                     </a>    
                 </li>
             
-                <li class="sidebar-item">
+                <li style="display:${dis}" class="sidebar-item">
                     <a href="#" onclick="pagereload('TTS')" class='sidebar-link'>
                         <i data-feather="layers" width="20"></i> 
                         <span>TTS 계정관리</span>
@@ -55,22 +62,24 @@ module.exports = {
                      
                 </li>
 
+                <li style="display:${display2}" class="sidebar-item">
+                    <a href="#" onclick="pagereload('settop')" class='sidebar-link'>
+                        <i data-feather="grid" width="20"></i> 
+                        <span>셋톱 박스 관리</span>
+                    </a>    
+                </li>
+
                 <li class='sidebar-title'>음원 관리</li>
             
       
-                <li class="sidebar-item">
+                <li style="display:${display3}" class="sidebar-item">
                     <a href="javascript:channelList()" onclick="pagereload('update')" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
                         <span>채널 업데이트 Log</span>
                     </a>    
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="#" onclick="pagereload('settop')" class='sidebar-link'>
-                        <i data-feather="grid" width="20"></i> 
-                        <span>셋톱 박스 관리</span>
-                    </a>    
-                </li>
+                
 
 
         </ul>
@@ -98,57 +107,15 @@ module.exports = {
                 </div>
             </nav>
             
-<div id="bodycontents"class="main-content container-fluid">
-<div class="page-title">
-<h3>멤버 계정 관리</h3>
-<p class="text-subtitle text-muted">멤버 계정 조회</p>
-</div>
-<section class="section">
-<div class="row mb-4">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h4 class="card-title"></h4>
-                <div class="d-flex ">
-                    <input id="stora" type="text" placeholder="업체명,매장명,ID" onkeypress="enter_test2()" >
-                    <input id="stora2"type="button" class="btn  btn-outline-warning waves-effect" onclick="member_tableCreate()" value="검색">
+            <div  id="bodycontents" class="main-content container-fluid">
+
+                <div style="position:relative" class="auth1" >
+                    <span id="mainHome">Wantreez Music</span>
+                    <span id="mainHome1">WORLD'S BEST B2B MUSIC SERVICE</span> 
                 </div>
-              
-            </div>
-            <table class="table table-bordered table-striped mb-0" id="table2">
-                    <thead>
-                        <tr>
-                            <th id="mid3">MID</th>
-                            <th id="name3">업체명</th>
-                            <th id="member_name3">매장명</th>
-                            <th id="id3">아이디</th>
-                            <th id="version3">버전</th>
-                            <th id="recentLog3">최근로그인</th>
-                            <th id="src3">신탁/비신탁</th>
-                            <th id="hardSerial3">하드시리얼<br id="br1">초기화</th>
-                            <th id="chpwd3">비밀번호<br id="br2">변경</th>
-                            <th id="g3">자세히</th>
-                        </tr>
-                    </thead>
-                </table>
-            <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar">
-                <div class="table-responsive">
-                    <table class="table table-striped mb-0" id="table1">
-                        
-                        <tbody id="dynamicTbody">
-                           
-                        </tbody>
-                    </table>
-                </div>
-                <div id="dynamicModal"></div>
                 
+
             </div>
-        </div>
-    </div>
-    
-</div>
-</section>
-</div>
 
             <footer>
                 
