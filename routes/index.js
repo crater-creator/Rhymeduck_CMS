@@ -16,70 +16,70 @@ router.get('/main', function(req, res, next) {
   console.log(req.session.auth_tts,req.session.auth_member)
   var html = template.HTML(req.session.member_name,'block')
   if(req.session.member_name){
-    if(req.session.auth_member === '1' && req.session.auth_memberD==='1'){
+    if(req.session.auth_member === 1 && req.session.auth_memberD===1){
        html = template.HTML(req.session.member_name,'block')
-      if(req.session.auth_tts==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block')
-        if(req.session.auth_stb ==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block','block')
-          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block','block','block')}
+      if(req.session.auth_tts===1){ html = template.HTML(req.session.member_name,'block',undefined,'block')
+        if(req.session.auth_stb ===1){ html = template.HTML(req.session.member_name,'block',undefined,'block','block')
+          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,'block','block','block')}
         }else{
-          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block')}
+          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block')}
         }
       }else{
          html = template.HTML(req.session.member_name,'block')
-        if(req.session.auth_stb==='1'){
+        if(req.session.auth_stb===1){
            html = template.HTML(req.session.member_name,'block',undefined,undefined,'block')
-          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block')
+          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block')
         }
         }else{
            html = template.HTML(req.session.member_name,'block')
-          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block')
+          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block')
         }
         }
       }
-    }else if(req.session.auth_member === '1' && req.session.auth_memberD==='0'){
+    }else if(req.session.auth_member === 1 && req.session.auth_memberD===0){
        html = template.HTML(req.session.member_name,undefined,'block')
-      if(req.session.auth_tts==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block')
-        if(req.session.auth_stb ==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block','block')
-          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block','block','block')}
+      if(req.session.auth_tts===1){ html = template.HTML(req.session.member_name,undefined,'block','block')
+        if(req.session.auth_stb ===1){ html = template.HTML(req.session.member_name,undefined,'block','block','block')
+          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,undefined,'block','block','block','block')}
 
         }else{
-          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block')}
+          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block')}
         }
       }else{
          html = template.HTML(req.session.member_name,undefined,'block')
-        if(req.session.auth_stb==='1'){
+        if(req.session.auth_stb===1){
            html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block')
+          if(req.session.auth_channel===1){var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block')
         }
         }else{
            html = template.HTML(req.session.member_name,undefined,'block')
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,'block')
+          if(req.session.auth_channel===1){var html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,'block')
         }
         }
       }
     }else{
        html = template.HTML(req.session.member_name)
-      if(req.session.auth_tts ==='1'){
+      if(req.session.auth_tts ===1){
          html = template.HTML(req.session.member_name,undefined,'block')
-        if(req.session.auth_stb ==='1'){
+        if(req.session.auth_stb ===1){
            html = template.HTML(req.session.member_name,undefined,'block','block')
-          if(req.session.auth_channel ==='1'){
+          if(req.session.auth_channel ===1){
              html = template.HTML(req.session.member_name,undefined,'block','block','block')
           }
         }
-        if(req.session.auth_stb==='0'){
-          if(req.session.auth_channel==='1'){
+        if(req.session.auth_stb===0){
+          if(req.session.auth_channel===1){
              html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
           }
         }
       }
-      if(req.session.auth_tts ==='0'&& req.session.auth_stb ==='1'){
+      if(req.session.auth_tts ===0&& req.session.auth_stb ===1){
          html = template.HTML(req.session.member_name,undefined,undefined,'block')
-        if(req.session.auth_channel==='1'){
+        if(req.session.auth_channel===1){
            html = template.HTML(req.session.member_name,undefined,undefined,'block','block')
         }
       }
-      if(req.session.auth_tts ==='0'&& req.session.auth_stb ==='0'&&req.session.auth_channel==='1'){
+      if(req.session.auth_tts ===0&& req.session.auth_stb ===0&&req.session.auth_channel===1){
          html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block')
       }
     }
