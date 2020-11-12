@@ -1,5 +1,5 @@
 module.exports = {
-    HTML:function(head_memberName, display='none',display1="none", dis='none',display2='none',display3='none', ){
+    HTML:function(head_memberName, display='none',display1="none", dis='none',display2='none',display3='none'){
         return `
         <!DOCTYPE html>
 <html lang="en">
