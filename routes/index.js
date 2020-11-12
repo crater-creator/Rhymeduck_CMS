@@ -14,72 +14,73 @@ router.get('/', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
   console.log(req.session.auth_tts,req.session.auth_member)
+  var html = template.HTML(req.session.member_name,'block')
   if(req.session.member_name){
     if(req.session.auth_member === '1' && req.session.auth_memberD==='1'){
-      var html = template.HTML(req.session.member_name,'block')
-      if(req.session.auth_tts==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block')
-        if(req.session.auth_stb ==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block','block')
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block','block','block')}
+       html = template.HTML(req.session.member_name,'block')
+      if(req.session.auth_tts==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block')
+        if(req.session.auth_stb ==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block','block')
+          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block','block','block')}
         }else{
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block')}
+          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block')}
         }
       }else{
-        var html = template.HTML(req.session.member_name,'block')
+         html = template.HTML(req.session.member_name,'block')
         if(req.session.auth_stb==='1'){
-          var html = template.HTML(req.session.member_name,'block',undefined,undefined,'block')
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block')
+           html = template.HTML(req.session.member_name,'block',undefined,undefined,'block')
+          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block')
         }
         }else{
-          var html = template.HTML(req.session.member_name,'block')
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block')
+           html = template.HTML(req.session.member_name,'block')
+          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block')
         }
         }
       }
     }else if(req.session.auth_member === '1' && req.session.auth_memberD==='0'){
-      var html = template.HTML(req.session.member_name,undefined,'block')
-      if(req.session.auth_tts==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block')
-        if(req.session.auth_stb ==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block','block')
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block','block','block')}
+       html = template.HTML(req.session.member_name,undefined,'block')
+      if(req.session.auth_tts==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block')
+        if(req.session.auth_stb ==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block','block')
+          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block','block','block')}
 
         }else{
-          if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block')}
+          if(req.session.auth_channel==='1'){ html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block')}
         }
       }else{
-        var html = template.HTML(req.session.member_name,undefined,'block')
+         html = template.HTML(req.session.member_name,undefined,'block')
         if(req.session.auth_stb==='1'){
-          var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
+           html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
           if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block')
         }
         }else{
-          var html = template.HTML(req.session.member_name,undefined,'block')
+           html = template.HTML(req.session.member_name,undefined,'block')
           if(req.session.auth_channel==='1'){var html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,'block')
         }
         }
       }
     }else{
-      var html = template.HTML(req.session.member_name)
+       html = template.HTML(req.session.member_name)
       if(req.session.auth_tts ==='1'){
-        var html = template.HTML(req.session.member_name,undefined,'block')
+         html = template.HTML(req.session.member_name,undefined,'block')
         if(req.session.auth_stb ==='1'){
-          var html = template.HTML(req.session.member_name,undefined,'block','block')
+           html = template.HTML(req.session.member_name,undefined,'block','block')
           if(req.session.auth_channel ==='1'){
-            var html = template.HTML(req.session.member_name,undefined,'block','block','block')
+             html = template.HTML(req.session.member_name,undefined,'block','block','block')
           }
         }
         if(req.session.auth_stb==='0'){
           if(req.session.auth_channel==='1'){
-            var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
+             html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
           }
         }
       }
       if(req.session.auth_tts ==='0'&& req.session.auth_stb ==='1'){
-        var html = template.HTML(req.session.member_name,undefined,undefined,'block')
+         html = template.HTML(req.session.member_name,undefined,undefined,'block')
         if(req.session.auth_channel==='1'){
-          var html = template.HTML(req.session.member_name,undefined,undefined,'block','block')
+           html = template.HTML(req.session.member_name,undefined,undefined,'block','block')
         }
       }
       if(req.session.auth_tts ==='0'&& req.session.auth_stb ==='0'&&req.session.auth_channel==='1'){
-        var html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block')
+         html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block')
       }
     }
     req.session.save(() => {
@@ -111,7 +112,6 @@ router.post("/login", function(req,res,next){
         req.session.auth_tts = body.data.member_info[0].tts
         req.session.auth_stb = body.data.member_info[0].stb
         req.session.auth_channel = body.data.member_info[0].channel_update
-        
         res.redirect('/main')
       }else{
         res.redirect('/')

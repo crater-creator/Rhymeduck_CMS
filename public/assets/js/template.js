@@ -50,7 +50,7 @@ module.exports = {
                 <li  style="display:${display1}" class="sidebar-item">
                     <a href="#"  onclick="pagereload('member_nodetail')" class='sidebar-link'>
                         <i data-feather="user" width="20"></i> 
-                        <span>라임덕 계정 관리detail x</span>
+                        <span>라임덕 계정 관리</span>
                     </a>    
                 </li>
             
