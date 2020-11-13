@@ -1,13 +1,10 @@
 
 $(document).ready(function(){  
-    
     var width = window.outerWidth;
         if (width <= 450) {
             $('#sidebar').attr('class','');
             $('#member_name3').css('display','none');
             $('#set2').css('class', 'md-3');
-            
-            
         }else if(width>=450){
             $('#sidebar').attr('class','active');
         }
@@ -15,10 +12,8 @@ $(document).ready(function(){
 
 function pagereload(id){
     $("#bodycontents").load(`./assets/js/side_menu/${id}.html`);
-    
     var width = window.outerWidth;
     if (width <= 450) {
-        
         var sidebar = document.getElementById('sidebar');
         if (sidebar.classList.contains('active')) sidebar.classList.remove('active');
     }
@@ -33,15 +28,11 @@ function register1(){
 }
 
 function register(){
-    
     var name = document.getElementsByClassName('form-control')[0].value
     var ID = document.getElementsByClassName('form-control')[1].value
     var pw = document.getElementsByClassName('form-control')[2].value
     var pw1 = document.getElementsByClassName('form-control')[3].value
-    
-
     const data = { reg_user: ID, reg_pw: pw, name: name };
-
     fetch('http://webapi.rhymeduck.com/a/v1/backoffice/join', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -101,7 +92,6 @@ function settableCreate(){
         return alert("매장명을 입력해주세요")
     }else{
         var data = { word: settopName };}
-
         fetch('http://webapi.rhymeduck.com/a/v1/member/stb_search',{
             method: 'POST',
             headers: {
@@ -144,23 +134,16 @@ function settableCreate(){
                 }
                 $("#dynamicTbody1").empty();
                 $("#dynamicTbody1").append(html);
-
             }
-            
         })
-
-        
 }
 
 function TTStableCreate(){
-    
     var storeName1 = document.getElementById('stora1').value;
     if (storeName1 === ''){
         return alert("매장명을 입력해주세요")
     }else{
         const data = { word: storeName1 };
-        
-        
         fetch('http://webapi.rhymeduck.com/a/v1/soundfier/search', {
         method: 'POST', 
         headers: {
@@ -179,7 +162,6 @@ function TTStableCreate(){
         var len = len1.length-1;
         var count1 = range(0,len);
         var width = window.outerWidth;
-        
         for(key in count1){
             var memname1 = data.data.member_list[key].member_name
             
@@ -242,20 +224,16 @@ function TTStableCreate(){
 
         $("#dynamicModal").empty();
         $("#dynamicModal").append(html1);
-        
         })
     } 
 };
 
 function member_tableCreate(){
-    
     var storeName1 = document.getElementById('stora').value;
     if (storeName1 === ''){
         return alert("검색어를 입력해주세요")
     }else{
         const data = { word: storeName1 };
-        
-        
         fetch('http://webapi.rhymeduck.com/a/v1/member/search', {
         method: 'POST', 
         headers: {
@@ -316,8 +294,8 @@ function member_tableCreate(){
               <div class="modal-content">
                 <div class="modal-header text-center">
                   <h4 class="modal-title w-100 font-weight-bold">Password change</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <button id="outy" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span  aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div  class="modal-body mx-3">
@@ -347,7 +325,6 @@ function member_tableCreate(){
             if(memrecentLog === null){
                 memrecentLog =''
             }
-            
             html += `<td >
             <div>
                 <button type="button" id="lbs4" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${key}">
@@ -408,14 +385,11 @@ function member_tableCreate(){
 };
 
 function member_tableCreate1(){
-    
     var storeName1 = document.getElementById('stora').value;
     if (storeName1 === ''){
         return alert("검색어를 입력해주세요")
     }else{
         const data = { word: storeName1 };
-        
-        
         fetch('http://webapi.rhymeduck.com/a/v1/member/search', {
         method: 'POST', 
         headers: {
@@ -470,7 +444,7 @@ function member_tableCreate1(){
             html += '<td id="src2" ><span id="xx1">xx</span>'+memsrc+'</td>';
             html += `<td id="mobile_hdsr"><div class="text-center"><input  id="lbs2" onclick="reset_hardSerial('${memid1}')" class="btn btn-primary center-block" type="button" value="초기화" disabled></div></td>`;
             html += `<td id="mobile_hdsr1">
-            <div class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <div name="modalhide" class="modal fade" id="modalLoginForm`+ key +`" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -484,13 +458,15 @@ function member_tableCreate1(){
                   <div class="md-form mb-5">
                     <i class="fas fa-lock prefix grey-text"></i><br>
                   </div>
-                  <div style="margin-top:-60px" class="md-form mb-4">
+                  <div id="nls" style="margin-top:-60px" class="md-form mb-4">
                     <i class="fas fa-lock prefix grey-text"></i>
-                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+                    
+                    <label name="label1" data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
                     <input type="password"  id="PwId`+`${key}" name="defaultForm-pass" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
+                    <label name="label2" data-error="wrong" data-success="right" for="defaultForm-pass">Password confirm</label>
                     <input onkeypress="if(window.event.keyCode ==13){chPw`+`${key}.click()}" type="password" id="PwId_confirm`+`${key}" name="defaultForm-pass" class="form-control validate">
-                  </div>
+                    
+                </div>
           
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
@@ -591,23 +567,17 @@ function cmApply(member_id){
 }
 
 function range(start, end) {
- 
     var arr = [];
- 
     var length = end - start; 
- 
     for (var i = 0; i <= length; i++) { 
- 
         arr[i] = start;
         start++;
     }
- 
     return arr;
 }
 
 function reset_pwdCount(count7){
     const data = { member_info: count7 };
-    
     fetch('http://webapi.rhymeduck.com/a/v1/soundfier/initpw', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -622,7 +592,6 @@ function reset_pwdCount(count7){
     }else{
         alert("error입니다.")
     }
-    
     });
 }
 
@@ -643,9 +612,7 @@ function reset_pwd2(member_id, pwId, pwId_confirm){
         .then(response => response.json())
         .then(data => {
             if ( data.result.ret === 'success'){
-                location.href='main'
                 alert('비밀번호가 12345로 변경되었습니다..')
-
             }else{
                 alert('다시 시도해주세요')
             }
@@ -656,7 +623,6 @@ function reset_pwd2(member_id, pwId, pwId_confirm){
         alert('비밀번호를 입력해주세요.')
     }else{
         var data = { member_id: member_Id, member_pw: password };
-        console.log(data)
         fetch('http://webapi.rhymeduck.com/a/v1/member/changepw', {
         method: 'POST', // or 'PUT'
         headers: {
@@ -666,10 +632,16 @@ function reset_pwd2(member_id, pwId, pwId_confirm){
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            if ( data.result.ret === 'success'){
-                location.href='main'
+            if ( data.result.ret === 'success'){ 
+                var el = document.getElementById(pwId)
+                var el1 = document.getElementById(pwId_confirm)
+                el.value=''
+                el1.value=''
+                $('.modal.fade.show').modal('hide')
+                $('.modal-backdrop').removeClass();
+
                 alert('비밀번호가 변경되었습니다.')
+                
             }else{
                 alert('다시 시도해주세요')
             }
@@ -683,16 +655,12 @@ function reset_pwd3(member_info, pwId,pwId_confirm){
     var pwdId_confirm = pwId_confirm
     var password = document.getElementById(pwdId).value
     var password1 = document.getElementById(pwdId_confirm).value
-    
-
     if(password1 === '' || password===''){
         alert('비밀번호를 입력해주세요.')
     }else if(password !== password1){
         alert('비밀번호를 확인해주세요.')
     }else{
         const data = { member_info: member_Id, member_pw: password };
-        console.log(data)
-
         fetch('http://webapi.rhymeduck.com/a/v1/soundfier/changepw', {
         method: 'POST', // or 'PUT'
         headers: {
@@ -703,7 +671,12 @@ function reset_pwd3(member_info, pwId,pwId_confirm){
         .then(response => response.json())
         .then(data => {
             if ( data.result.ret === 'success'){
-                location.href='main'
+                var el = document.getElementById(pwdId)
+                var el1 = document.getElementById(pwdId_confirm)
+                el.value=''
+                el1.value=''
+                $('.modal.fade.show').modal('hide')
+                $('.modal-backdrop').removeClass();
                 alert('성공입니다.')
             }else{
                 alert('다시 시도해주세요')
@@ -714,7 +687,6 @@ function reset_pwd3(member_info, pwId,pwId_confirm){
 
 function reset_hardSerial(member){
     const data = { member_id: member };
-    
     fetch('http://webapi.rhymeduck.com/a/v1/member/inithdd', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -729,7 +701,6 @@ function reset_hardSerial(member){
     }else{
         alert("error입니다.")
     }
-    
     });
 }
 
@@ -738,7 +709,6 @@ function newttsCreate(){
     var id = document.getElementById('sId').value
     var password = document.getElementById('sPas').value
     var data = {member_info:id, member_name:storename, member_pw:password}
-    
     fetch('http://webapi.rhymeduck.com/a/v1/soundfier/create', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -749,7 +719,14 @@ function newttsCreate(){
     .then(response => response.json())
     .then(data => {
     if(data.result.ret === 'success'){
-        location.href='main'
+        var el = document.getElementById('sName')
+        var el1 = document.getElementById('sId')
+        var el2 = document.getElementById('sPas')
+        el.value=''
+        el1.value=''
+        el2.value=''
+        $('.modal.fade.show').modal('hide')
+        $('.modal-backdrop').removeClass();
         alert("계정이 생성되었습니다.")
     }else{
         alert("error입니다.")
@@ -757,20 +734,16 @@ function newttsCreate(){
     });
 }
 
-
 function channelList() {
 	$.post('/get_ch_update_loglist', function (data) {
 		loglist = data.toString().split(',');
 		var context = '<span>';
 		var cnt = 1;
-
 		for(var i = loglist.length-1 ; i >= 0 ; i--) {
             context += `<a class="ch_update_loglist" href="javascript:read_ch_update_log('${i}')">`+loglist[i]+'</a></span><br><span>';
 			cnt++;
 		}
-
-		$('#ch_update_log_list').html(context);
-					
+		$('#ch_update_log_list').html(context);		
 	})
 } 
 
@@ -780,7 +753,6 @@ function read_ch_update_log(i) {
 	})
 }
 
-
 function settop_reset(member_id) {
 	if (confirm('실행하시겠습니까?'))
 		$.post('/settop_reset', { member_id : member_id } ,function (data) {
@@ -789,7 +761,6 @@ function settop_reset(member_id) {
 }
 
 function ent_reset(enterprise_id) {
-    console.log(enterprise_id)
 	if (confirm('실행하시겠습니까?'))
 		$.post('/settop_etp_reset', { enterprise_id : enterprise_id } ,function (data) {
 			alert(data);
@@ -797,7 +768,6 @@ function ent_reset(enterprise_id) {
 }
 
 function ent_reset1(enterprise_id) {
-    
 	if (confirm('실행하시겠습니까?'))
 		$.post('/settop_etp_reset1', { enterprise_id : enterprise_id } ,function (data) {
 			alert(data);

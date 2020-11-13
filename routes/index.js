@@ -7,13 +7,13 @@ var template = require('../public/assets/js/template.js');
 var cmd = require('node-cmd')
 var fs = require('fs');
 const { options } = require('../app.js');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('login');
 });
 
 router.get('/main', function(req, res, next) {
-  console.log(req.session.auth_tts,req.session.auth_member)
   var html = template.HTML(req.session.member_name,'block')
   if(req.session.member_name){
     if(req.session.auth_member === 1 && req.session.auth_memberD===1){
@@ -88,14 +88,10 @@ router.get('/main', function(req, res, next) {
     });
   }else{
     res.render('error-403');
-    
   }
-  
 });
-
 router.post("/login", function(req,res,next){
   const body = req.body;
-  
   const data1 = { reg_user: body.user_id2, reg_pw: body.user_pwd2 };
   request.post({
     headers:{'content-type':'application/json'},
@@ -103,7 +99,6 @@ router.post("/login", function(req,res,next){
     body:data1,
     json: true
   }, function(err,response,body){
-      console.log(body.data.member_info[0])
       var login_result = body.result.ret
       if(login_result === 'success'){
         req.session.member_name = body.data.member_info[0].name //세션 저장
@@ -115,11 +110,8 @@ router.post("/login", function(req,res,next){
         res.redirect('/main')
       }else{
         res.redirect('/')
-        
       }
   })
-  
-
 })
 router.get('/logout', function(req, res, next) {
   if(req.session.member_name){
@@ -131,7 +123,6 @@ router.get('/logout', function(req, res, next) {
       console.log('세션 삭제 성공')
       
       res.render('login');
-      
     })
   }
 });
@@ -142,7 +133,7 @@ router.get('/register', function(req, res, next) {
 
 router.post('/settop_reset', function (request, response) {
   var member_id = request.body.member_id
-  console.log(member_id)
+  
   cmd.run('mosquitto_pub -t vodka_python/user_'+member_id+' -m "reset|"');
   response.send('리셋완료');
 });
@@ -211,7 +202,7 @@ router.post('/get_ch_update_loglist', function (request, response) {
 
 router.post('/read_ch_update_log', function (request, response) {
   var file_path = request.body.file_path
-  console.log(file_path)
+  
   fs.readFile('/data/log/music_channel_update/'+file_path, 'utf-8',function(error, data){
    
     response.send(data);

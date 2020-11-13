@@ -102,8 +102,8 @@ display: block;
     div > #modalIn2{font-size: 8pt; }
     div > #modalIn1{font-size: 8pt; height: 31px; }
     #member_name3{display: none;}
-    div > #mainHome{font-size: 15pt; margin-left: 29%;}
-    div > #mainHome1{margin-left: 26.5%; margin-top: 250px;}
+    div > #mainHome{font-size: 25pt;}
+   
 }
 
 @media(max-width: 321px){
@@ -125,8 +125,8 @@ display: block;
     div > #modalIn{font-size: 6.5pt; }
     div > #modalIn2{font-size: 6.5pt;}
     div > #modalIn1{font-size: 6.5pt;  margin-top: 35px; }
-    div > #mainHome{font-size: 15pt; margin-left: 24%; margin-top: 150px;}
-    div > #mainHome1{margin-left: 20%; margin-top: 200px;}
+    div > #mainHome{font-size: 23pt;}
+    
 }
 
 #modalIn1{margin-top: 10px; font-size: 8pt;  float:right}
@@ -185,6 +185,6 @@ display: block;
 #settop3{font-size:15pt; padding: 2.5vh 3.5vw 2.5vh 3.5vw; margin-right: 65px;margin-bottom: 20px;}
 #settop4{font-size:15pt; padding: 2.5vh 3.5vw 2.5vh 3.5vw; margin-right: 65px;margin-bottom: 20px;}
 #settop5{font-size:15pt; padding: 2.5vh 3.5vw 2.5vh 3.5vw; margin-right: 65px;margin-bottom: 20px;}
-#mainHome{z-index:1; color:gold; position:absolute; font-size: 3vw; font-weight: bold; margin: 200px 0 0 37%;}
-#mainHome1{z-index:1; color:white; position:absolute; font-size: 1vw; margin: 330px 0 0 40.5%;}
+#mainHome{color:gold; font-weight:bold; margin-top:300px; font-size: 40pt;}
+#mainHome1{color:white; margin-top:30%}
 

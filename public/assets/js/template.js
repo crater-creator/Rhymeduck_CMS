@@ -109,9 +109,13 @@ module.exports = {
             
             <div  id="bodycontents" class="main-content container-fluid">
 
-                <div style="position:relative" class="auth1" >
-                    <span id="mainHome">Wantreez Music</span>
-                    <span id="mainHome1">WORLD'S BEST B2B MUSIC SERVICE</span> 
+                <div  class="auth1" >
+                    <div  class="container text-center pt-32">
+                        <div style="margin-top:10%">
+                        <span id="mainHome">Wantreez Music</span><br>
+                        <span id="mainHome1">WORLD'S BEST B2B MUSIC SERVICE</span> 
+                        </div>
+                    </div>
                 </div>
                 
 
