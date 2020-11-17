@@ -82,7 +82,7 @@ module.exports = {
                 <li style="display:${display4}" class="sidebar-item">
                     <a href="javascript:unsafeList()" onclick="pagereload('unsafe')" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
-                        <span>언세이프 리스트</span>
+                        <span>UNSAFE 리스트</span>
                     </a>    
                 </li>
 

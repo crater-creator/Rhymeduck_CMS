@@ -92,14 +92,14 @@ router.post("/login", function(req,res,next){
   }, function(err,response,body){
       var login_result = body.result.ret
       if(login_result === 'success'){
-        console.log(body.data.member_info[0])
+        
         req.session.member_name = body.data.member_info[0].name //세션 저장
-        req.session.auth_member = 1
-        req.session.auth_memberD = 0
-        req.session.auth_tts = 1
-        req.session.auth_stb = 0
-        req.session.auth_channel = 0
-        req.session.auth_unsafe = 1
+        req.session.auth_member = body.data.member_info[0].member
+        req.session.auth_memberD = body.data.member_info[0].member_detail
+        req.session.auth_tts = body.data.member_info[0].tts
+        req.session.auth_stb = body.data.member_info[0].stb
+        req.session.auth_channel = body.data.member_info[0].name.channel_update
+        req.session.auth_unsafe = body.data.member_info[0].unsafe
         res.redirect('/main')
       }else{
         res.redirect('/')
