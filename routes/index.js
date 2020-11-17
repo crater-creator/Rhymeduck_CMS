@@ -21,6 +21,7 @@ router.get('/main', function(req, res, next) {
   var d = req.session.auth_stb 
   var e = req.session.auth_channel 
   var f = req.session.auth_unsafe
+  
 
   if (a===1&&b===0&&c===0&&d===1&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,'block',undefined,'block',undefined,undefined)}
   else if(a===1&&b===0&&c===0&&d===1&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block',undefined)}
@@ -98,8 +99,9 @@ router.post("/login", function(req,res,next){
         req.session.auth_memberD = body.data.member_info[0].member_detail
         req.session.auth_tts = body.data.member_info[0].tts
         req.session.auth_stb = body.data.member_info[0].stb
-        req.session.auth_channel = body.data.member_info[0].name.channel_update
+        req.session.auth_channel = body.data.member_info[0].channel_update
         req.session.auth_unsafe = body.data.member_info[0].unsafe
+        
         res.redirect('/main')
       }else{
         res.redirect('/')
