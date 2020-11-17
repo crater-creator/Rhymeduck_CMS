@@ -1,5 +1,5 @@
 module.exports = {
-    HTML:function(head_memberName, display='none',display1="none", dis='none',display2='none',display3='none'){
+    HTML:function(head_memberName, display='none',display1="none", dis='none',display2='none',display3='none', display4='none'){
         return `
         <!DOCTYPE html>
 <html lang="en">
@@ -76,6 +76,13 @@ module.exports = {
                     <a href="javascript:channelList()" onclick="pagereload('update')" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
                         <span>채널 업데이트 Log</span>
+                    </a>    
+                </li>
+
+                <li style="display:${display4}" class="sidebar-item">
+                    <a href="javascript:unsafeList()" onclick="pagereload('unsafe')" class='sidebar-link'>
+                        <i data-feather="file-plus" width="20"></i> 
+                        <span>언세이프 리스트</span>
                     </a>    
                 </li>
 

@@ -14,81 +14,72 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/main', function(req, res, next) {
-  var html = template.HTML(req.session.member_name,'block')
-  if(req.session.member_name){
-    if(req.session.auth_member === 1 && req.session.auth_memberD===1){
-       html = template.HTML(req.session.member_name,'block')
-      if(req.session.auth_tts===1){ html = template.HTML(req.session.member_name,'block',undefined,'block')
-        if(req.session.auth_stb ===1){ html = template.HTML(req.session.member_name,'block',undefined,'block','block')
-          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,'block','block','block')}
-        }else{
-          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block')}
-        }
-      }else{
-         html = template.HTML(req.session.member_name,'block')
-        if(req.session.auth_stb===1){
-           html = template.HTML(req.session.member_name,'block',undefined,undefined,'block')
-          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block')
-        }
-        }else{
-           html = template.HTML(req.session.member_name,'block')
-          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block')
-        }
-        }
-      }
-    }else if(req.session.auth_member === 1 && req.session.auth_memberD===0){
-       html = template.HTML(req.session.member_name,undefined,'block')
-      if(req.session.auth_tts===1){ html = template.HTML(req.session.member_name,undefined,'block','block')
-        if(req.session.auth_stb ===1){ html = template.HTML(req.session.member_name,undefined,'block','block','block')
-          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,undefined,'block','block','block','block')}
+  var html = template.HTML(req.session.member_name)
+  var a =req.session.auth_member //두번째꺼
+  var b = req.session.auth_memberD //첫번째꺼   html = template.HTML(req.session.member_name,undefined,undefined,undefined,undefined,undefined,undefined)
+  var c = req.session.auth_tts
+  var d = req.session.auth_stb 
+  var e = req.session.auth_channel 
+  var f = req.session.auth_unsafe
 
-        }else{
-          if(req.session.auth_channel===1){ html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block')}
-        }
-      }else{
-         html = template.HTML(req.session.member_name,undefined,'block')
-        if(req.session.auth_stb===1){
-           html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
-          if(req.session.auth_channel===1){var html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block')
-        }
-        }else{
-           html = template.HTML(req.session.member_name,undefined,'block')
-          if(req.session.auth_channel===1){var html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,'block')
-        }
-        }
-      }
-    }else{
-       html = template.HTML(req.session.member_name)
-      if(req.session.auth_tts ===1){
-         html = template.HTML(req.session.member_name,undefined,'block')
-        if(req.session.auth_stb ===1){
-           html = template.HTML(req.session.member_name,undefined,'block','block')
-          if(req.session.auth_channel ===1){
-             html = template.HTML(req.session.member_name,undefined,'block','block','block')
-          }
-        }
-        if(req.session.auth_stb===0){
-          if(req.session.auth_channel===1){
-             html = template.HTML(req.session.member_name,undefined,'block',undefined,'block')
-          }
-        }
-      }
-      if(req.session.auth_tts ===0&& req.session.auth_stb ===1){
-         html = template.HTML(req.session.member_name,undefined,undefined,'block')
-        if(req.session.auth_channel===1){
-           html = template.HTML(req.session.member_name,undefined,undefined,'block','block')
-        }
-      }
-      if(req.session.auth_tts ===0&& req.session.auth_stb ===0&&req.session.auth_channel===1){
-         html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block')
-      }
-    }
+  if (a===1&&b===0&&c===0&&d===1&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,'block',undefined,'block',undefined,undefined)}
+  else if(a===1&&b===0&&c===0&&d===1&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block',undefined)}
+  else if(a===1&&b===0&&c===0&&d===1&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,'block',undefined,'block',undefined,'block')}
+  else if(a===1&&b===0&&c===0&&d===1&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,'block',undefined,'block','block','block')}
+  else if(a===1&&b===0&&c===0&&d===0&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,'block',undefined)}
+  else if(a===1&&b===0&&c===0&&d===0&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,'block','block')}
+  else if(a===1&&b===0&&c===0&&d===0&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,undefined,'block')}
+  else if(a===1&&b===0&&c===0&&d===0&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,'block',undefined,undefined,undefined,undefined)}
+
+  else if(a===1&&b===1&&c===0&&d===1&&e===0&&f===0){html = template.HTML(req.session.member_name,'block',undefined,undefined,'block',undefined,undefined)}
+  else if(a===1&&b===1&&c===0&&d===1&&e===1&&f===0){html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block',undefined)}
+  else if(a===1&&b===1&&c===0&&d===1&&e===0&&f===1){html = template.HTML(req.session.member_name,'block',undefined,undefined,'block',undefined,'block')}
+  else if(a===1&&b===1&&c===0&&d===1&&e===1&&f===1){html = template.HTML(req.session.member_name,'block',undefined,undefined,'block','block','block')}
+  else if(a===1&&b===1&&c===0&&d===0&&e===1&&f===0){html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block',undefined)}
+  else if(a===1&&b===1&&c===0&&d===0&&e===1&&f===1){html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,'block','block')}
+  else if(a===1&&b===1&&c===0&&d===0&&e===0&&f===1){html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,undefined,'block')}
+  else if(a===1&&b===1&&c===0&&d===0&&e===0&&f===0){html = template.HTML(req.session.member_name,'block',undefined,undefined,undefined,undefined,undefined)}
+
+  else if(a===1&&b===0&&c===1&&d===1&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,'block','block','block',undefined,undefined)}
+  else if(a===1&&b===0&&c===1&&d===1&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,'block','block','block','block',undefined)}
+  else if(a===1&&b===0&&c===1&&d===1&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,'block','block','block',undefined,'block')}
+  else if(a===1&&b===0&&c===1&&d===1&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,'block','block','block','block','block')}
+  else if(a===1&&b===0&&c===1&&d===0&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block',undefined)}
+  else if(a===1&&b===0&&c===1&&d===0&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,'block','block',undefined,'block','block')}
+  else if(a===1&&b===0&&c===1&&d===0&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,'block','block',undefined,undefined,'block')}
+  else if(a===1&&b===0&&c===1&&d===0&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,'block','block',undefined,undefined,undefined)}
+  
+  else if(a===1&&b===1&&c===1&&d===1&&e===0&&f===0){html = template.HTML(req.session.member_name,'block',undefined,'block','block',undefined,undefined)}
+  else if(a===1&&b===1&&c===1&&d===1&&e===1&&f===0){html = template.HTML(req.session.member_name,'block',undefined,'block','block','block',undefined)}
+  else if(a===1&&b===1&&c===1&&d===1&&e===0&&f===1){html = template.HTML(req.session.member_name,'block',undefined,'block','block',undefined,'block')}
+  else if(a===1&&b===1&&c===1&&d===1&&e===1&&f===1){html = template.HTML(req.session.member_name,'block',undefined,'block','block','block','block')}
+  else if(a===1&&b===1&&c===1&&d===0&&e===1&&f===0){html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block',undefined)}
+  else if(a===1&&b===1&&c===1&&d===0&&e===1&&f===1){html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,'block','block')}
+  else if(a===1&&b===1&&c===1&&d===0&&e===0&&f===1){html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,undefined,'block')}
+  else if(a===1&&b===1&&c===1&&d===0&&e===0&&f===0){html = template.HTML(req.session.member_name,'block',undefined,'block',undefined,undefined,undefined)}
+  
+  else if(a===0&&b===0&&c===1&&d===1&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,'block','block',undefined,undefined)}
+  else if(a===0&&b===0&&c===1&&d===1&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,'block','block','block',undefined)}
+  else if(a===0&&b===0&&c===1&&d===1&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,'block','block',undefined,'block')}
+  else if(a===0&&b===0&&c===1&&d===1&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,'block','block','block','block')}
+  else if(a===0&&b===0&&c===1&&d===0&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,'block',undefined,'block',undefined)}
+  else if(a===0&&b===0&&c===1&&d===0&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,'block',undefined,'block','block')}
+  else if(a===0&&b===0&&c===1&&d===0&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,'block',undefined,undefined,'block')}
+  else if(a===0&&b===0&&c===1&&d===0&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,'block',undefined,undefined,undefined)}
+  
+  else if(a===0&&b===0&&c===0&&d===1&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block',undefined,undefined)}
+  else if(a===0&&b===0&&c===0&&d===1&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block','block',undefined)}
+  else if(a===0&&b===0&&c===0&&d===1&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block',undefined,'block')}
+  else if(a===0&&b===0&&c===0&&d===1&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,undefined,'block','block','block')}
+  else if(a===0&&b===0&&c===0&&d===0&&e===1&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,undefined,undefined,'block',undefined)}
+  else if(a===0&&b===0&&c===0&&d===0&&e===1&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,undefined,undefined,'block','block')}
+  else if(a===0&&b===0&&c===0&&d===0&&e===0&&f===1){html = template.HTML(req.session.member_name,undefined,undefined,undefined,undefined,undefined,'block')}
+  else if(a===0&&b===0&&c===0&&d===0&&e===0&&f===0){html = template.HTML(req.session.member_name,undefined,undefined,undefined,undefined,undefined,undefined)}
+
     req.session.save(() => {
       res.send(html);
     });
-  }else{
-    res.render('error-403');
-  }
+  
 });
 router.post("/login", function(req,res,next){
   const body = req.body;
@@ -101,15 +92,18 @@ router.post("/login", function(req,res,next){
   }, function(err,response,body){
       var login_result = body.result.ret
       if(login_result === 'success'){
+        console.log(body.data.member_info[0])
         req.session.member_name = body.data.member_info[0].name //세션 저장
-        req.session.auth_member = body.data.member_info[0].member
-        req.session.auth_memberD = body.data.member_info[0].member_detail
-        req.session.auth_tts = body.data.member_info[0].tts
-        req.session.auth_stb = body.data.member_info[0].stb
-        req.session.auth_channel = body.data.member_info[0].channel_update
+        req.session.auth_member = 1
+        req.session.auth_memberD = 0
+        req.session.auth_tts = 1
+        req.session.auth_stb = 0
+        req.session.auth_channel = 0
+        req.session.auth_unsafe = 1
         res.redirect('/main')
       }else{
         res.redirect('/')
+        
       }
   })
 })
@@ -199,6 +193,7 @@ router.post('/get_ch_update_loglist', function (request, response) {
   })   
   
 });
+
 
 router.post('/read_ch_update_log', function (request, response) {
   var file_path = request.body.file_path

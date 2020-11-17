@@ -5,6 +5,7 @@ $(document).ready(function(){
             $('#sidebar').attr('class','');
             $('#member_name3').css('display','none');
             $('#set2').css('class', 'md-3');
+            
         }else if(width>=450){
             $('#sidebar').attr('class','active');
         }
@@ -734,6 +735,72 @@ function newttsCreate(){
     });
 }
 
+function unsafeList(){
+    
+    data=[]
+    fetch('http://webapi.rhymeduck.com/a/v1/unsafe/list', {
+    method: 'POST', // or 'PUT'
+    
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        var html =''
+        var len1 = data.data.unsafe_list;
+        var len = len1.length-1;
+        var count = range(0,len);
+        
+        for(key in count){
+            html += `<tr><th scopie='row'>${data.data.unsafe_list[key].catalogid}</th>`;
+            html += `<td>${data.data.unsafe_list[key].title}</td>`;
+            html += `<td>${data.data.unsafe_list[key].artist_name}</td>`
+            html += `<td>${data.data.unsafe_list[key].refer}</td>`;;
+            html += `<td><span style="visibility:hidden;">x</span>${moment(data.data.unsafe_list[key].reg_ts).format("YYYY-MM-DD HH:mm:ss")}</td>`;
+            html += `<td><span style="visibility:hidden;">x</span>${data.data.unsafe_list[key].reason}</td></tr>`;
+        }  
+        $("#dynamicTbody3").empty();
+        $("#dynamicTbody3").append(html);
+        $("#xxxx").css('display','none')
+    });
+}
+
+function downloadCSV(csv, filename){
+    var csvFile;
+    var downloadLink;
+    
+
+    csvFile = new Blob([csv], {type: "text/csv"})
+    downloadLink = document.createElement("a")
+    downloadLink.download = filename;
+    downloadLink.href = window.URL.createObjectURL(csvFile)
+    downloadLink.style.display= 'none'
+    document.body.appendChild(downloadLink)
+    downloadLink.click()
+
+}
+
+function getCSV(filename){
+    var csv = []
+    var rows = document.querySelectorAll('tbody >  tr')
+    
+    for(var i=0; i < rows.length; i++){
+       var row =[] ,cols=rows[i].querySelectorAll('td, th')
+            
+           
+        for (var j=0; j<cols.length; j++){
+            row.push(cols[j].innerText)
+            
+        }
+        
+        csv.push(row.join(","))
+    }
+    csv.unshift('CATALOGID,TITLE,ARTIST NAME,REGER,REGISTER DATE,REASON')
+    downloadCSV(csv.join("\n"), 'unsafelist.csv')
+}
+
 function channelList() {
 	$.post('/get_ch_update_loglist', function (data) {
 		loglist = data.toString().split(',');
@@ -748,9 +815,7 @@ function channelList() {
 } 
 
 function read_ch_update_log(i) {
-	$.post('/read_ch_update_log', { file_path : loglist[i] }, function (data) {
-		$('#ch_update_log_area').text(data);	
-	})
+	ccc
 }
 
 function settop_reset(member_id) {

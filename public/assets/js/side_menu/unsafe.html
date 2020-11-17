@@ -1,0 +1,64 @@
+
+<div class="page-title">
+    <h3>언세이프 리스트</h3>
+    <p class="text-subtitle text-muted">언세이프 리스트 조회, CSV다운로드</p>
+    <p id="unsafep"></p>
+    </div>
+    <section class="section">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title"></h4>
+                    <div class="d-flex ">
+                        
+                        <button class="btn btn-warning"onclick="getCSV('dd')">csv다운로드</button>
+                        
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped mb-0" id="table2">
+                        <thead>
+                            <tr>
+                                
+                                <th id="">CATALOGID</th>
+                                <th id="">TITLE</th>
+                                <th id="">ARTIST NAME</th>
+                                <th id="">REFER</th>
+                                <th id="">REGISTER DATE</th>
+                                <th id="">REASON</th>
+                                
+                                
+                            </tr>
+                        </thead>
+                    </table>
+
+
+                <div class="card-body px-0 pb-0 table-wrapper-scroll-y my-custom-scrollbar" >
+                    <div class="table-responsive">
+                        <table class="table table-striped mb-0" id="table1">
+                            
+                            <tbody id="dynamicTbody3">
+                            <div  style="margin:11% 0 0 50%"id="xxxx" class="spinner-border" role="status">
+                            <span  class="sr-only">Loading...</span>
+                            </div>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </section>
+
+    <script>
+        var width = window.outerWidth;
+            if (width <= 450) {
+            $('.card').css('display','none');
+            $('#unsafep').html('이 기능은 모바일에서 제공하지 않습니다.')}
+
+    </script>
+   
