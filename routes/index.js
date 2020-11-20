@@ -136,14 +136,15 @@ router.post('/settop_reset', function (request, response) {
 
 router.post('/settop_etp_reset', function (req, res) {
   var enterprise_id = req.body.enterprise_id
+  console.log(enterprise_id)
     request.post({
       url: 'http://webapi.rhymeduck.com/a/v1/member/search_by_eid',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       form: {
-        eid: enterprise_id
-      }
+        eid: enterprise_id 
+      } 
     }, function (error, response, body) {
         for(var i=0; i<JSON.parse(body).length; i++)
           cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body)[i].member_id+' -m "reset|"');
