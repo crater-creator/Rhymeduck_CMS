@@ -150,9 +150,7 @@ router.post('/settop_etp_reset', function (req, res) {
         
         for(var i=0; i<JSON.parse(body).data.member_list.length; i++){
           //console.log(JSON.parse(body).data.member_list[i].member_id)
-          //console.log('------')
           cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body).data.member_list[i].member_id+' -m "reset|"');
-          
          };res.send('리셋완료');
           
        
@@ -176,6 +174,7 @@ router.post('/settop_etp_reset1', function(req,res){
       for(var i=0; i<JSON.parse(body).data.member_list.length; i++){
         //console.log(JSON.parse(body).data.member_list[i].member_id)
         cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body).data.member_list[i].member_id+' -m "reset|"');
+        
     }})
   request.post({
     url: 'http://webapi.rhymeduck.com/a/v1/member/search_by_eid',
@@ -188,8 +187,7 @@ router.post('/settop_etp_reset1', function(req,res){
   }, function (error, response, body) {
       for(var i=0; i<JSON.parse(body).data.member_list.length; i++){
         //console.log(JSON.parse(body).data.member_list[i].member_id)
-        cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body).data.member_list[i].member_id+' -m "reset|"');
-        
+        cmd.run('mosquitto_pub -t vodka_python/user_'+JSON.parse(body).data.member_list[i].member_id+' -m "reset|"');   
     };
     res.send('리셋완료');
 
