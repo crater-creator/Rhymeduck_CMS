@@ -567,7 +567,7 @@ function cmApply(member_id){
     })
 }
 
-function range(start, end) {
+function range(start, end) {123456
     var arr = [];
     var length = end - start; 
     for (var i = 0; i <= length; i++) { 
@@ -815,7 +815,9 @@ function channelList() {
 } 
 
 function read_ch_update_log(i) {
-	ccc
+	$.post('/read_ch_update_log', { file_path : loglist[i] }, function (data) {
+		$('#ch_update_log_area').text(data);	
+	})
 }
 
 function settop_reset(member_id) {
