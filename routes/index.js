@@ -203,15 +203,11 @@ router.post('/get_ch_update_loglist', function (request, response) {
   fs.readdir('/data/log/music_channel_update', function(error, filelist){
     response.send(filelist);
   })   
-  
 });
-
 
 router.post('/read_ch_update_log', function (request, response) {
   var file_path = request.body.file_path
-  
   fs.readFile('/data/log/music_channel_update/'+file_path, 'utf-8',function(error, data){
-   
     response.send(data);
   })
 });
